@@ -60,33 +60,49 @@
 		15A82A3E2A741CFC000F9194 /* Gespage */ = {
 			isa = PBXGroup;
 			children = (
-				15A82A5F2A74288B000F9194 /* ViewControllers */,
-				15A82A3F2A741CFC000F9194 /* AppDelegate.swift */,
-				15A82A412A741CFC000F9194 /* SceneDelegate.swift */,
-				15A82A432A741CFC000F9194 /* ViewController.swift */,
-				15A82A452A741CFC000F9194 /* Main.storyboard */,
-				15A82A482A741CFD000F9194 /* Assets.xcassets */,
-				15A82A4A2A741CFD000F9194 /* LaunchScreen.storyboard */,
-				15A82A4D2A741CFD000F9194 /* Info.plist */,
+				15A82A672A742C8F000F9194 /* Application */,
+				15A82A652A742C66000F9194 /* Controllers */,
+				15A82A6B2A742CED000F9194 /* Resources */,
+				15A82A692A742CB8000F9194 /* View */,
 			);
 			path = Gespage;
 			sourceTree = "<group>";
 		};
-		15A82A5F2A74288B000F9194 /* ViewControllers */ = {
+		15A82A652A742C66000F9194 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				15A82A602A742893000F9194 /* Onboard */,
+				15A82A632A7428B4000F9194 /* OnboardViewController.swift */,
+				15A82A432A741CFC000F9194 /* ViewController.swift */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		15A82A602A742893000F9194 /* Onboard */ = {
+		15A82A672A742C8F000F9194 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				15A82A612A7428A1000F9194 /* OnboardStoryboard.storyboard */,
-				15A82A632A7428B4000F9194 /* OnboardViewController.swift */,
+				15A82A4D2A741CFD000F9194 /* Info.plist */,
+				15A82A412A741CFC000F9194 /* SceneDelegate.swift */,
+				15A82A3F2A741CFC000F9194 /* AppDelegate.swift */,
 			);
-			path = Onboard;
+			path = Application;
+			sourceTree = "<group>";
+		};
+		15A82A692A742CB8000F9194 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				15A82A4A2A741CFD000F9194 /* LaunchScreen.storyboard */,
+				15A82A612A7428A1000F9194 /* OnboardStoryboard.storyboard */,
+				15A82A452A741CFC000F9194 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		15A82A6B2A742CED000F9194 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				15A82A482A741CFD000F9194 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,7 +328,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Gespage/Info.plist;
+				INFOPLIST_FILE = Gespage/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -339,7 +355,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Gespage/Info.plist;
+				INFOPLIST_FILE = Gespage/Application/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
