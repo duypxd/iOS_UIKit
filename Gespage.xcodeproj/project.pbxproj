@@ -13,6 +13,8 @@
 		15A82A472A741CFC000F9194 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A82A452A741CFC000F9194 /* Main.storyboard */; };
 		15A82A492A741CFD000F9194 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15A82A482A741CFD000F9194 /* Assets.xcassets */; };
 		15A82A4C2A741CFD000F9194 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A82A4A2A741CFD000F9194 /* LaunchScreen.storyboard */; };
+		15A82A622A7428A1000F9194 /* OnboardStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A82A612A7428A1000F9194 /* OnboardStoryboard.storyboard */; };
+		15A82A642A7428B4000F9194 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A632A7428B4000F9194 /* OnboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		15A82A482A741CFD000F9194 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15A82A4B2A741CFD000F9194 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		15A82A4D2A741CFD000F9194 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15A82A612A7428A1000F9194 /* OnboardStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardStoryboard.storyboard; sourceTree = "<group>"; };
+		15A82A632A7428B4000F9194 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 		15A82A3E2A741CFC000F9194 /* Gespage */ = {
 			isa = PBXGroup;
 			children = (
+				15A82A5F2A74288B000F9194 /* ViewControllers */,
 				15A82A3F2A741CFC000F9194 /* AppDelegate.swift */,
 				15A82A412A741CFC000F9194 /* SceneDelegate.swift */,
 				15A82A432A741CFC000F9194 /* ViewController.swift */,
@@ -65,6 +70,23 @@
 				15A82A4D2A741CFD000F9194 /* Info.plist */,
 			);
 			path = Gespage;
+			sourceTree = "<group>";
+		};
+		15A82A5F2A74288B000F9194 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				15A82A602A742893000F9194 /* Onboard */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		15A82A602A742893000F9194 /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				15A82A612A7428A1000F9194 /* OnboardStoryboard.storyboard */,
+				15A82A632A7428B4000F9194 /* OnboardViewController.swift */,
+			);
+			path = Onboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A82A4C2A741CFD000F9194 /* LaunchScreen.storyboard in Resources */,
+				15A82A622A7428A1000F9194 /* OnboardStoryboard.storyboard in Resources */,
 				15A82A492A741CFD000F9194 /* Assets.xcassets in Resources */,
 				15A82A472A741CFC000F9194 /* Main.storyboard in Resources */,
 			);
@@ -140,6 +163,7 @@
 			files = (
 				15A82A442A741CFC000F9194 /* ViewController.swift in Sources */,
 				15A82A402A741CFC000F9194 /* AppDelegate.swift in Sources */,
+				15A82A642A7428B4000F9194 /* OnboardViewController.swift in Sources */,
 				15A82A422A741CFC000F9194 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
