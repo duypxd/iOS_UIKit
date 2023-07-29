@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		159947772A74F94700A2D012 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947762A74F94700A2D012 /* ImageHelper.swift */; };
+		1599477C2A75053A00A2D012 /* OnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599477B2A75053A00A2D012 /* OnboardCell.swift */; };
 		15A82A402A741CFC000F9194 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A3F2A741CFC000F9194 /* AppDelegate.swift */; };
 		15A82A422A741CFC000F9194 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A412A741CFC000F9194 /* SceneDelegate.swift */; };
 		15A82A472A741CFC000F9194 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A82A452A741CFC000F9194 /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		159947762A74F94700A2D012 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		1599477B2A75053A00A2D012 /* OnboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardCell.swift; sourceTree = "<group>"; };
 		15A82A3C2A741CFC000F9194 /* Gespage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gespage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A82A3F2A741CFC000F9194 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A82A412A741CFC000F9194 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +45,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		159947752A74F93600A2D012 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				159947762A74F94700A2D012 /* ImageHelper.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		159947782A7504DD00A2D012 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				1599477B2A75053A00A2D012 /* OnboardCell.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		15A82A332A741CFC000F9194 = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +80,8 @@
 		15A82A3E2A741CFC000F9194 /* Gespage */ = {
 			isa = PBXGroup;
 			children = (
+				159947782A7504DD00A2D012 /* CustomViews */,
+				159947752A74F93600A2D012 /* Constants */,
 				15A82A672A742C8F000F9194 /* Application */,
 				15A82A652A742C66000F9194 /* Controllers */,
 				15A82A6B2A742CED000F9194 /* Resources */,
@@ -178,7 +200,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A82A712A743129000F9194 /* WelcomeViewController.swift in Sources */,
+				159947772A74F94700A2D012 /* ImageHelper.swift in Sources */,
 				15A82A402A741CFC000F9194 /* AppDelegate.swift in Sources */,
+				1599477C2A75053A00A2D012 /* OnboardCell.swift in Sources */,
 				15A82A642A7428B4000F9194 /* OnboardViewController.swift in Sources */,
 				15A82A422A741CFC000F9194 /* SceneDelegate.swift in Sources */,
 			);

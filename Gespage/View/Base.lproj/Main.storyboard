@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MGa-sU-apq">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,30 +15,119 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="OnboardViewController" customModule="Gespage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0T-vj-86j">
-                                <rect key="frame" x="159" y="409" width="75" height="35"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1jo-1Z-9OX">
+                                <rect key="frame" x="24" y="64" width="382" height="678"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lVF-rT-vfL">
+                                    <size key="itemSize" width="396" height="639"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OnboardCell" id="7cF-gT-azH" customClass="OnboardCell" customModule="Gespage" customModuleProvider="target">
+                                        <rect key="frame" x="-7" y="0.0" width="396" height="639"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7ma-CY-WDT">
+                                            <rect key="frame" x="0.0" y="0.0" width="396" height="639"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure solution" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMu-bS-tlX">
+                                                    <rect key="frame" x="18" y="402" width="358" height="34"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gespage Mobile is a secure mobile print solution that allows you to easily print from your smartphone or tablet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWI-EU-rpz">
+                                                    <rect key="frame" x="25.666666666666657" y="449" width="346.33333333333337" height="50.333333333333314"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboard1" translatesAutoresizingMaskIntoConstraints="NO" id="Ux9-Lz-xOF">
+                                                    <rect key="frame" x="68" y="35" width="260" height="240"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Ux9-Lz-xOF" firstAttribute="top" secondItem="7ma-CY-WDT" secondAttribute="top" constant="76" id="4Ya-CT-cb9"/>
+                                                <constraint firstItem="SWI-EU-rpz" firstAttribute="top" secondItem="aMu-bS-tlX" secondAttribute="bottom" constant="16" id="4wg-1W-7Je"/>
+                                                <constraint firstAttribute="bottom" secondItem="aMu-bS-tlX" secondAttribute="bottom" constant="206" id="5JS-e5-545"/>
+                                                <constraint firstAttribute="trailing" secondItem="SWI-EU-rpz" secondAttribute="trailing" constant="24" id="8PV-mN-KID"/>
+                                                <constraint firstItem="Ux9-Lz-xOF" firstAttribute="centerX" secondItem="7ma-CY-WDT" secondAttribute="centerX" id="GgU-Dd-u35"/>
+                                                <constraint firstItem="aMu-bS-tlX" firstAttribute="centerX" secondItem="SWI-EU-rpz" secondAttribute="centerX" id="UYW-xc-HH0"/>
+                                                <constraint firstItem="SWI-EU-rpz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7ma-CY-WDT" secondAttribute="leading" constant="20" symbolic="YES" id="hAi-jZ-4v1"/>
+                                                <constraint firstAttribute="trailing" secondItem="aMu-bS-tlX" secondAttribute="trailing" constant="24" id="mZe-iU-t9Y"/>
+                                                <constraint firstItem="aMu-bS-tlX" firstAttribute="centerX" secondItem="Ux9-Lz-xOF" secondAttribute="centerX" id="ocm-GF-fB7"/>
+                                                <constraint firstAttribute="trailing" secondItem="aMu-bS-tlX" secondAttribute="trailing" constant="24" id="pRQ-jf-Kwj"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="396" height="639"/>
+                                        <connections>
+                                            <outlet property="headingLabel" destination="aMu-bS-tlX" id="NbG-Z4-aL5"/>
+                                            <outlet property="onboardImageView" destination="Ux9-Lz-xOF" id="2Cn-UB-tXt"/>
+                                            <outlet property="subHeadingLabel" destination="SWI-EU-rpz" id="vmZ-8d-Avp"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="arL-fF-4F4">
+                                <rect key="frame" x="24" y="453" width="382" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="pageIndicatorTintColor" name="greyG400"/>
+                                <color key="currentPageIndicatorTintColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="pageValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZVL-GR-Voe"/>
+                                </connections>
+                            </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Im-cN-YOo">
+                                <rect key="frame" x="24" y="829" width="70" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Skip">
+                                    <color key="baseForegroundColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="skipButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dbq-bR-Yuy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qFq-7z-zkl">
+                                <rect key="frame" x="336" y="829" width="65" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done">
+                                    <color key="baseForegroundColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
                                 <connections>
-                                    <action selector="onSkipOnboard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8U0-Zf-bo0"/>
+                                    <action selector="doneButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RKZ-9z-Nd6"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8Im-cN-YOo" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="De0-dN-CJF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1jo-1Z-9OX" secondAttribute="trailing" constant="24" id="Eiw-gH-YiQ"/>
+                            <constraint firstItem="1jo-1Z-9OX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-39" id="XJD-Jk-Eaj"/>
+                            <constraint firstItem="1jo-1Z-9OX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="YsF-tp-hFm"/>
+                            <constraint firstItem="8Im-cN-YOo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="lMT-8i-yZx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Im-cN-YOo" secondAttribute="bottom" constant="34" id="o6F-7O-d7E"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1jo-1Z-9OX" secondAttribute="bottom" constant="156" id="tDr-Nt-bei"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Im-cN-YOo" secondAttribute="trailing" constant="336" id="xDg-aj-dQe"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ezk-io-bzS"/>
                     <connections>
-                        <outlet property="onSkipOnboard" destination="H0T-vj-86j" id="Sum-xL-5oL"/>
+                        <outlet property="collectionView" destination="1jo-1Z-9OX" id="lPN-qg-8XT"/>
+                        <outlet property="doneButton" destination="qFq-7z-zkl" id="Ejg-1Q-zhP"/>
+                        <outlet property="pageControl" destination="arL-fF-4F4" id="k9d-Wp-9eO"/>
+                        <outlet property="skipButton" destination="8Im-cN-YOo" id="T8i-Wt-Ara"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1040.4580152671756" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="1038.1395348837209" y="-27.682403433476395"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lbx-xJ-khG">
@@ -44,7 +135,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MGa-sU-apq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d0U-SS-w1J">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -58,6 +149,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="onboard1" width="258.33334350585938" height="240"/>
+        <namedColor name="greyG400">
+            <color red="0.85100001096725464" green="0.85900002717971802" blue="0.91399997472763062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
