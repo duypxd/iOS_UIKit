@@ -66,6 +66,8 @@ extension OnboardViewController {
     
     @IBAction func pageValueChanged(_ sender: UIPageControl) {
         showItem(at: pageControl.currentPage)
+        skipShow(pageControl.currentPage != 2)
+        doneShow(pageControl.currentPage == 2)
     }
     
     @IBAction func doneButtonAction(_ sender: UIButton) {
