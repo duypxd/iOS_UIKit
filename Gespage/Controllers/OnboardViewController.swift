@@ -8,8 +8,6 @@
 import UIKit
 
 class OnboardViewController: UIViewController {
-    let firstLaunchKey = "onboardLaunchKey"
-    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var nextButton: UIButton!
@@ -39,10 +37,15 @@ class OnboardViewController: UIViewController {
 extension OnboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let firstLaunchValue = UserDefaults.standard.bool(forKey: firstLaunchKey)
+        let firstLaunchValue = UserDefaults.standard.bool(forKey: Constants.firstLaunchKey)
+        let skipWelcomeValue = UserDefaults.standard.bool(forKey: Constants.skipWelcomeKey)
         if firstLaunchValue {
             onSkipOnboardView()
+            if skipWelcomeValue {
+                onReplaceMainPage()
+            }
         }
+        
         
         setupCollectionView()
         doneShow(false)
@@ -63,12 +66,20 @@ extension OnboardViewController {
 
 // MARK: - IBActions
 extension OnboardViewController {
+    private func onReplaceMainPage() {
+        let storyboard = UIStoryboard(name: "MainGespageStoryboard", bundle: nil)
+        if let maingespageViewController = storyboard.instantiateViewController(withIdentifier: "MainGespageViewController") as? MainGespageViewController {
+            navigationController?.setViewControllers([maingespageViewController], animated: true)
+        }
+        UserDefaults.standard.set(true, forKey: Constants.skipWelcomeKey)
+    }
+    
     private func onSkipOnboardView() {
         let storyboard = UIStoryboard(name: "WelcomeStoryboard", bundle: nil)
         if let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
             navigationController?.setViewControllers([welcomeViewController], animated: true)
         }
-        UserDefaults.standard.set(true, forKey: firstLaunchKey)
+        UserDefaults.standard.set(true, forKey: Constants.firstLaunchKey)
     }
     
     @IBAction func skipButtonAction(_ sender: UIButton) {

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kk6-hx-Rjm">
-                                <rect key="frame" x="0.0" y="59" width="430" height="803"/>
+                                <rect key="frame" x="0.0" y="103" width="430" height="803"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNk-3r-DSe">
                                         <rect key="frame" x="24" y="85.666666666666657" width="382" height="33.666666666666657"/>
@@ -124,6 +124,9 @@
                                             <color key="baseForegroundColor" name="white"/>
                                             <color key="baseBackgroundColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="loginButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Ik1-oa-7bf"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cnV-dS-a87">
                                         <rect key="frame" x="24" y="495" width="382" height="48"/>
@@ -135,6 +138,9 @@
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
                                             <color key="baseForegroundColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="continueGuestButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2R9-Vg-bYP"/>
+                                        </connections>
                                     </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="PSJ-qh-EJr">
                                         <rect key="frame" x="24" y="8" width="70" height="70"/>
@@ -179,12 +185,31 @@
                             <constraint firstItem="kk6-hx-Rjm" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="tQW-Jq-Z1L"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="LHf-cp-tQR"/>
                     <connections>
                         <outlet property="continueGuestButton" destination="cnV-dS-a87" id="2QR-t9-KnD"/>
                         <outlet property="loginButton" destination="LnJ-xl-DD2" id="rYK-6y-E1E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="951.62790697674416" y="-34.763948497854081"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="aGI-xg-dCU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kns-MU-zxc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vdG-kb-1PZ">
+                        <rect key="frame" x="0.0" y="59" width="430" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="iq1-db-DCC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUA-g0-P2B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="53.02325581395349" y="-34.763948497854081"/>
         </scene>
