@@ -9,11 +9,14 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    @IBOutlet weak var continueGuestButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        title = "Welcome Page"
+        loginButton.layer.cornerRadius = 12.0
+        loginButton.clipsToBounds = true
     }
     
 }
