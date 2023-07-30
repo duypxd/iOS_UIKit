@@ -40,7 +40,9 @@ extension OnboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let firstLaunchValue = UserDefaults.standard.bool(forKey: firstLaunchKey)
-            print("firstLaunchValue: \(firstLaunchValue)")
+        if firstLaunchValue {
+            onSkipOnboardView()
+        }
         
         setupCollectionView()
         doneShow(false)
@@ -64,7 +66,7 @@ extension OnboardViewController {
     private func onSkipOnboardView() {
         let storyboard = UIStoryboard(name: "WelcomeStoryboard", bundle: nil)
         if let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
-            navigationController?.pushViewController(welcomeViewController, animated: true)
+            navigationController?.setViewControllers([welcomeViewController], animated: true)
         }
         UserDefaults.standard.set(true, forKey: firstLaunchKey)
     }
