@@ -8,13 +8,14 @@
 import UIKit
 
 class OnboardViewController: UIViewController {
+    let firstLaunchKey = "onboardLaunchKey"
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
-    @IBOutlet weak var skipButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
-   
+    @IBOutlet weak var skipButton: UIButton!
+    
     var titleArrays = [
         "Secure solution",
         "Mobile Printing",
@@ -38,6 +39,9 @@ class OnboardViewController: UIViewController {
 extension OnboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        let firstLaunchValue = UserDefaults.standard.bool(forKey: firstLaunchKey)
+            print("firstLaunchValue: \(firstLaunchValue)")
+        
         setupCollectionView()
         doneShow(false)
     }
@@ -57,11 +61,20 @@ extension OnboardViewController {
 
 // MARK: - IBActions
 extension OnboardViewController {
-    @IBAction func skipButtonAction(_ sender: UIButton) {
+    private func onSkipOnboardView() {
         let storyboard = UIStoryboard(name: "WelcomeStoryboard", bundle: nil)
         if let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
             navigationController?.pushViewController(welcomeViewController, animated: true)
         }
+        UserDefaults.standard.set(true, forKey: firstLaunchKey)
+    }
+    
+    @IBAction func skipButtonAction(_ sender: UIButton) {
+        onSkipOnboardView()
+    }
+    
+    @IBAction func doneButtonAction(_ sender: UIButton) {
+        onSkipOnboardView()
     }
     
     @IBAction func pageValueChanged(_ sender: UIPageControl) {
@@ -70,11 +83,11 @@ extension OnboardViewController {
         doneShow(pageControl.currentPage == 2)
     }
     
-    @IBAction func doneButtonAction(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "WelcomeStoryboard", bundle: nil)
-        if let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
-            navigationController?.pushViewController(welcomeViewController, animated: true)
-        }
+    @IBAction func nextButtonAction(_ sender: UIButton) {
+        let currentPage = pageControl.currentPage + 1;
+        showItem(at: currentPage)
+        doneShow(currentPage == 2)
+        skipShow(currentPage != 2)
     }
 }
 
@@ -82,6 +95,7 @@ extension OnboardViewController {
 extension OnboardViewController {
     private func skipShow(_ bool: Bool) {
         skipButton.isHidden = !bool
+        nextButton.isHidden = !bool
     }
     
     private func doneShow(_ bool: Bool) {
