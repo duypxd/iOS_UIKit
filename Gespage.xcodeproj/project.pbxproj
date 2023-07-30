@@ -9,9 +9,13 @@
 /* Begin PBXBuildFile section */
 		159947772A74F94700A2D012 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947762A74F94700A2D012 /* ImageHelper.swift */; };
 		1599477C2A75053A00A2D012 /* OnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599477B2A75053A00A2D012 /* OnboardCell.swift */; };
-		1599477E2A76217D00A2D012 /* MainGespageStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1599477D2A76217D00A2D012 /* MainGespageStoryboard.storyboard */; };
-		159947822A76276600A2D012 /* MainGespageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947812A76276600A2D012 /* MainGespageViewController.swift */; };
 		159947842A76286800A2D012 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947832A76286800A2D012 /* Constants.swift */; };
+		159947862A762B2800A2D012 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947852A762B2800A2D012 /* HomeViewController.swift */; };
+		159947882A762B3C00A2D012 /* PrintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947872A762B3C00A2D012 /* PrintViewController.swift */; };
+		1599478A2A762B5000A2D012 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947892A762B5000A2D012 /* MoreViewController.swift */; };
+		1599478C2A762B6500A2D012 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599478B2A762B6500A2D012 /* ScanViewController.swift */; };
+		159947962A7656C300A2D012 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947952A7656C300A2D012 /* MainTabBarViewController.swift */; };
+		159947982A7659AA00A2D012 /* MainTabBarStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159947972A7659AA00A2D012 /* MainTabBarStoryboard.storyboard */; };
 		15A82A402A741CFC000F9194 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A3F2A741CFC000F9194 /* AppDelegate.swift */; };
 		15A82A422A741CFC000F9194 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A412A741CFC000F9194 /* SceneDelegate.swift */; };
 		15A82A472A741CFC000F9194 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A82A452A741CFC000F9194 /* Main.storyboard */; };
@@ -25,9 +29,13 @@
 /* Begin PBXFileReference section */
 		159947762A74F94700A2D012 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		1599477B2A75053A00A2D012 /* OnboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardCell.swift; sourceTree = "<group>"; };
-		1599477D2A76217D00A2D012 /* MainGespageStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainGespageStoryboard.storyboard; sourceTree = "<group>"; };
-		159947812A76276600A2D012 /* MainGespageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGespageViewController.swift; sourceTree = "<group>"; };
 		159947832A76286800A2D012 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		159947852A762B2800A2D012 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		159947872A762B3C00A2D012 /* PrintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintViewController.swift; sourceTree = "<group>"; };
+		159947892A762B5000A2D012 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		1599478B2A762B6500A2D012 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		159947952A7656C300A2D012 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		159947972A7659AA00A2D012 /* MainTabBarStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarStoryboard.storyboard; sourceTree = "<group>"; };
 		15A82A3C2A741CFC000F9194 /* Gespage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gespage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A82A3F2A741CFC000F9194 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A82A412A741CFC000F9194 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,7 +110,11 @@
 			children = (
 				15A82A632A7428B4000F9194 /* OnboardViewController.swift */,
 				15A82A702A743129000F9194 /* WelcomeViewController.swift */,
-				159947812A76276600A2D012 /* MainGespageViewController.swift */,
+				159947852A762B2800A2D012 /* HomeViewController.swift */,
+				159947872A762B3C00A2D012 /* PrintViewController.swift */,
+				159947892A762B5000A2D012 /* MoreViewController.swift */,
+				1599478B2A762B6500A2D012 /* ScanViewController.swift */,
+				159947952A7656C300A2D012 /* MainTabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -123,7 +135,7 @@
 				15A82A4A2A741CFD000F9194 /* LaunchScreen.storyboard */,
 				15A82A452A741CFC000F9194 /* Main.storyboard */,
 				15A82A722A7432D0000F9194 /* WelcomeStoryboard.storyboard */,
-				1599477D2A76217D00A2D012 /* MainGespageStoryboard.storyboard */,
+				159947972A7659AA00A2D012 /* MainTabBarStoryboard.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,8 +206,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1599477E2A76217D00A2D012 /* MainGespageStoryboard.storyboard in Resources */,
 				15A82A732A7432D0000F9194 /* WelcomeStoryboard.storyboard in Resources */,
+				159947982A7659AA00A2D012 /* MainTabBarStoryboard.storyboard in Resources */,
 				15A82A4C2A741CFD000F9194 /* LaunchScreen.storyboard in Resources */,
 				15A82A492A741CFD000F9194 /* Assets.xcassets in Resources */,
 				15A82A472A741CFC000F9194 /* Main.storyboard in Resources */,
@@ -209,14 +221,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				159947822A76276600A2D012 /* MainGespageViewController.swift in Sources */,
 				15A82A712A743129000F9194 /* WelcomeViewController.swift in Sources */,
+				159947882A762B3C00A2D012 /* PrintViewController.swift in Sources */,
 				159947772A74F94700A2D012 /* ImageHelper.swift in Sources */,
+				1599478A2A762B5000A2D012 /* MoreViewController.swift in Sources */,
 				15A82A402A741CFC000F9194 /* AppDelegate.swift in Sources */,
 				1599477C2A75053A00A2D012 /* OnboardCell.swift in Sources */,
+				159947862A762B2800A2D012 /* HomeViewController.swift in Sources */,
 				15A82A642A7428B4000F9194 /* OnboardViewController.swift in Sources */,
 				15A82A422A741CFC000F9194 /* SceneDelegate.swift in Sources */,
+				159947962A7656C300A2D012 /* MainTabBarViewController.swift in Sources */,
 				159947842A76286800A2D012 /* Constants.swift in Sources */,
+				1599478C2A762B6500A2D012 /* ScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

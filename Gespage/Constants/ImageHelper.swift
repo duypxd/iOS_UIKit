@@ -7,4 +7,9 @@ struct ImageHelper {
     
     static let page = UIImage(named: "page")
     static let pageSelected = UIImage(named: "pageSelected")
+    
+    static let homeIcon = UIImage(named: "home")
+    static let printerIcon = UIImage(named: "printer")
+    static let scanIcon = UIImage(named: "scan")
+    static let moreIcon = UIImage(named: "more")
 }
