@@ -15,7 +15,6 @@
 		1599478A2A762B5000A2D012 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947892A762B5000A2D012 /* MoreViewController.swift */; };
 		1599478C2A762B6500A2D012 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599478B2A762B6500A2D012 /* ScanViewController.swift */; };
 		159947962A7656C300A2D012 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947952A7656C300A2D012 /* MainTabBarViewController.swift */; };
-		159947982A7659AA00A2D012 /* MainTabBarStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 159947972A7659AA00A2D012 /* MainTabBarStoryboard.storyboard */; };
 		15A82A402A741CFC000F9194 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A3F2A741CFC000F9194 /* AppDelegate.swift */; };
 		15A82A422A741CFC000F9194 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A412A741CFC000F9194 /* SceneDelegate.swift */; };
 		15A82A472A741CFC000F9194 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A82A452A741CFC000F9194 /* Main.storyboard */; };
@@ -24,6 +23,7 @@
 		15A82A642A7428B4000F9194 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A632A7428B4000F9194 /* OnboardViewController.swift */; };
 		15A82A712A743129000F9194 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A702A743129000F9194 /* WelcomeViewController.swift */; };
 		15A82A732A7432D0000F9194 /* WelcomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A82A722A7432D0000F9194 /* WelcomeStoryboard.storyboard */; };
+		15D600512A76715400152BBF /* MainTabBarStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D600502A76715400152BBF /* MainTabBarStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,6 @@
 		159947892A762B5000A2D012 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		1599478B2A762B6500A2D012 /* ScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		159947952A7656C300A2D012 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		159947972A7659AA00A2D012 /* MainTabBarStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarStoryboard.storyboard; sourceTree = "<group>"; };
 		15A82A3C2A741CFC000F9194 /* Gespage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gespage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15A82A3F2A741CFC000F9194 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		15A82A412A741CFC000F9194 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +45,7 @@
 		15A82A632A7428B4000F9194 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		15A82A702A743129000F9194 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		15A82A722A7432D0000F9194 /* WelcomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomeStoryboard.storyboard; sourceTree = "<group>"; };
+		15D600502A76715400152BBF /* MainTabBarStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +135,7 @@
 				15A82A4A2A741CFD000F9194 /* LaunchScreen.storyboard */,
 				15A82A452A741CFC000F9194 /* Main.storyboard */,
 				15A82A722A7432D0000F9194 /* WelcomeStoryboard.storyboard */,
-				159947972A7659AA00A2D012 /* MainTabBarStoryboard.storyboard */,
+				15D600502A76715400152BBF /* MainTabBarStoryboard.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,7 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A82A732A7432D0000F9194 /* WelcomeStoryboard.storyboard in Resources */,
-				159947982A7659AA00A2D012 /* MainTabBarStoryboard.storyboard in Resources */,
+				15D600512A76715400152BBF /* MainTabBarStoryboard.storyboard in Resources */,
 				15A82A4C2A741CFD000F9194 /* LaunchScreen.storyboard in Resources */,
 				15A82A492A741CFD000F9194 /* Assets.xcassets in Resources */,
 				15A82A472A741CFC000F9194 /* Main.storyboard in Resources */,

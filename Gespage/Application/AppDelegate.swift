@@ -13,22 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Khởi tạo UIWindow
-            let window = UIWindow(frame: UIScreen.main.bounds)
+        // Override point for customization after application launch.
         
-        // Xác định Main.storyboard làm Main Interface
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabBarController = mainStoryboard.instantiateInitialViewController() as? UITabBarController
-        window.rootViewController = tabBarController
-        
-        // Hiển thị window
-        window.makeKeyAndVisible()
-        
-        // Chuyển sang Onboard.Storyboard sau khi khởi động (giả định sau một khoảng thời gian hoặc hành động của người dùng)
-        let onboardStoryboard = UIStoryboard(name: "MainTabBarStoryboard", bundle: nil)
-        if let onboardViewController = onboardStoryboard.instantiateInitialViewController() {
-            window.rootViewController?.present(onboardViewController, animated: true, completion: nil)
-        }
         return true
     }
 

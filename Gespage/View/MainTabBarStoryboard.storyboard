@@ -1,106 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6CB-47-fIu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
-        <scene sceneID="XL7-st-iPh">
+        <!--Main Tab Bar View Controller-->
+        <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="WKk-HM-xpt" customClass="HomeViewController" customModule="Gespage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NDh-TR-kfa">
+                <viewController storyboardIdentifier="MainTabBarViewController" id="Y6W-OH-hqX" customClass="MainTabBarViewController" customModule="Gespage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="WrT-hh-bTe"/>
-                        <color key="backgroundColor" name="white"/>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="k1B-D6-nip"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ODq-CN-a9f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-810" y="752"/>
-        </scene>
-        <!--Print-->
-        <scene sceneID="GfX-hX-AZI">
-            <objects>
-                <viewController storyboardIdentifier="PrintViewController" id="iuQ-4q-mHJ" customClass="PrintViewController" customModule="Gespage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8Og-Sh-H6Y">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="Qa1-h8-d8C"/>
-                        <color key="backgroundColor" name="white"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Print" image="printer" id="WiA-Xq-N64"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7fK-r4-rV2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-48" y="751"/>
-        </scene>
-        <!--Scan-->
-        <scene sceneID="7Z9-UT-9ir">
-            <objects>
-                <viewController storyboardIdentifier="ScanViewController" id="9KR-Vu-GLO" customClass="ScanViewController" customModule="Gespage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QuU-aq-sPC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="chb-PL-0rM"/>
-                        <color key="backgroundColor" name="white"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Scan" image="scan" id="KRB-MC-tPk"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I2C-dU-0ud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="740" y="751"/>
-        </scene>
-        <!--More-->
-        <scene sceneID="JZT-15-afg">
-            <objects>
-                <viewController storyboardIdentifier="MoreViewController" id="l13-Tr-aOQ" customClass="MoreViewController" customModule="Gespage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Qhf-KH-0o6">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="TL5-AS-QSU"/>
-                        <color key="backgroundColor" name="white"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="More" image="more" id="ebd-1u-amq"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="o4C-aA-1Ev" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1482" y="751"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="Lin-O9-Ygq">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6CB-47-fIu" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Idw-lK-bKZ">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="WKk-HM-xpt" kind="relationship" relationship="viewControllers" id="wkS-Wi-l2X"/>
-                        <segue destination="iuQ-4q-mHJ" kind="relationship" relationship="viewControllers" id="Avp-8r-1Yr"/>
-                        <segue destination="9KR-Vu-GLO" kind="relationship" relationship="viewControllers" id="2Rn-98-UcL"/>
-                        <segue destination="l13-Tr-aOQ" kind="relationship" relationship="viewControllers" id="opG-pl-7oe"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1xc-fc-hcV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="54.198473282442748" y="-34.507042253521128"/>
+            <point key="canvasLocation" x="55" y="-34"/>
         </scene>
     </scenes>
     <resources>
-        <image name="home" width="28" height="28"/>
-        <image name="more" width="28" height="28"/>
-        <image name="printer" width="28" height="28"/>
-        <image name="scan" width="28" height="28"/>
-        <namedColor name="white">
-            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
