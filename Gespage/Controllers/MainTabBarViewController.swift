@@ -13,10 +13,10 @@ class MainTabBarViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         // Tạo các UIViewController cho từng tab con
-        let homeViewController = HomeViewController()
-        let printViewController = PrintViewController()
-        let scanViewController = ScanViewController()
-        let moreViewController = MoreViewController()
+        let homeViewController = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateInitialViewController() as! HomeViewController
+        let printViewController = UIStoryboard(name: "PrintStoryboard", bundle: nil).instantiateInitialViewController() as! PrintViewController
+        let scanViewController = UIStoryboard(name: "ScanStoryboard", bundle: nil).instantiateInitialViewController() as! ScanViewController
+        let moreViewController = UIStoryboard(name: "MoreStoryboard", bundle: nil).instantiateInitialViewController() as! MoreViewController
 
         // Tạo các tab bar item cho mỗi UIViewController
         homeViewController.tabBarItem = UITabBarItem(title: "Home", image: ImageHelper.homeIcon, tag: 0)

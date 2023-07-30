@@ -67,10 +67,7 @@ extension OnboardViewController {
 // MARK: - IBActions
 extension OnboardViewController {
     private func onReplaceMainPage() {
-        let storyboard = UIStoryboard(name: "MainTabBarStoryboard", bundle: nil)
-        if let maingespageViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as? MainTabBarViewController {
-            navigationController?.setViewControllers([maingespageViewController], animated: true)
-        }
+        navigationController?.setViewControllers([MainTabBarViewController()], animated: true)
         UserDefaults.standard.set(true, forKey: Constants.skipWelcomeKey)
     }
     

@@ -27,10 +27,7 @@ extension WelcomeViewController {
 // MARK: - @IBAction
 extension WelcomeViewController {
     private func onReplaceMainPage() {
-        let storyboard = UIStoryboard(name: "MainTabBarStoryboard", bundle: nil)
-        if let mainTabBarViewController = storyboard.instantiateViewController(withIdentifier: "MainTabBarViewController") as? MainTabBarViewController {
-            navigationController?.setViewControllers([mainTabBarViewController], animated: true)
-        }
+        navigationController?.setViewControllers([MainTabBarViewController()], animated: true)
         UserDefaults.standard.set(true, forKey: Constants.skipWelcomeKey)
     }
     

@@ -23,7 +23,10 @@
 		15A82A642A7428B4000F9194 /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A632A7428B4000F9194 /* OnboardViewController.swift */; };
 		15A82A712A743129000F9194 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A82A702A743129000F9194 /* WelcomeViewController.swift */; };
 		15A82A732A7432D0000F9194 /* WelcomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A82A722A7432D0000F9194 /* WelcomeStoryboard.storyboard */; };
-		15D600512A76715400152BBF /* MainTabBarStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D600502A76715400152BBF /* MainTabBarStoryboard.storyboard */; };
+		15A885732A7683D500664BF8 /* ScanStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A885722A7683D500664BF8 /* ScanStoryboard.storyboard */; };
+		15A885752A7683F400664BF8 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A885742A7683F400664BF8 /* MoreStoryboard.storyboard */; };
+		15A885772A76851B00664BF8 /* PrintStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A885762A76851B00664BF8 /* PrintStoryboard.storyboard */; };
+		15D600672A76812400152BBF /* HomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D600662A76812400152BBF /* HomeStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,7 +48,10 @@
 		15A82A632A7428B4000F9194 /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		15A82A702A743129000F9194 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		15A82A722A7432D0000F9194 /* WelcomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WelcomeStoryboard.storyboard; sourceTree = "<group>"; };
-		15D600502A76715400152BBF /* MainTabBarStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBarStoryboard.storyboard; sourceTree = "<group>"; };
+		15A885722A7683D500664BF8 /* ScanStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanStoryboard.storyboard; sourceTree = "<group>"; };
+		15A885742A7683F400664BF8 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreStoryboard.storyboard; sourceTree = "<group>"; };
+		15A885762A76851B00664BF8 /* PrintStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrintStoryboard.storyboard; sourceTree = "<group>"; };
+		15D600662A76812400152BBF /* HomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +141,10 @@
 				15A82A4A2A741CFD000F9194 /* LaunchScreen.storyboard */,
 				15A82A452A741CFC000F9194 /* Main.storyboard */,
 				15A82A722A7432D0000F9194 /* WelcomeStoryboard.storyboard */,
-				15D600502A76715400152BBF /* MainTabBarStoryboard.storyboard */,
+				15D600662A76812400152BBF /* HomeStoryboard.storyboard */,
+				15A885722A7683D500664BF8 /* ScanStoryboard.storyboard */,
+				15A885742A7683F400664BF8 /* MoreStoryboard.storyboard */,
+				15A885762A76851B00664BF8 /* PrintStoryboard.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,10 +216,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A82A732A7432D0000F9194 /* WelcomeStoryboard.storyboard in Resources */,
-				15D600512A76715400152BBF /* MainTabBarStoryboard.storyboard in Resources */,
 				15A82A4C2A741CFD000F9194 /* LaunchScreen.storyboard in Resources */,
+				15A885732A7683D500664BF8 /* ScanStoryboard.storyboard in Resources */,
+				15A885752A7683F400664BF8 /* MoreStoryboard.storyboard in Resources */,
 				15A82A492A741CFD000F9194 /* Assets.xcassets in Resources */,
 				15A82A472A741CFC000F9194 /* Main.storyboard in Resources */,
+				15D600672A76812400152BBF /* HomeStoryboard.storyboard in Resources */,
+				15A885772A76851B00664BF8 /* PrintStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
