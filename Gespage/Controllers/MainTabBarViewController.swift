@@ -12,6 +12,26 @@ class MainTabBarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        renderTabbar()
+    }
+}
+
+// MARK: - Hide Header Page
+extension MainTabBarViewController {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+}
+
+// MARK: - Custom TabBar
+extension MainTabBarViewController {
+    private func renderTabbar() {
         // Tạo các UIViewController cho từng tab con
         let homeViewController = UIStoryboard(name: "HomeStoryboard", bundle: nil).instantiateInitialViewController() as! HomeViewController
         let printViewController = UIStoryboard(name: "PrintStoryboard", bundle: nil).instantiateInitialViewController() as! PrintViewController
