@@ -11,7 +11,6 @@ class OnboardViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var skipButton: UIButton!
     
     var titleArrays = [
@@ -83,10 +82,6 @@ extension OnboardViewController {
         onSkipOnboardView()
     }
     
-    @IBAction func doneButtonAction(_ sender: UIButton) {
-        onSkipOnboardView()
-    }
-    
     @IBAction func pageValueChanged(_ sender: UIPageControl) {
         showItem(at: pageControl.currentPage)
         skipShow(pageControl.currentPage != 2)
@@ -95,9 +90,13 @@ extension OnboardViewController {
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
         let currentPage = pageControl.currentPage + 1;
-        showItem(at: currentPage)
-        doneShow(currentPage == 2)
-        skipShow(currentPage != 2)
+        if pageControl.currentPage == 2 {
+            onSkipOnboardView()
+        } else {
+            showItem(at: currentPage)
+            doneShow(currentPage == 2)
+            skipShow(currentPage != 2)
+        }
     }
 }
 
@@ -105,11 +104,10 @@ extension OnboardViewController {
 extension OnboardViewController {
     private func skipShow(_ bool: Bool) {
         skipButton.isHidden = !bool
-        nextButton.isHidden = !bool
     }
     
     private func doneShow(_ bool: Bool) {
-        doneButton.isHidden = !bool
+        nextButton.setTitle( bool ? "Done" : "Next", for: .normal)
     }
     
     private func showItem(at index: Int) {

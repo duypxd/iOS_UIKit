@@ -82,7 +82,7 @@
                                 </connections>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08V-NF-UdP">
-                                <rect key="frame" x="23.999999999999996" y="833" width="54.666666666666657" height="31"/>
+                                <rect key="frame" x="23.999999999999996" y="834" width="54.666666666666657" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Skip">
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
@@ -93,42 +93,28 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofM-Ft-FYj">
-                                <rect key="frame" x="350.33333333333331" y="833" width="55.666666666666686" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Next">
-                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
-                                    <color key="baseForegroundColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
+                                <rect key="frame" x="374" y="835" width="32" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="nextButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="df6-pn-WXx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qot-UT-ttP">
-                                <rect key="frame" x="346.66666666666669" y="833" width="59.333333333333314" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Done">
-                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
-                                    <color key="baseForegroundColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="doneButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gDd-yU-6OM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="qot-UT-ttP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="08V-NF-UdP" secondAttribute="trailing" constant="8" symbolic="YES" id="49s-nr-AsJ"/>
                             <constraint firstItem="arL-fF-4F4" firstAttribute="leading" secondItem="08V-NF-UdP" secondAttribute="leading" id="734-5X-MY5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ofM-Ft-FYj" secondAttribute="bottom" constant="34" id="7TJ-cT-MWu"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="08V-NF-UdP" secondAttribute="bottom" constant="34" id="9D0-UU-hfd"/>
-                            <constraint firstItem="ofM-Ft-FYj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="08V-NF-UdP" secondAttribute="trailing" constant="8" symbolic="YES" id="9Dv-GY-o0Y"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qot-UT-ttP" secondAttribute="trailing" constant="24" id="CY6-yq-WvS"/>
+                            <constraint firstItem="ofM-Ft-FYj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="08V-NF-UdP" secondAttribute="trailing" constant="8" symbolic="YES" id="8rZ-Oq-4cS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="08V-NF-UdP" secondAttribute="bottom" constant="33" id="9D0-UU-hfd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1jo-1Z-9OX" secondAttribute="trailing" constant="24" id="Eiw-gH-YiQ"/>
                             <constraint firstItem="08V-NF-UdP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="SVD-mE-aAP"/>
                             <constraint firstItem="ofM-Ft-FYj" firstAttribute="trailing" secondItem="1jo-1Z-9OX" secondAttribute="trailing" id="Vic-bA-R7v"/>
                             <constraint firstItem="1jo-1Z-9OX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-39" id="XJD-Jk-Eaj"/>
-                            <constraint firstItem="qot-UT-ttP" firstAttribute="bottom" secondItem="ofM-Ft-FYj" secondAttribute="bottom" id="Y0P-I5-76d"/>
                             <constraint firstItem="1jo-1Z-9OX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="YsF-tp-hFm"/>
                             <constraint firstItem="ofM-Ft-FYj" firstAttribute="trailing" secondItem="arL-fF-4F4" secondAttribute="trailing" id="oIN-8d-2GT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1jo-1Z-9OX" secondAttribute="bottom" constant="156" id="tDr-Nt-bei"/>
@@ -138,7 +124,6 @@
                     <navigationItem key="navigationItem" id="Ezk-io-bzS"/>
                     <connections>
                         <outlet property="collectionView" destination="1jo-1Z-9OX" id="lPN-qg-8XT"/>
-                        <outlet property="doneButton" destination="qot-UT-ttP" id="xyb-gf-EVa"/>
                         <outlet property="nextButton" destination="ofM-Ft-FYj" id="qSx-SM-4vF"/>
                         <outlet property="pageControl" destination="arL-fF-4F4" id="k9d-Wp-9eO"/>
                         <outlet property="skipButton" destination="08V-NF-UdP" id="Uvz-5v-JQS"/>
