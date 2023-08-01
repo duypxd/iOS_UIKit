@@ -9,4 +9,6 @@ import UIKit
 
 class HomeDistributionCell: UITableViewCell {
     @IBOutlet weak var distributionLabel: UILabel!
+    
+    
 }

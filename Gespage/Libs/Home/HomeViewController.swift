@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        let nib = UINib(nibName: "HomeTableViewCellEcologicalCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "HomeTableViewCellEcologicalCell")
     }
 }
 
@@ -23,16 +25,19 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         return 3
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
             case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "HomeEcologicalCell", for: indexPath) as! HomeEcologicalCell
-                cell.logoGespage.image = ImageHelper.splashImage
-                return cell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCellEcologicalCell", for: indexPath) as! HomeTableViewCellEcologicalCell
+                cell.backgroundColor = .clear
+                cell.savedTreesView.layer.cornerRadius = 12
+                cell.savedWaterView.layer.cornerRadius = 12
+                cell.greenScoreView.layer.cornerRadius = 12
+               return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomeDistributionCell", for: indexPath) as! HomeDistributionCell
+            cell.backgroundColor = .clear
                 cell.distributionLabel.text = "Distribution"
                 return cell
             case 2:
