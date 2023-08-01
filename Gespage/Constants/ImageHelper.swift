@@ -1,6 +1,8 @@
 import UIKit
 
 struct ImageHelper {
+    static let splashImage = UIImage(named: "splash")
+    
     static let onBoard1 = UIImage(named: "onboard1")
     static let onBoard2 = UIImage(named: "onboard2")
     static let onBoard3 = UIImage(named: "onboard3")
