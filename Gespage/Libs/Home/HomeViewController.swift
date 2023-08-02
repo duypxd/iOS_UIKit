@@ -14,8 +14,18 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        let nib = UINib(nibName: "HomeTableViewCellEcologicalCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "HomeTableViewCellEcologicalCell")
+        // HomeTableViewCellEcologicalCell
+        tableView.register(
+            UINib(nibName: "HomeTableViewCellEcologicalCell", bundle: nil),
+            forCellReuseIdentifier: "HomeTableViewCellEcologicalCell")
+        // HomeTableViewCellEcologicalCell
+        tableView.register(
+            UINib(nibName: "HomeDistributionTableViewCell", bundle: nil),
+            forCellReuseIdentifier: "HomeDistributionTableViewCell")
+        // HomePrinterFavoritesTableViewCell
+        tableView.register(
+            UINib(nibName: "HomePrinterFavoritesTableViewCell", bundle: nil),
+            forCellReuseIdentifier: "HomePrinterFavoritesTableViewCell")
     }
 }
 
@@ -29,23 +39,42 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch indexPath.row {
             case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCellEcologicalCell", for: indexPath) as! HomeTableViewCellEcologicalCell
-                cell.backgroundColor = .clear
-                cell.savedTreesView.layer.cornerRadius = 12
-                cell.savedWaterView.layer.cornerRadius = 12
-                cell.greenScoreView.layer.cornerRadius = 12
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: "HomeTableViewCellEcologicalCell",
+                    for: indexPath) as! HomeTableViewCellEcologicalCell
+            
+                    cell.backgroundColor = .clear
+            
+                    commonLayer(layer: cell.savedTreesView.layer)
+                    commonLayer(layer: cell.savedWaterView.layer)
+                    commonLayer(layer: cell.greenScoreView.layer)
                return cell
             case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "HomeDistributionCell", for: indexPath) as! HomeDistributionCell
-            cell.backgroundColor = .clear
-                cell.distributionLabel.text = "Distribution"
+                let cell = tableView.dequeueReusableCell(withIdentifier: "HomeDistributionTableViewCell", for: indexPath) as! HomeDistributionTableViewCell
+            
+                cell.backgroundColor = .clear
+                commonLayer(layer: cell.distributionView.layer)
+            
                 return cell
             case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "HomePrinterFavoritesCell", for: indexPath) as! HomePrinterFavoritesCell
-                cell.favoritePrintLabel.text = "Favorite Printers"
+                let cell = tableView.dequeueReusableCell(withIdentifier: "HomePrinterFavoritesTableViewCell", for: indexPath) as! HomePrinterFavoritesTableViewCell
+                
+                cell.backgroundColor = .clear
+            
                 return cell
             default:
                 return UITableViewCell()
         }
+    }
+}
+
+// MARK: - Card - HomeTableViewCellEcologicalCell
+extension HomeViewController {
+    private func commonLayer(layer: CALayer) {
+        layer.cornerRadius = 12
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 0)
+        layer.shadowRadius = 1
+        layer.shadowOpacity = 0.1
     }
 }
