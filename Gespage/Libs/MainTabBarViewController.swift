@@ -44,17 +44,13 @@ extension MainTabBarViewController {
         scanViewController.tabBarItem = UITabBarItem(title: "Scan", image: ImageHelper.scanIcon, tag: 2)
         moreViewController.tabBarItem = UITabBarItem(title: "More", image: ImageHelper.moreIcon, tag: 3)
         
-        // Tạo navigation controller cho trang TodoList
-        let printersNavigationController = UINavigationController(rootViewController: PrintersViewController())
-        
         // Tạo Tab bar controller và thêm các tab vào
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [
             homeViewController,
             printViewController,
             scanViewController,
-            moreViewController,
-            printersNavigationController
+            moreViewController
         ]
         
         // Thiết lập màu nền của TabBar
