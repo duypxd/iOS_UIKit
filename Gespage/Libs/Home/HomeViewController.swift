@@ -58,12 +58,23 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomePrinterFavoritesTableViewCell", for: indexPath) as! HomePrinterFavoritesTableViewCell
-                
+
                 cell.backgroundColor = .clear
+                cell.delegate = self
             
                 return cell
             default:
                 return UITableViewCell()
+        }
+    }
+}
+
+// MARK: - HomePrinterFavoritesDelegate
+extension HomeViewController: HomePrinterFavoritesDelegate {
+    func onViewAllPrintersTapped() {
+        let storyboard = UIStoryboard(name: "PrintersStoryboard", bundle: nil)
+        if let printersViewController = storyboard.instantiateViewController(withIdentifier: "PrintersViewController") as? PrintersViewController {
+            navigationController?.pushViewController(printersViewController, animated: true)
         }
     }
 }

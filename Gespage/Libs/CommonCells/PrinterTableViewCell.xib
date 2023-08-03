@@ -85,6 +85,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="iconPrinter" destination="2Pw-bS-6aq" id="OZz-dp-PBa"/>
                 <outlet property="printerId" destination="2BL-3D-QHA" id="T6d-mK-foI"/>
                 <outlet property="printerName" destination="5c8-dC-pSv" id="znV-5y-ajL"/>
                 <outlet property="printerStatus" destination="KJk-gz-fFx" id="P40-HW-L0C"/>

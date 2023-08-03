@@ -14,6 +14,7 @@ class PrinterTableViewCell: UITableViewCell {
     @IBOutlet weak var printerName: UILabel!
     @IBOutlet weak var printerId: UILabel!
     @IBOutlet weak var printerStatus: UILabel!
+    @IBOutlet weak var iconPrinter: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
