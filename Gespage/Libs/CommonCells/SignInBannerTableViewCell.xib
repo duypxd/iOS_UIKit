@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="55" id="KGk-i7-Jjw" customClass="SignInBannerTableViewCell" customModule="Gespage" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="447" height="55"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="447" height="55"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDz-bW-MFD">
+                        <rect key="frame" x="0.0" y="12" width="447" height="43"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please log in to explore all features" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdH-UV-4Zz">
+                                <rect key="frame" x="16" y="8" width="351.66666666666669" height="27"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ORW-2V-Ays">
+                                <rect key="frame" x="379.66666666666669" y="8" width="59.333333333333314" height="27"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Login">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                    <color key="baseForegroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="primary500"/>
+                        <constraints>
+                            <constraint firstItem="BdH-UV-4Zz" firstAttribute="top" secondItem="fDz-bW-MFD" secondAttribute="top" constant="8" id="7dX-7Q-q2D"/>
+                            <constraint firstAttribute="bottom" secondItem="ORW-2V-Ays" secondAttribute="bottom" constant="8" id="Aqg-zJ-UFY"/>
+                            <constraint firstAttribute="trailing" secondItem="ORW-2V-Ays" secondAttribute="trailing" constant="8" id="BIJ-yi-OH1"/>
+                            <constraint firstItem="ORW-2V-Ays" firstAttribute="leading" secondItem="BdH-UV-4Zz" secondAttribute="trailing" constant="12" id="csJ-sC-jPK"/>
+                            <constraint firstAttribute="bottom" secondItem="BdH-UV-4Zz" secondAttribute="bottom" constant="8" id="dY3-oW-Gi1"/>
+                            <constraint firstItem="ORW-2V-Ays" firstAttribute="top" secondItem="fDz-bW-MFD" secondAttribute="top" constant="8" id="dh0-lO-9yR"/>
+                            <constraint firstItem="BdH-UV-4Zz" firstAttribute="leading" secondItem="fDz-bW-MFD" secondAttribute="leading" constant="16" id="mpW-2d-Vsr"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="fDz-bW-MFD" secondAttribute="trailing" id="7Fx-YZ-O46"/>
+                    <constraint firstItem="fDz-bW-MFD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Awv-7F-1KH"/>
+                    <constraint firstItem="fDz-bW-MFD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="EVe-nM-4Pd"/>
+                    <constraint firstAttribute="bottom" secondItem="fDz-bW-MFD" secondAttribute="bottom" id="m7D-il-yc8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="208.3969465648855" y="36.971830985915496"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="primary500">
+            <color red="0.40400001406669617" green="0.55299997329711914" blue="0.83899998664855957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

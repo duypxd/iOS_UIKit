@@ -15,30 +15,41 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         // HomeTableViewCellEcologicalCell
-        tableView.register(
-            UINib(nibName: "HomeTableViewCellEcologicalCell", bundle: nil),
-            forCellReuseIdentifier: "HomeTableViewCellEcologicalCell")
-        // HomeTableViewCellEcologicalCell
-        tableView.register(
-            UINib(nibName: "HomeDistributionTableViewCell", bundle: nil),
-            forCellReuseIdentifier: "HomeDistributionTableViewCell")
-        // HomePrinterFavoritesTableViewCell
-        tableView.register(
-            UINib(nibName: "HomePrinterFavoritesTableViewCell", bundle: nil),
-            forCellReuseIdentifier: "HomePrinterFavoritesTableViewCell")
+        let cellIdentifiers = [
+            "BalanceTableViewCell",
+            "SignInBannerTableViewCell",
+            "HomeTableViewCellEcologicalCell",
+            "HomeDistributionTableViewCell",
+            "HomePrinterFavoritesTableViewCell"
+        ]
+        for cellIdentifier in cellIdentifiers {
+            tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        }
     }
 }
 
 // MARK: - Table View Cell
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
             case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "BalanceTableViewCell", for: indexPath) as! BalanceTableViewCell
+                cell.backgroundColor = .clear
+                cell.username.text = "Duy Pham(VN)"
+                cell.balance.text = Formater.formatAsUSD(amount: 987654)
+                return cell
+            
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SignInBannerTableViewCell", for: indexPath) as! SignInBannerTableViewCell
+                cell.backgroundColor = .clear
+                return cell
+            
+            case 2:
                 let cell = tableView.dequeueReusableCell(
                     withIdentifier: "HomeTableViewCellEcologicalCell",
                     for: indexPath) as! HomeTableViewCellEcologicalCell
@@ -49,14 +60,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                     commonLayer(layer: cell.savedWaterView.layer)
                     commonLayer(layer: cell.greenScoreView.layer)
                return cell
-            case 1:
+            
+            case 3:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomeDistributionTableViewCell", for: indexPath) as! HomeDistributionTableViewCell
             
                 cell.backgroundColor = .clear
                 commonLayer(layer: cell.distributionView.layer)
             
                 return cell
-            case 2:
+            case 4:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomePrinterFavoritesTableViewCell", for: indexPath) as! HomePrinterFavoritesTableViewCell
 
                 cell.backgroundColor = .clear
