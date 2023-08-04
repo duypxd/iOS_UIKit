@@ -31,6 +31,8 @@
 		15A885732A7683D500664BF8 /* ScanStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A885722A7683D500664BF8 /* ScanStoryboard.storyboard */; };
 		15A885752A7683F400664BF8 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A885742A7683F400664BF8 /* MoreStoryboard.storyboard */; };
 		15A885772A76851B00664BF8 /* PrintStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A885762A76851B00664BF8 /* PrintStoryboard.storyboard */; };
+		15ABB2F72A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ABB2F52A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift */; };
+		15ABB2F82A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15ABB2F62A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib */; };
 		15D1E3542A7B5AF20059C3FE /* PrintersStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D1E3532A7B5AF20059C3FE /* PrintersStoryboard.storyboard */; };
 		15D1E3562A7B5AFB0059C3FE /* PrintersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D1E3552A7B5AFB0059C3FE /* PrintersViewController.swift */; };
 		15D600672A76812400152BBF /* HomeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15D600662A76812400152BBF /* HomeStoryboard.storyboard */; };
@@ -39,9 +41,12 @@
 		15DDB43A2A7A1DD000499812 /* PrinterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDB4382A7A1DD000499812 /* PrinterTableViewCell.swift */; };
 		15DDB43B2A7A1DD000499812 /* PrinterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15DDB4392A7A1DD000499812 /* PrinterTableViewCell.xib */; };
 		15DDB43E2A7A504200499812 /* PrinterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DDB43D2A7A504200499812 /* PrinterModel.swift */; };
+		E1CF16DAE54A4388323957C2 /* Pods_Gespage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15190AB42A7C034A00D5FA3D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = System/Library/Frameworks/Charts.framework; sourceTree = SDKROOT; };
+		15190AB62A7C099800D5FA3D /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		153597AD2A796BEF009C3B22 /* HomeDistributionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDistributionTableViewCell.swift; sourceTree = "<group>"; };
 		153597AE2A796BEF009C3B22 /* HomeDistributionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeDistributionTableViewCell.xib; sourceTree = "<group>"; };
 		154CC9DA2A78FFD8009AE7C3 /* HomeTableViewCellEcologicalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCellEcologicalCell.swift; sourceTree = "<group>"; };
@@ -68,6 +73,8 @@
 		15A885722A7683D500664BF8 /* ScanStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanStoryboard.storyboard; sourceTree = "<group>"; };
 		15A885742A7683F400664BF8 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreStoryboard.storyboard; sourceTree = "<group>"; };
 		15A885762A76851B00664BF8 /* PrintStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrintStoryboard.storyboard; sourceTree = "<group>"; };
+		15ABB2F52A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPrinterTableViewCell.swift; sourceTree = "<group>"; };
+		15ABB2F62A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyPrinterTableViewCell.xib; sourceTree = "<group>"; };
 		15D1E3532A7B5AF20059C3FE /* PrintersStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrintersStoryboard.storyboard; sourceTree = "<group>"; };
 		15D1E3552A7B5AFB0059C3FE /* PrintersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintersViewController.swift; sourceTree = "<group>"; };
 		15D600662A76812400152BBF /* HomeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeStoryboard.storyboard; sourceTree = "<group>"; };
@@ -76,6 +83,9 @@
 		15DDB4382A7A1DD000499812 /* PrinterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterTableViewCell.swift; sourceTree = "<group>"; };
 		15DDB4392A7A1DD000499812 /* PrinterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrinterTableViewCell.xib; sourceTree = "<group>"; };
 		15DDB43D2A7A504200499812 /* PrinterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrinterModel.swift; sourceTree = "<group>"; };
+		A33A9C0863757E249CCC5599 /* Pods-Gespage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gespage.debug.xcconfig"; path = "Target Support Files/Pods-Gespage/Pods-Gespage.debug.xcconfig"; sourceTree = "<group>"; };
+		F3A49DEDA5FFF6B82EE9603C /* Pods-Gespage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gespage.release.xcconfig"; path = "Target Support Files/Pods-Gespage/Pods-Gespage.release.xcconfig"; sourceTree = "<group>"; };
+		FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gespage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +93,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1CF16DAE54A4388323957C2 /* Pods_Gespage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		038793DD9E389BB21C9464D7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15190AB62A7C099800D5FA3D /* Charts.framework */,
+				15190AB42A7C034A00D5FA3D /* Charts.framework */,
+				FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0AF1423421EFA43F57CBA92A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A33A9C0863757E249CCC5599 /* Pods-Gespage.debug.xcconfig */,
+				F3A49DEDA5FFF6B82EE9603C /* Pods-Gespage.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		156C8E732A78A56700DAE0CA /* Libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +221,8 @@
 			children = (
 				15A82A3E2A741CFC000F9194 /* Gespage */,
 				15A82A3D2A741CFC000F9194 /* Products */,
+				0AF1423421EFA43F57CBA92A /* Pods */,
+				038793DD9E389BB21C9464D7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,6 +300,8 @@
 				1599477B2A75053A00A2D012 /* OnboardCell.swift */,
 				15DDB4382A7A1DD000499812 /* PrinterTableViewCell.swift */,
 				15DDB4392A7A1DD000499812 /* PrinterTableViewCell.xib */,
+				15ABB2F52A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift */,
+				15ABB2F62A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib */,
 			);
 			name = CommonCells;
 			path = Libs/CommonCells;
@@ -298,9 +332,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 15A82A502A741CFD000F9194 /* Build configuration list for PBXNativeTarget "Gespage" */;
 			buildPhases = (
+				CDD5AA0C9909C6A3EA9B5A40 /* [CP] Check Pods Manifest.lock */,
 				15A82A382A741CFC000F9194 /* Sources */,
 				15A82A392A741CFC000F9194 /* Frameworks */,
 				15A82A3A2A741CFC000F9194 /* Resources */,
+				65EA49BE4B22C1FBAABAB2DA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -355,6 +391,7 @@
 				15A885732A7683D500664BF8 /* ScanStoryboard.storyboard in Resources */,
 				15D1E3542A7B5AF20059C3FE /* PrintersStoryboard.storyboard in Resources */,
 				15DDB43B2A7A1DD000499812 /* PrinterTableViewCell.xib in Resources */,
+				15ABB2F82A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib in Resources */,
 				15A885752A7683F400664BF8 /* MoreStoryboard.storyboard in Resources */,
 				154CC9DD2A78FFD8009AE7C3 /* HomeTableViewCellEcologicalCell.xib in Resources */,
 				15A82A492A741CFD000F9194 /* Assets.xcassets in Resources */,
@@ -367,6 +404,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		65EA49BE4B22C1FBAABAB2DA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gespage/Pods-Gespage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gespage/Pods-Gespage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gespage/Pods-Gespage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CDD5AA0C9909C6A3EA9B5A40 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gespage-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		15A82A382A741CFC000F9194 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -376,6 +455,7 @@
 				159947882A762B3C00A2D012 /* PrintViewController.swift in Sources */,
 				15DDB4322A7A134200499812 /* HomePrinterFavoritesTableViewCell.swift in Sources */,
 				159947772A74F94700A2D012 /* ImageHelper.swift in Sources */,
+				15ABB2F72A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift in Sources */,
 				1599478A2A762B5000A2D012 /* MoreViewController.swift in Sources */,
 				15A82A402A741CFC000F9194 /* AppDelegate.swift in Sources */,
 				1599477C2A75053A00A2D012 /* OnboardCell.swift in Sources */,
@@ -532,6 +612,7 @@
 		};
 		15A82A512A741CFD000F9194 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A33A9C0863757E249CCC5599 /* Pods-Gespage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -559,6 +640,7 @@
 		};
 		15A82A522A741CFD000F9194 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3A49DEDA5FFF6B82EE9603C /* Pods-Gespage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
