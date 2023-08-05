@@ -33,6 +33,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                     <color key="baseForegroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="showBottomSheet:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jWI-I3-bDw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="primary500"/>
@@ -56,6 +59,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="onLogin" destination="ORW-2V-Ays" id="HQZ-fL-F4d"/>
+            </connections>
             <point key="canvasLocation" x="208.3969465648855" y="36.971830985915496"/>
         </tableViewCell>
     </objects>

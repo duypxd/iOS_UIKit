@@ -25,17 +25,32 @@ extension WelcomeViewController {
 }
 
 // MARK: - @IBAction
-extension WelcomeViewController {
+extension WelcomeViewController: UIViewControllerTransitioningDelegate, LoginBottomSheetViewControllerDelegate {
     private func onReplaceMainPage() {
         navigationController?.setViewControllers([MainTabBarViewController()], animated: true)
         UserDefaults.standard.set(true, forKey: Constants.skipWelcomeKey)
     }
     
     @IBAction func loginButtonAction(_ sender: UIButton) {
-        onReplaceMainPage()
+        let storyboard = UIStoryboard(name: "LoginBottomSheetStoryboard", bundle: nil)
+        if let loginBottomSheetVC = storyboard.instantiateViewController(withIdentifier: "LoginBottomSheetViewController") as? LoginBottomSheetViewController {
+            loginBottomSheetVC.delegate = self
+            loginBottomSheetVC.modalPresentationStyle = .custom
+            loginBottomSheetVC.bottomSheetHeight = 430
+            loginBottomSheetVC.transitioningDelegate = self
+            present(loginBottomSheetVC, animated: true, completion: nil)
+        }
     }
     
     @IBAction func continueGuestButtonAction(_ sender: UIButton) {
+        onReplaceMainPage()
+    }
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+            return BottomSheetPresentationController(presentedViewController: presented, presenting: presenting, height: (presented as? LoginBottomSheetViewController)?.bottomSheetHeight)
+    }
+    
+    func didLoginSuccessfully() {
         onReplaceMainPage()
     }
 }

@@ -47,6 +47,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SignInBannerTableViewCell", for: indexPath) as! SignInBannerTableViewCell
                 cell.backgroundColor = .clear
+                cell.delegate = self
                 return cell
             
             case 2:
@@ -88,6 +89,27 @@ extension HomeViewController: HomePrinterFavoritesDelegate {
         if let printersViewController = storyboard.instantiateViewController(withIdentifier: "PrintersViewController") as? PrintersViewController {
             navigationController?.pushViewController(printersViewController, animated: true)
         }
+    }
+}
+
+// MARK: - HomePrinterFavoritesDelegate
+extension HomeViewController: SignInBannerTableViewCellDelegate, UIViewControllerTransitioningDelegate {
+    func openBottomSheetLogin() {
+        let storyboard = UIStoryboard(name: "LoginBottomSheetStoryboard", bundle: nil)
+        if let loginBottomSheetVC = storyboard.instantiateViewController(withIdentifier: "LoginBottomSheetViewController") as? LoginBottomSheetViewController {
+            // Set the presentation style to custom to achieve the bottom sheet effect
+            loginBottomSheetVC.modalPresentationStyle = .custom
+            loginBottomSheetVC.bottomSheetHeight = 430
+            // Set the transitioning delegate to handle the custom presentation
+            loginBottomSheetVC.transitioningDelegate = self
+
+            // Present the bottom sheet
+            present(loginBottomSheetVC, animated: true, completion: nil)
+        }
+    }
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+            return BottomSheetPresentationController(presentedViewController: presented, presenting: presenting, height: (presented as? LoginBottomSheetViewController)?.bottomSheetHeight)
     }
 }
 

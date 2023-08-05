@@ -6,11 +6,18 @@
 //
 
 import UIKit
+protocol SignInBannerTableViewCellDelegate: AnyObject {
+    func openBottomSheetLogin()
+}
 
 class SignInBannerTableViewCell: UITableViewCell {
-
+    weak var delegate: SignInBannerTableViewCellDelegate?
+    
+    @IBOutlet weak var onLogin: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
 
@@ -20,4 +27,17 @@ class SignInBannerTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func showBottomSheet(_ sender: UIButton) {
+        delegate?.openBottomSheetLogin()
+    }
+}
+
+class BottomSheetViewController: UIViewController {
+    // Các thành phần giao diện của bottom sheet
+    // ...
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Cấu hình giao diện và các xử lý khác tại đây
+    }
 }
