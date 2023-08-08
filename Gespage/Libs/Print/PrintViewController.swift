@@ -95,7 +95,7 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
 extension PrintViewController {
     @IBAction func printoutButtonAction(_ sender: UIButton) {
         selectAllPrintout()
-        setButtons()
+        setUIPrintoutEmpty()
         tableView.reloadData()
     }
 }
@@ -147,7 +147,7 @@ extension PrintViewController {
             setSelectAllStyle("Select All", "greyG100")
         }
         
-        setButtons()
+        setUIPrintoutEmpty()
     }
     
     private func sumTotalPrintout() {
@@ -167,12 +167,16 @@ extension PrintViewController {
         }
     }
     
-    private func setButtons() {
+    private func setUIPrintoutEmpty() {
+        var bottom: CGFloat = 0
         if selectedPrintouts.isEmpty {
             viewButtons.isHidden = true
+            bottom = 0
         } else {
+            bottom = 72
             viewButtons.isHidden = false
         }
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottom, right: 0)
     }
     
     private func setSelectAllStyle(_ labelName: String, _ colorName: String) {
