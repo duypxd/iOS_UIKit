@@ -172,7 +172,7 @@
 			path = Dialog;
 			sourceTree = "<group>";
 		};
-		156C8E732A78A56700DAE0CA /* Libs */ = {
+		156C8E732A78A56700DAE0CA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				15E72F672A7E2DB400579A1F /* Login */,
@@ -186,7 +186,7 @@
 				156C8E752A78A63800DAE0CA /* Welcome */,
 				156C8E742A78A61500DAE0CA /* Home */,
 			);
-			path = Libs;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		156C8E742A78A61500DAE0CA /* Home */ = {
@@ -301,7 +301,7 @@
 				15873F412A7B67CD00F0F59D /* MockData */,
 				15DDB43C2A7A503600499812 /* Models */,
 				15DDB4372A7A1DB800499812 /* CommonCells */,
-				156C8E732A78A56700DAE0CA /* Libs */,
+				156C8E732A78A56700DAE0CA /* Screens */,
 				159947782A7504DD00A2D012 /* CustomViews */,
 				159947752A74F93600A2D012 /* Constants */,
 				15A82A672A742C8F000F9194 /* Application */,
