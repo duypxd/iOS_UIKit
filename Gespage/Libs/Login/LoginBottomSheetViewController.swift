@@ -45,6 +45,7 @@ extension LoginBottomSheetViewController: UIViewControllerTransitioningDelegate 
         let bodyRequest = LoginRequestModel(
             serverAddress: textFieldServerAddress.text ?? "", username: textFieldUsername.text ?? "", password: textFieldPassword.text ?? ""
         )
+        print(bodyRequest)
         self.dismiss(animated: true, completion: nil)
         delegate?.didLoginSuccessfully()
     }

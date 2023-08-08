@@ -98,6 +98,39 @@ extension PrintViewController {
         setUIPrintoutEmpty()
         tableView.reloadData()
     }
+    
+    @IBAction func buttonReleaseAction(_ sender: UIButton) {
+        print("release")
+    }
+    
+    @IBAction func buttonDeleteAction(_ sender: UIButton) {
+        let dialogVC = UIStoryboard(name: "DialogConfirmStoryboard", bundle: nil).instantiateViewController(withIdentifier: "DialogConfirmViewController") as! DialogConfirmViewController
+        
+        dialogVC.showDialog(
+            titleValue: "Delete Document(s)",
+            contentValue: "Do you want to delete the selected Documents?",
+            buttonLabel: "Delete",
+            buttonBackgroundColor: UIColor(named: "error")!,
+            confirmAction: { [weak self] in
+                self?.onConfirmDeleteDoc()
+            }
+        )
+        
+        dialogVC.modalPresentationStyle = .custom
+        dialogVC.transitioningDelegate = self
+        present(dialogVC, animated: true, completion: nil)
+    }
+    
+    private func onConfirmDeleteDoc() {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - DialogPresentationController
+extension PrintViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: 180, isDialog: true)
+        }
 }
 
 // MARK: - Printout Actions

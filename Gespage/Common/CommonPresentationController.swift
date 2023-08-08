@@ -1,5 +1,5 @@
 //
-//  BottomSheetPresentationController.swift
+//  CommonPresentationController.swift
 //  Gespage
 //
 //  Created by Duy Pham on 05/08/2023.
@@ -7,20 +7,26 @@
 
 import UIKit
 
-class BottomSheetPresentationController: UIPresentationController {
+class CommonPresentationController: UIPresentationController {
     // Declare the overlay view for dimming effect
     private var overlayView: UIView!
     private let height: CGFloat?
+    private var isDialog: Bool = false
     
-    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, height: CGFloat?) {
+    init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?, height: CGFloat?, isDialog: Bool?) {
         self.height = height
+        self.isDialog = isDialog!
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
     
     override var frameOfPresentedViewInContainerView: CGRect {
-        // Set the frame for the presented view (bottom sheet)
         guard let containerView = containerView, let height = height else { return CGRect.zero }
-        return CGRect(x: 0, y: containerView.bounds.height - height, width: containerView.bounds.width, height: height)
+        
+        if isDialog {
+            return containerView.bounds
+        } else {
+            return CGRect(x: 0, y: containerView.bounds.height - height, width: containerView.bounds.width, height: height)
+        }
     }
     
     override func containerViewWillLayoutSubviews() {
@@ -36,7 +42,7 @@ class BottomSheetPresentationController: UIPresentationController {
         // Create and add the overlay view with initial alpha 0.0
         overlayView = UIView(frame: containerView?.bounds ?? CGRect.zero)
         overlayView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissBottomSheet))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(overlayViewTapped))
         overlayView.addGestureRecognizer(tapGesture)
         containerView?.insertSubview(overlayView, at: 0)
         
@@ -62,7 +68,7 @@ class BottomSheetPresentationController: UIPresentationController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    @objc func dismissBottomSheet() {
+    @objc func overlayViewTapped() {
         presentingViewController.dismiss(animated: true, completion: nil)
     }
     
