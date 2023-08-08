@@ -20,56 +20,6 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" name="infoSoft"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="HomeDistributionCell" rowHeight="71" id="rbM-Yu-4I6" customClass="HomeDistributionCell" customModule="Gespage" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="71"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rbM-Yu-4I6" id="uQL-7c-8cJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="71"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3e-hg-ii8">
-                                                    <rect key="frame" x="16" y="16" width="361" height="21.666666666666671"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                    <color key="textColor" name="greyG100"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="T3e-hg-ii8" firstAttribute="leading" secondItem="uQL-7c-8cJ" secondAttribute="leading" constant="16" id="5Mb-p6-1nb"/>
-                                                <constraint firstAttribute="trailing" secondItem="T3e-hg-ii8" secondAttribute="trailing" constant="16" id="VDT-zF-xkh"/>
-                                                <constraint firstItem="T3e-hg-ii8" firstAttribute="top" secondItem="uQL-7c-8cJ" secondAttribute="top" constant="16" id="WRj-Mp-kgm"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="distributionLabel" destination="T3e-hg-ii8" id="LIQ-2j-x1E"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomePrinterFavoritesCell" rowHeight="188" id="oh0-2V-ySe" customClass="HomePrinterFavoritesCell" customModule="Gespage" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="121" width="393" height="188"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oh0-2V-ySe" id="cHe-eZ-hB9">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="188"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM5-t9-zYv">
-                                                    <rect key="frame" x="16" y="16" width="361" height="21.666666666666671"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="cM5-t9-zYv" firstAttribute="leading" secondItem="cHe-eZ-hB9" secondAttribute="leading" constant="16" id="DZH-Bt-Ra7"/>
-                                                <constraint firstAttribute="trailing" secondItem="cM5-t9-zYv" secondAttribute="trailing" constant="16" id="ayZ-A6-OZj"/>
-                                                <constraint firstItem="cM5-t9-zYv" firstAttribute="top" secondItem="cHe-eZ-hB9" secondAttribute="top" constant="16" id="zWz-HT-WAI"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="favoritePrintLabel" destination="cM5-t9-zYv" id="aOU-2k-Gtc"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
@@ -91,9 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="greyG100">
-            <color red="0.059000000357627869" green="0.086000002920627594" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="infoSoft">
             <color red="0.93300002813339233" green="0.9570000171661377" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

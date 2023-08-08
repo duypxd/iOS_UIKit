@@ -15,9 +15,132 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Print" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ir-iN-qbA">
+                                <rect key="frame" x="15.999999999999986" y="71" width="244.66666666666663" height="28.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="highlightedColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fox-wh-cuh">
+                                <rect key="frame" x="272.66666666666669" y="59" width="114.33333333333331" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="filePlus" title="Add Doc" imagePadding="4">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                    <color key="baseForegroundColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Documents Pending (6)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofJ-hS-Bea">
+                                <rect key="frame" x="16" y="114.66666666666667" width="267" height="22.000000000000014"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vl9-ue-fqj">
+                                <rect key="frame" x="295" y="107" width="92" height="34"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Select All">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                    <color key="baseForegroundColor" name="greyG100"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="printoutButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="EUh-n6-9bh"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected Document (2)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsK-0x-NM3">
+                                <rect key="frame" x="16" y="143.66666666666666" width="259" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Total: $24.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcX-oy-Kes">
+                                <rect key="frame" x="287" y="144" width="90" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8C-6Q-Srd">
+                                <rect key="frame" x="0.0" y="746" width="393" height="72"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wx6-7p-xLw">
+                                        <rect key="frame" x="204.66666666666663" y="12" width="176.33333333333337" height="48"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="n4r-kX-O7r"/>
+                                        </constraints>
+                                        <color key="tintColor" name="greyG100"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Release Docs">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="14"/>
+                                            <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eJ-xY-xTQ">
+                                        <rect key="frame" x="16" y="12" width="176.66666666666666" height="48"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Delete">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="infoSoft"/>
+                                <constraints>
+                                    <constraint firstItem="4eJ-xY-xTQ" firstAttribute="top" secondItem="O8C-6Q-Srd" secondAttribute="top" constant="12" id="01O-sg-rbb"/>
+                                    <constraint firstItem="Wx6-7p-xLw" firstAttribute="leading" secondItem="4eJ-xY-xTQ" secondAttribute="trailing" constant="12" id="3F3-T4-5QZ"/>
+                                    <constraint firstAttribute="height" constant="72" id="FqR-gH-G9K"/>
+                                    <constraint firstItem="Wx6-7p-xLw" firstAttribute="width" secondItem="4eJ-xY-xTQ" secondAttribute="width" id="NGP-7K-ehR"/>
+                                    <constraint firstItem="4eJ-xY-xTQ" firstAttribute="leading" secondItem="O8C-6Q-Srd" secondAttribute="leading" constant="16" id="OIc-BM-Zbs"/>
+                                    <constraint firstItem="Wx6-7p-xLw" firstAttribute="top" secondItem="O8C-6Q-Srd" secondAttribute="top" constant="12" id="k1g-Y8-cIg"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wx6-7p-xLw" secondAttribute="bottom" constant="12" id="ofs-Hs-uAA"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wx6-7p-xLw" secondAttribute="trailing" constant="12" id="pY4-IV-RGb"/>
+                                    <constraint firstAttribute="bottom" secondItem="4eJ-xY-xTQ" secondAttribute="bottom" constant="12" id="yYh-Mh-lit"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lQO-Um-Gv6">
+                                <rect key="frame" x="16" y="172.66666666666669" width="361" height="573.33333333333326"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <sections/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" name="info"/>
+                        <color key="backgroundColor" name="infoSoft"/>
+                        <constraints>
+                            <constraint firstItem="lQO-Um-Gv6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="78k-yg-26D"/>
+                            <constraint firstAttribute="trailing" secondItem="Fox-wh-cuh" secondAttribute="trailing" constant="6" id="C5a-0a-W6P"/>
+                            <constraint firstItem="3Ir-iN-qbA" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="CRu-dX-R1M"/>
+                            <constraint firstItem="wcX-oy-Kes" firstAttribute="top" secondItem="Vl9-ue-fqj" secondAttribute="bottom" constant="3" id="Iud-ke-VAR"/>
+                            <constraint firstItem="TsK-0x-NM3" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="IyV-Rl-14B"/>
+                            <constraint firstItem="Fox-wh-cuh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="Jgg-uJ-TRQ"/>
+                            <constraint firstItem="TsK-0x-NM3" firstAttribute="top" secondItem="ofJ-hS-Bea" secondAttribute="bottom" constant="7" id="RiS-36-gR5"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Vl9-ue-fqj" secondAttribute="trailing" constant="6" id="X2N-H0-582"/>
+                            <constraint firstItem="Vl9-ue-fqj" firstAttribute="leading" secondItem="ofJ-hS-Bea" secondAttribute="trailing" constant="12" id="ZRR-ZL-kiN"/>
+                            <constraint firstItem="Vl9-ue-fqj" firstAttribute="top" secondItem="Fox-wh-cuh" secondAttribute="bottom" constant="10" id="aUT-rn-643"/>
+                            <constraint firstItem="ofJ-hS-Bea" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="biz-MO-TIt"/>
+                            <constraint firstItem="3Ir-iN-qbA" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="12" id="hhc-Kk-HXh"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wcX-oy-Kes" secondAttribute="trailing" constant="16" id="jQT-ep-lPm"/>
+                            <constraint firstItem="lQO-Um-Gv6" firstAttribute="top" secondItem="TsK-0x-NM3" secondAttribute="bottom" constant="12" id="oso-pk-Upi"/>
+                            <constraint firstItem="Fox-wh-cuh" firstAttribute="leading" secondItem="3Ir-iN-qbA" secondAttribute="trailing" constant="12" id="sYq-3h-cnR"/>
+                            <constraint firstItem="O8C-6Q-Srd" firstAttribute="top" secondItem="lQO-Um-Gv6" secondAttribute="bottom" id="sn2-mW-ek8"/>
+                            <constraint firstItem="ofJ-hS-Bea" firstAttribute="top" secondItem="3Ir-iN-qbA" secondAttribute="bottom" constant="15" id="th5-Fr-Kd2"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lQO-Um-Gv6" secondAttribute="trailing" constant="16" id="ub7-x8-SU5"/>
+                            <constraint firstItem="O8C-6Q-Srd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="vhl-zD-V1k"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="O8C-6Q-Srd" secondAttribute="trailing" id="xp3-sR-COE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="O8C-6Q-Srd" secondAttribute="bottom" id="z2e-ub-l84"/>
+                            <constraint firstItem="wcX-oy-Kes" firstAttribute="leading" secondItem="TsK-0x-NM3" secondAttribute="trailing" constant="12" id="zMP-vL-PFW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonDelete" destination="4eJ-xY-xTQ" id="yHh-o4-kWx"/>
+                        <outlet property="buttonRelease" destination="Wx6-7p-xLw" id="KRu-on-9Nr"/>
+                        <outlet property="buttonSelectAll" destination="Vl9-ue-fqj" id="DBh-cD-Qc1"/>
+                        <outlet property="selectedDocsLabel" destination="TsK-0x-NM3" id="I44-hq-Daf"/>
+                        <outlet property="tableView" destination="lQO-Um-Gv6" id="PbD-LE-PeL"/>
+                        <outlet property="totalDocLabel" destination="ofJ-hS-Bea" id="a3t-Co-9oS"/>
+                        <outlet property="totalPriceLabel" destination="wcX-oy-Kes" id="bAF-cs-VtC"/>
+                        <outlet property="viewButtons" destination="O8C-6Q-Srd" id="QfO-0M-7Mf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -25,8 +148,12 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="info">
-            <color red="0.2199999988079071" green="0.38400000333786011" blue="0.6940000057220459" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="filePlus" width="24" height="24"/>
+        <namedColor name="greyG100">
+            <color red="0.059000000357627869" green="0.086000002920627594" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="infoSoft">
+            <color red="0.93300002813339233" green="0.9570000171661377" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

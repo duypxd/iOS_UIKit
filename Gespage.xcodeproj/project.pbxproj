@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1514FB5B2A808AEA0059BEB9 /* PrintoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1514FB5A2A808AEA0059BEB9 /* PrintoutModel.swift */; };
+		1514FB5F2A8092910059BEB9 /* PrintoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1514FB5D2A8092910059BEB9 /* PrintoutTableViewCell.swift */; };
+		1514FB602A8092910059BEB9 /* PrintoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1514FB5E2A8092910059BEB9 /* PrintoutTableViewCell.xib */; };
+		1514FB622A80CA7A0059BEB9 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1514FB612A80CA7A0059BEB9 /* DateFormat.swift */; };
 		153597AF2A796BEF009C3B22 /* HomeDistributionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153597AD2A796BEF009C3B22 /* HomeDistributionTableViewCell.swift */; };
 		153597B02A796BEF009C3B22 /* HomeDistributionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153597AE2A796BEF009C3B22 /* HomeDistributionTableViewCell.xib */; };
 		154CC9DC2A78FFD8009AE7C3 /* HomeTableViewCellEcologicalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154CC9DA2A78FFD8009AE7C3 /* HomeTableViewCellEcologicalCell.swift */; };
@@ -54,6 +58,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1514FB5A2A808AEA0059BEB9 /* PrintoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintoutModel.swift; sourceTree = "<group>"; };
+		1514FB5D2A8092910059BEB9 /* PrintoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintoutTableViewCell.swift; sourceTree = "<group>"; };
+		1514FB5E2A8092910059BEB9 /* PrintoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrintoutTableViewCell.xib; sourceTree = "<group>"; };
+		1514FB612A80CA7A0059BEB9 /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
 		15190AB42A7C034A00D5FA3D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = System/Library/Frameworks/Charts.framework; sourceTree = SDKROOT; };
 		15190AB62A7C099800D5FA3D /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		153597AD2A796BEF009C3B22 /* HomeDistributionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDistributionTableViewCell.swift; sourceTree = "<group>"; };
@@ -137,6 +145,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1514FB5C2A8092350059BEB9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1514FB5D2A8092910059BEB9 /* PrintoutTableViewCell.swift */,
+				1514FB5E2A8092910059BEB9 /* PrintoutTableViewCell.xib */,
+			);
+			name = Cells;
+			path = "Cêls";
+			sourceTree = "<group>";
+		};
 		156C8E732A78A56700DAE0CA /* Libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +215,7 @@
 		156C8E782A78A66100DAE0CA /* Print */ = {
 			isa = PBXGroup;
 			children = (
+				1514FB5C2A8092350059BEB9 /* Cells */,
 				159947872A762B3C00A2D012 /* PrintViewController.swift */,
 				15A885762A76851B00664BF8 /* PrintStoryboard.storyboard */,
 			);
@@ -226,6 +245,7 @@
 				159947762A74F94700A2D012 /* ImageHelper.swift */,
 				159947832A76286800A2D012 /* Constants.swift */,
 				15ABB3022A7D028B005DCAB6 /* formater.swift */,
+				1514FB612A80CA7A0059BEB9 /* DateFormat.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -345,6 +365,7 @@
 			children = (
 				15DDB43D2A7A504200499812 /* PrinterModel.swift */,
 				15A91FBF2A7E40EB0063735F /* LoginRequestModel.swift */,
+				1514FB5A2A808AEA0059BEB9 /* PrintoutModel.swift */,
 			);
 			name = Models;
 			path = Libs/Models;
@@ -438,6 +459,7 @@
 			files = (
 				153597B02A796BEF009C3B22 /* HomeDistributionTableViewCell.xib in Resources */,
 				15A82A732A7432D0000F9194 /* WelcomeStoryboard.storyboard in Resources */,
+				1514FB602A8092910059BEB9 /* PrintoutTableViewCell.xib in Resources */,
 				15ABB3012A7CFD8D005DCAB6 /* BalanceTableViewCell.xib in Resources */,
 				15A82A4C2A741CFD000F9194 /* LaunchScreen.storyboard in Resources */,
 				15A885732A7683D500664BF8 /* ScanStoryboard.storyboard in Resources */,
@@ -520,12 +542,15 @@
 				159947862A762B2800A2D012 /* HomeViewController.swift in Sources */,
 				15A82A642A7428B4000F9194 /* OnboardViewController.swift in Sources */,
 				15A82A422A741CFC000F9194 /* SceneDelegate.swift in Sources */,
+				1514FB5B2A808AEA0059BEB9 /* PrintoutModel.swift in Sources */,
 				15E72F602A7E259200579A1F /* LoginBottomSheetViewController.swift in Sources */,
 				159947962A7656C300A2D012 /* MainTabBarViewController.swift in Sources */,
 				159947842A76286800A2D012 /* Constants.swift in Sources */,
+				1514FB622A80CA7A0059BEB9 /* DateFormat.swift in Sources */,
 				15DDB43A2A7A1DD000499812 /* PrinterTableViewCell.swift in Sources */,
 				154CC9DC2A78FFD8009AE7C3 /* HomeTableViewCellEcologicalCell.swift in Sources */,
 				15DDB43E2A7A504200499812 /* PrinterModel.swift in Sources */,
+				1514FB5F2A8092910059BEB9 /* PrintoutTableViewCell.swift in Sources */,
 				15ABB2FB2A7CFA74005DCAB6 /* SignInBannerTableViewCell.swift in Sources */,
 				15D1E3562A7B5AFB0059C3FE /* PrintersViewController.swift in Sources */,
 				153597AF2A796BEF009C3B22 /* HomeDistributionTableViewCell.swift in Sources */,
