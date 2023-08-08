@@ -16,11 +16,17 @@ class PrintViewController: UIViewController {
     @IBOutlet weak var selectedDocsLabel: UILabel!
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var buttonSelectAll: UIButton!
+    @IBOutlet weak var buttonAddDocs: UIButton!
     
     var selectedPrintouts: [PrintoutModel] = []
+    var pickerImageHelper: PickerImageHelper!
+    var fileSystemHelper: FileSystemHelper!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        pickerImageHelper = PickerImageHelper(viewController: self)
+        fileSystemHelper = FileSystemHelper(viewController: self)
+        
         // Hide UI
         viewButtons.isHidden = true
         // Custom UI
@@ -86,13 +92,30 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
         let printoutModel = MockData.dataPrintouts[indexPath.row]
         onSelectPrintout(printoutModel)
         tableView.reloadRows(at: [indexPath], with: .automatic)
-
     }
 
 }
 
+
 // MARK: - @IBActions
 extension PrintViewController {
+    @IBAction func buttonAddDocAction(_ sender: UIButton) {
+        let imageOption = UIAlertAction(title: "Gallery", style: .default) { _ in
+            self.pickerImageHelper.pickImage { imageURL in
+                if let imageURL = imageURL {
+                    print("Selected image URL: \(imageURL)")
+                    // Do something with the selected image URL
+                }
+            }
+        }
+        let fileOption = UIAlertAction(title: "File System", style: .default) { _ in
+            self.fileSystemHelper.pickFiles { selectedURLs in
+                print("selectedURLs: \(selectedURLs)")
+            }
+        }
+        ActionSheetHelper.showActionSheet(with: [imageOption, fileOption],message: "Add Documents", from: self)
+    }
+    
     @IBAction func printoutButtonAction(_ sender: UIButton) {
         selectAllPrintout()
         setUIPrintoutEmpty()
@@ -130,7 +153,7 @@ extension PrintViewController {
 extension PrintViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: 180, isDialog: true)
-        }
+    }
 }
 
 // MARK: - Printout Actions

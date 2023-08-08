@@ -29,6 +29,9 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
                                     <color key="baseForegroundColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonAddDocAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="plO-4R-xGz"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Documents Pending (6)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofJ-hS-Bea">
                                 <rect key="frame" x="16" y="114.66666666666667" width="267" height="22.000000000000014"/>
@@ -138,6 +141,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="buttonAddDocs" destination="Fox-wh-cuh" id="P82-je-5BM"/>
                         <outlet property="buttonDelete" destination="4eJ-xY-xTQ" id="yHh-o4-kWx"/>
                         <outlet property="buttonRelease" destination="Wx6-7p-xLw" id="KRu-on-9Nr"/>
                         <outlet property="buttonSelectAll" destination="Vl9-ue-fqj" id="DBh-cD-Qc1"/>

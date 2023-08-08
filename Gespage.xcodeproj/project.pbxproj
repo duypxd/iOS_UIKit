@@ -17,6 +17,8 @@
 		154CC9DD2A78FFD8009AE7C3 /* HomeTableViewCellEcologicalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 154CC9DB2A78FFD8009AE7C3 /* HomeTableViewCellEcologicalCell.xib */; };
 		154EFC3F2A81DE3400B33062 /* DialogConfirmStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 154EFC3E2A81DE3400B33062 /* DialogConfirmStoryboard.storyboard */; };
 		154EFC412A81DE4D00B33062 /* DialogConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EFC402A81DE4D00B33062 /* DialogConfirmViewController.swift */; };
+		154EFC452A8261FA00B33062 /* AcionSheetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EFC442A8261FA00B33062 /* AcionSheetHelper.swift */; };
+		154EFC472A8264FA00B33062 /* FileSystemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EFC462A8264FA00B33062 /* FileSystemHelper.swift */; };
 		15873F432A7B67E900F0F59D /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15873F422A7B67E900F0F59D /* MockData.swift */; };
 		159947772A74F94700A2D012 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 159947762A74F94700A2D012 /* ImageHelper.swift */; };
 		1599477C2A75053A00A2D012 /* OnboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1599477B2A75053A00A2D012 /* OnboardCell.swift */; };
@@ -72,6 +74,8 @@
 		154CC9DB2A78FFD8009AE7C3 /* HomeTableViewCellEcologicalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCellEcologicalCell.xib; sourceTree = "<group>"; };
 		154EFC3E2A81DE3400B33062 /* DialogConfirmStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DialogConfirmStoryboard.storyboard; sourceTree = "<group>"; };
 		154EFC402A81DE4D00B33062 /* DialogConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogConfirmViewController.swift; sourceTree = "<group>"; };
+		154EFC442A8261FA00B33062 /* AcionSheetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcionSheetHelper.swift; sourceTree = "<group>"; };
+		154EFC462A8264FA00B33062 /* FileSystemHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemHelper.swift; sourceTree = "<group>"; };
 		15873F422A7B67E900F0F59D /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		159947762A74F94700A2D012 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
 		1599477B2A75053A00A2D012 /* OnboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardCell.swift; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				159947832A76286800A2D012 /* Constants.swift */,
 				15ABB3022A7D028B005DCAB6 /* formater.swift */,
 				1514FB612A80CA7A0059BEB9 /* DateFormat.swift */,
+				154EFC442A8261FA00B33062 /* AcionSheetHelper.swift */,
+				154EFC462A8264FA00B33062 /* FileSystemHelper.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -564,6 +570,8 @@
 				159947842A76286800A2D012 /* Constants.swift in Sources */,
 				1514FB622A80CA7A0059BEB9 /* DateFormat.swift in Sources */,
 				15DDB43A2A7A1DD000499812 /* PrinterTableViewCell.swift in Sources */,
+				154EFC472A8264FA00B33062 /* FileSystemHelper.swift in Sources */,
+				154EFC452A8261FA00B33062 /* AcionSheetHelper.swift in Sources */,
 				154CC9DC2A78FFD8009AE7C3 /* HomeTableViewCellEcologicalCell.swift in Sources */,
 				15DDB43E2A7A504200499812 /* PrinterModel.swift in Sources */,
 				1514FB5F2A8092910059BEB9 /* PrintoutTableViewCell.swift in Sources */,
