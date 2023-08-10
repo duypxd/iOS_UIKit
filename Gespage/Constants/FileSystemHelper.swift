@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class FileSystemHelper: NSObject {
     typealias CompletionHandler = ([URL]) -> Void
@@ -25,13 +26,41 @@ class FileSystemHelper: NSObject {
     }
     
     private func createDocumentPicker() -> UIDocumentPickerViewController {
-        let documentTypes = ["public.image", "public.pdf", "org.openxmlformats.wordprocessingml.document", "org.openxmlformats.spreadsheetml.sheet"]
+        let documentTypes = [
+          "com.adobe.pdf", // .pdf
+          "org.openxmlformats.wordprocessingml.document", // .docx
+          "com.microsoft.word.doc", // .doc
+          "org.openxmlformats.presentationml.presentation", // .pptx
+          "com.microsoft.powerpoint.ppt", // .ppt
+          "org.openxmlformats.spreadsheetml.sheet", // .xlsx
+          "org.oasis-open.opendocument.text", // .odt
+          "org.oasis-open.opendocument.presentation", // .odp
+          "org.oasis-open.opendocument.spreadsheet", // .ods
+          "public.plain-text", // .txt
+          "public.rtf", // .rtf
+          "com.microsoft.xps", // .xps
+          "public.heif", // .heif
+          "public.jpeg", // .jpg
+          "public.jpeg", // .jpeg
+          "public.png" // .png
+        ];
         let documentPicker = UIDocumentPickerViewController(documentTypes: documentTypes, in: .import)
         
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = true
         
         return documentPicker
+    }
+    
+    static func isImageFile(atPath path: String) -> Bool {
+        let imageExtensions = [
+            "heif",
+            "jpg",
+            "jpeg",
+            "png"
+        ]
+        let fileExtension = (path as NSString).pathExtension.lowercased()
+        return imageExtensions.contains(fileExtension)
     }
 }
 

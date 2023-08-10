@@ -57,16 +57,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             
                     cell.backgroundColor = .clear
             
-                    commonLayer(layer: cell.savedTreesView.layer)
-                    commonLayer(layer: cell.savedWaterView.layer)
-                    commonLayer(layer: cell.greenScoreView.layer)
+                    StyleHelper.commonLayer(layer: cell.savedTreesView.layer)
+                    StyleHelper.commonLayer(layer: cell.savedWaterView.layer)
+                    StyleHelper.commonLayer(layer: cell.greenScoreView.layer)
                return cell
             
             case 3:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomeDistributionTableViewCell", for: indexPath) as! HomeDistributionTableViewCell
             
                 cell.backgroundColor = .clear
-                commonLayer(layer: cell.distributionView.layer)
+                StyleHelper.commonLayer(layer: cell.distributionView.layer)
             
                 return cell
             case 4:
@@ -110,16 +110,5 @@ extension HomeViewController: SignInBannerTableViewCellDelegate, UIViewControlle
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
             return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: (presented as? LoginBottomSheetViewController)?.bottomSheetHeight, isDialog: false)
-    }
-}
-
-// MARK: - Card - HomeTableViewCellEcologicalCell
-extension HomeViewController {
-    private func commonLayer(layer: CALayer) {
-        layer.cornerRadius = 12
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowRadius = 1
-        layer.shadowOpacity = 0.1
     }
 }

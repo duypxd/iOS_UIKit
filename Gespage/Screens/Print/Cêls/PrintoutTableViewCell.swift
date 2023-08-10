@@ -23,24 +23,12 @@ class PrintoutTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        commonLayer(layer: printoutView.layer)
+        StyleHelper.commonLayer(layer: printoutView.layer)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
-    }
-}
-
-
-// MARK: - Card
-extension PrintoutTableViewCell {
-    private func commonLayer(layer: CALayer) {
-        layer.cornerRadius = 12
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowRadius = 1
-        layer.shadowOpacity = 0.1
     }
 }

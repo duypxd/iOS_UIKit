@@ -14,6 +14,35 @@ struct ImageHelper {
     static let printerIcon = UIImage(named: "printer")
     static let scanIcon = UIImage(named: "scan")
     static let moreIcon = UIImage(named: "more")
+    
+    static func fileSizeString(fromAbsoluteURL url: URL) -> String {
+        do {
+            let fileAttributes = try FileManager.default.attributesOfItem(atPath: url.path)
+            if let fileSize = fileAttributes[.size] as? Int64 {
+                let units = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"]
+                var size = Double(fileSize)
+                var index = 0
+                
+                while size >= 1024 && index < units.count - 1 {
+                    size /= 1024
+                    index += 1
+                }
+                
+                let formattedSize: String
+                if size >= 10 {
+                    formattedSize = String(format: "%.0f %@", size, units[index])
+                } else {
+                    formattedSize = String(format: "%.1f %@", size, units[index])
+                }
+                
+                return formattedSize
+            }
+        } catch {
+            print("Error getting file attributes: \(error)")
+        }
+        
+        return "0 KB"
+    }
 }
 
 class PickerImageHelper: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {

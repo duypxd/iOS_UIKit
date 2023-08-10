@@ -103,14 +103,15 @@ extension PrintViewController {
         let imageOption = UIAlertAction(title: "Gallery", style: .default) { _ in
             self.pickerImageHelper.pickImage { imageURL in
                 if let imageURL = imageURL {
-                    print("Selected image URL: \(imageURL)")
-                    // Do something with the selected image URL
+                    self.navigateToPreview([imageURL])
                 }
             }
         }
         let fileOption = UIAlertAction(title: "File System", style: .default) { _ in
             self.fileSystemHelper.pickFiles { selectedURLs in
-                print("selectedURLs: \(selectedURLs)")
+                if !selectedURLs.isEmpty {
+                    self.navigateToPreview(selectedURLs)
+                }
             }
         }
         ActionSheetHelper.showActionSheet(with: [imageOption, fileOption],message: "Add Documents", from: self)
@@ -146,6 +147,14 @@ extension PrintViewController {
     
     private func onConfirmDeleteDoc() {
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func navigateToPreview(_ paths: [URL]) {
+        let storyboard = UIStoryboard(name: "PreviewFileStoryboard", bundle: nil)
+        if let previewFileVC = storyboard.instantiateViewController(withIdentifier: "PreviewFileViewController") as? PreviewFileViewController {
+            previewFileVC.receivedPaths = paths
+            self.navigationController?.pushViewController(previewFileVC, animated: true)
+        }
     }
 }
 

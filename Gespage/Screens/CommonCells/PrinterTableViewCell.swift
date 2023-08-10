@@ -19,7 +19,7 @@ class PrinterTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         viewIconPrinter.layer.cornerRadius = 8
-        commonLayer(layer: printerViewContainer.layer)
+        StyleHelper.commonLayer(layer: printerViewContainer.layer)
         // Initialization code
     }
 
@@ -29,15 +29,4 @@ class PrinterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-}
-
-// MARK: - Card - HomeTableViewCellEcologicalCell
-extension PrinterTableViewCell {
-    private func commonLayer(layer: CALayer) {
-        layer.cornerRadius = 12
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 0)
-        layer.shadowRadius = 1
-        layer.shadowOpacity = 0.1
-    }
 }

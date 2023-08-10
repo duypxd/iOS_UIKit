@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="241" id="KGk-i7-Jjw" customClass="FileTableViewCell" customModule="Gespage" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="498" height="241"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="498" height="241"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mbZ-97-z8n">
+                        <rect key="frame" x="0.0" y="0.0" width="498" height="230"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W81-Os-9GC">
+                                <rect key="frame" x="16" y="16" width="466" height="146.66666666666666"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FileText" translatesAutoresizingMaskIntoConstraints="NO" id="EAP-7u-Xmo">
+                                        <rect key="frame" x="195" y="35.333333333333343" width="76" height="76"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="76" id="Cir-Pc-jrk"/>
+                                            <constraint firstAttribute="width" constant="76" id="uYE-NF-gK1"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="greyG500"/>
+                                <constraints>
+                                    <constraint firstItem="EAP-7u-Xmo" firstAttribute="centerY" secondItem="W81-Os-9GC" secondAttribute="centerY" id="cDh-dg-Ano"/>
+                                    <constraint firstItem="EAP-7u-Xmo" firstAttribute="centerX" secondItem="W81-Os-9GC" secondAttribute="centerX" id="gwx-v2-HTo"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLk-Os-kus">
+                                <rect key="frame" x="16" y="178.66666666666666" width="466" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <color key="textColor" name="greyG100"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="File size" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLx-5l-LkY">
+                                <rect key="frame" x="16" y="199.66666666666666" width="466" height="14.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" name="greyG100"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="white"/>
+                        <constraints>
+                            <constraint firstItem="OLx-5l-LkY" firstAttribute="top" secondItem="MLk-Os-kus" secondAttribute="bottom" constant="4" id="6Gj-Si-WYr"/>
+                            <constraint firstAttribute="bottom" secondItem="OLx-5l-LkY" secondAttribute="bottom" constant="16" id="GEC-Yb-IeV"/>
+                            <constraint firstAttribute="height" constant="230" id="Isi-l3-XRS"/>
+                            <constraint firstAttribute="trailing" secondItem="OLx-5l-LkY" secondAttribute="trailing" constant="16" id="M4M-7c-lqL"/>
+                            <constraint firstItem="MLk-Os-kus" firstAttribute="top" secondItem="W81-Os-9GC" secondAttribute="bottom" constant="16" id="NhJ-Pa-iAU"/>
+                            <constraint firstItem="W81-Os-9GC" firstAttribute="leading" secondItem="mbZ-97-z8n" secondAttribute="leading" constant="16" id="Rxb-cZ-B6Y"/>
+                            <constraint firstAttribute="trailing" secondItem="W81-Os-9GC" secondAttribute="trailing" constant="16" id="UWX-mt-TIl"/>
+                            <constraint firstItem="MLk-Os-kus" firstAttribute="leading" secondItem="mbZ-97-z8n" secondAttribute="leading" constant="16" id="UxH-DP-iiM"/>
+                            <constraint firstAttribute="trailing" secondItem="MLk-Os-kus" secondAttribute="trailing" constant="16" id="YgP-YM-XlO"/>
+                            <constraint firstItem="W81-Os-9GC" firstAttribute="top" secondItem="mbZ-97-z8n" secondAttribute="top" constant="16" id="iwE-iQ-VpH"/>
+                            <constraint firstItem="OLx-5l-LkY" firstAttribute="leading" secondItem="mbZ-97-z8n" secondAttribute="leading" constant="16" id="xdg-Vf-o60"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="mbZ-97-z8n" secondAttribute="trailing" id="Ml5-VB-Keg"/>
+                    <constraint firstItem="mbZ-97-z8n" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bpL-li-9Ed"/>
+                    <constraint firstAttribute="bottom" secondItem="mbZ-97-z8n" secondAttribute="bottom" constant="16" id="fHi-53-6g6"/>
+                    <constraint firstItem="mbZ-97-z8n" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fK0-nA-YuX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="containerView" destination="mbZ-97-z8n" id="OHx-Wd-0GB"/>
+                <outlet property="fileNameLabel" destination="MLk-Os-kus" id="7WI-7Y-V3x"/>
+                <outlet property="fileSizeLabel" destination="OLx-5l-LkY" id="EwO-Gq-w6b"/>
+                <outlet property="fileTextView" destination="W81-Os-9GC" id="ptT-X2-twZ"/>
+            </connections>
+            <point key="canvasLocation" x="264.12213740458014" y="-49.647887323943664"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="FileText" width="76" height="76"/>
+        <namedColor name="greyG100">
+            <color red="0.059000000357627869" green="0.086000002920627594" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="greyG500">
+            <color red="0.96899998188018799" green="0.97600001096725464" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
