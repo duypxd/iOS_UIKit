@@ -128,21 +128,16 @@ extension PrintViewController {
     }
     
     @IBAction func buttonDeleteAction(_ sender: UIButton) {
-        let dialogVC = UIStoryboard(name: "DialogConfirmStoryboard", bundle: nil).instantiateViewController(withIdentifier: "DialogConfirmViewController") as! DialogConfirmViewController
-        
-        dialogVC.showDialog(
-            titleValue: "Delete Document(s)",
-            contentValue: "Do you want to delete the selected Documents?",
-            buttonLabel: "Delete",
-            buttonBackgroundColor: UIColor(named: "error")!,
-            confirmAction: { [weak self] in
-                self?.onConfirmDeleteDoc()
+        DialogManager.shared.showConfirmDialog(
+            from: self,
+            title: "Delete Document(s)",
+            content: "Do you want to delete the selected Documents?",
+            labelConfirm: "Delete",
+            backgroundColorConfirm: UIColor(named: "error")!,
+            onConfirm: {
+                self.onConfirmDeleteDoc()
             }
         )
-        
-        dialogVC.modalPresentationStyle = .custom
-        dialogVC.transitioningDelegate = self
-        present(dialogVC, animated: true, completion: nil)
     }
     
     private func onConfirmDeleteDoc() {

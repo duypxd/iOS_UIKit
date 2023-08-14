@@ -19,14 +19,14 @@ class DialogConfirmViewController: UIViewController {
     var contentText: String?
     var confirmButtonLabel: String?
     var confirmButtonBackgroundColor: UIColor?
-    var confirmAction: (() -> Void)?
+    var onConfirmAction: (() -> Void)?
     
-    func showDialog(titleValue: String, contentValue: String, buttonLabel: String, buttonBackgroundColor: UIColor, confirmAction: (() -> Void)?) {
-        titleText = titleValue
-        contentText = contentValue
-        confirmButtonLabel = buttonLabel
-        confirmButtonBackgroundColor = buttonBackgroundColor
-        self.confirmAction = confirmAction
+    func showDialog(title: String, content: String, labelConfirm: String, backgroundColorConfirm: UIColor, onConfirm: (() -> Void)?) {
+        titleText = title
+        contentText = content
+        confirmButtonLabel = labelConfirm
+        confirmButtonBackgroundColor = backgroundColorConfirm
+        self.onConfirmAction = onConfirm
     }
     
     override func viewDidLoad() {
@@ -49,6 +49,9 @@ class DialogConfirmViewController: UIViewController {
         
         confirmButton.layer.cornerRadius = 12
         confirmButton.backgroundColor = confirmButtonBackgroundColor
+        if let titleLabel = confirmButton.titleLabel {
+            titleLabel.textAlignment = .center
+        }
         confirmButton.setTitle(confirmButtonLabel, for: .normal)
         
         cancelButton.layer.borderWidth = 1
@@ -68,6 +71,6 @@ extension DialogConfirmViewController {
     }
     
     @IBAction func confirmButtonAction(_ sender: UIButton) {
-        confirmAction?()
+        onConfirmAction?()
     }
 }

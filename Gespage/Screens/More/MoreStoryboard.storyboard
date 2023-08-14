@@ -15,18 +15,61 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5E-gO-CNL">
+                                <rect key="frame" x="16" y="71" width="361" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="76k-Xl-oPS">
+                                <rect key="frame" x="16" y="120" width="361" height="614"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLL-Hb-Zex">
+                                <rect key="frame" x="16" y="746" width="361" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="nrO-tO-GJ2"/>
+                                </constraints>
+                                <color key="tintColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonLogoutAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Nej-9M-HBN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" name="greyG300"/>
+                        <color key="backgroundColor" name="infoSoft"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="GLL-Hb-Zex" secondAttribute="trailing" id="2my-o8-og7"/>
+                            <constraint firstItem="Z5E-gO-CNL" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="12" id="4Yj-Tg-Lqv"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Z5E-gO-CNL" secondAttribute="trailing" constant="16" id="6HH-MP-DjJ"/>
+                            <constraint firstItem="76k-Xl-oPS" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="PRj-jG-H4T"/>
+                            <constraint firstItem="Z5E-gO-CNL" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="PYd-H8-0Et"/>
+                            <constraint firstItem="76k-Xl-oPS" firstAttribute="top" secondItem="Z5E-gO-CNL" secondAttribute="bottom" constant="20" id="SzP-7y-l9O"/>
+                            <constraint firstItem="GLL-Hb-Zex" firstAttribute="top" secondItem="76k-Xl-oPS" secondAttribute="bottom" constant="12" id="Xlt-Im-sB9"/>
+                            <constraint firstItem="GLL-Hb-Zex" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="YF5-lz-mhv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="76k-Xl-oPS" secondAttribute="trailing" id="e34-an-xqp"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="GLL-Hb-Zex" secondAttribute="bottom" constant="24" id="oix-Qj-fvy"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonLogout" destination="GLL-Hb-Zex" id="e4d-aY-Xjg"/>
+                        <outlet property="tableView" destination="76k-Xl-oPS" id="wUZ-qW-fZj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="33" y="-28"/>
+            <point key="canvasLocation" x="32.824427480916029" y="-28.169014084507044"/>
         </scene>
     </scenes>
     <resources>
-        <namedColor name="greyG300">
-            <color red="0.62699997425079346" green="0.63899999856948853" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="infoSoft">
+            <color red="0.93300002813339233" green="0.9570000171661377" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

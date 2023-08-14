@@ -39,7 +39,7 @@
                                         </constraints>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Confirm">
+                                        <buttonConfiguration key="configuration" style="filled" title="Confirm" titleAlignment="center">
                                             <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                             <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
