@@ -32,14 +32,7 @@ extension WelcomeViewController: UIViewControllerTransitioningDelegate, LoginBot
     }
     
     @IBAction func loginButtonAction(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "LoginBottomSheetStoryboard", bundle: nil)
-        if let loginBottomSheetVC = storyboard.instantiateViewController(withIdentifier: "LoginBottomSheetViewController") as? LoginBottomSheetViewController {
-            loginBottomSheetVC.delegate = self
-            loginBottomSheetVC.modalPresentationStyle = .custom
-            loginBottomSheetVC.bottomSheetHeight = 430
-            loginBottomSheetVC.transitioningDelegate = self
-            present(loginBottomSheetVC, animated: true, completion: nil)
-        }
+        LoginManager.presentBottomSheet(from: self, delegate: self)
     }
     
     @IBAction func continueGuestButtonAction(_ sender: UIButton) {

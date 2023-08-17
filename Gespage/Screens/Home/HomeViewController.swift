@@ -93,22 +93,17 @@ extension HomeViewController: HomePrinterFavoritesDelegate {
 }
 
 // MARK: - HomePrinterFavoritesDelegate
-extension HomeViewController: SignInBannerTableViewCellDelegate, UIViewControllerTransitioningDelegate {
+extension HomeViewController: SignInBannerTableViewCellDelegate, UIViewControllerTransitioningDelegate, LoginBottomSheetViewControllerDelegate {
+    
     func openBottomSheetLogin() {
-        let storyboard = UIStoryboard(name: "LoginBottomSheetStoryboard", bundle: nil)
-        if let loginBottomSheetVC = storyboard.instantiateViewController(withIdentifier: "LoginBottomSheetViewController") as? LoginBottomSheetViewController {
-            // Set the presentation style to custom to achieve the bottom sheet effect
-            loginBottomSheetVC.modalPresentationStyle = .custom
-            loginBottomSheetVC.bottomSheetHeight = 430
-            // Set the transitioning delegate to handle the custom presentation
-            loginBottomSheetVC.transitioningDelegate = self
-
-            // Present the bottom sheet
-            present(loginBottomSheetVC, animated: true, completion: nil)
-        }
+        LoginManager.presentBottomSheet(from: self, delegate: self)
     }
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
             return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: (presented as? LoginBottomSheetViewController)?.bottomSheetHeight, isDialog: false)
+    }
+    
+    func didLoginSuccessfully() {
+        
     }
 }

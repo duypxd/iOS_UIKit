@@ -18,7 +18,7 @@ class PrintViewController: UIViewController {
     @IBOutlet weak var buttonSelectAll: UIButton!
     @IBOutlet weak var buttonAddDocs: UIButton!
     
-    var selectedPrintouts: [PrintoutModel] = []
+    var selectedPrintouts: [PrintoutModelResponse] = []
     var pickerImageHelper: PickerImageHelper!
     var fileSystemHelper: FileSystemHelper!
 
@@ -190,7 +190,7 @@ extension PrintViewController {
         }
     }
     
-    private func onSelectPrintout(_ printoutModel: PrintoutModel) {
+    private func onSelectPrintout(_ printoutModel: PrintoutModelResponse) {
         let selectedIDs: [Int] = selectedPrintouts.map{$0.printoutId}
         if selectedIDs.contains(printoutModel.printoutId) {
             if let index = selectedIDs.firstIndex(of: printoutModel.printoutId) {

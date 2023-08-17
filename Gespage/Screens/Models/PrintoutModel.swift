@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PrintoutModel {
+struct PrintoutModelResponse {
     let printoutId: Int
     let fileName: String
     let bwPages: Int
@@ -15,4 +15,14 @@ struct PrintoutModel {
     let price: Double
     let date: String
     let status: String
+}
+
+struct PrintoutModelRequest {
+    var copies: String
+    var color: String
+    var format: String
+    var duplex: String
+    var files: [String]
+    var selectedPages: String?
+    var landscape: String
 }

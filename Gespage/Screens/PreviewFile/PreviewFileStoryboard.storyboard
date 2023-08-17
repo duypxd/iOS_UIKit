@@ -22,7 +22,7 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58N-cG-z03">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="58N-cG-z03">
                                 <rect key="frame" x="341" y="63" width="40" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="5Pe-eS-Igb"/>
@@ -47,10 +47,30 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="269-gd-qGz">
-                                <rect key="frame" x="16" y="107" width="361" height="695"/>
+                                <rect key="frame" x="16" y="107" width="361" height="641"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JzL-jM-2d6">
+                                <rect key="frame" x="0.0" y="764" width="393" height="88"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z9X-1o-6wf">
+                                        <rect key="frame" x="166.66666666666666" y="4" width="59.666666666666657" height="66.333333333333329"/>
+                                        <color key="tintColor" name="greyG150"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="printer" imagePlacement="top" title="Print" imagePadding="4"/>
+                                        <connections>
+                                            <action selector="printButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="qHl-Vr-k6O"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="white"/>
+                                <constraints>
+                                    <constraint firstItem="Z9X-1o-6wf" firstAttribute="top" secondItem="JzL-jM-2d6" secondAttribute="top" constant="4" id="2D1-Sz-u78"/>
+                                    <constraint firstItem="Z9X-1o-6wf" firstAttribute="centerX" secondItem="JzL-jM-2d6" secondAttribute="centerX" id="Vsh-XH-9cA"/>
+                                    <constraint firstAttribute="height" constant="88" id="u1q-1K-mgy"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="infoSoft"/>
@@ -59,31 +79,42 @@
                             <constraint firstItem="58N-cG-z03" firstAttribute="leading" secondItem="wNX-jX-V9R" secondAttribute="trailing" constant="12" id="53U-ii-fC8"/>
                             <constraint firstItem="wNX-jX-V9R" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="12" id="6zm-x3-VaY"/>
                             <constraint firstAttribute="trailing" secondItem="58N-cG-z03" secondAttribute="trailing" constant="12" id="BU1-d6-zHg"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JzL-jM-2d6" secondAttribute="trailing" id="Khd-gr-KIT"/>
+                            <constraint firstItem="JzL-jM-2d6" firstAttribute="top" secondItem="269-gd-qGz" secondAttribute="bottom" constant="16" id="Mvc-Y6-V1L"/>
                             <constraint firstItem="269-gd-qGz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Pop-ZX-BRG"/>
                             <constraint firstItem="GdH-7O-BXJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="4" id="Q8W-2n-NQA"/>
                             <constraint firstItem="GdH-7O-BXJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="12" id="dlt-y1-s2w"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="269-gd-qGz" secondAttribute="bottom" constant="16" id="gbP-vZ-t4o"/>
                             <constraint firstItem="269-gd-qGz" firstAttribute="top" secondItem="wNX-jX-V9R" secondAttribute="bottom" constant="16" id="jB9-mO-Cv9"/>
+                            <constraint firstAttribute="bottom" secondItem="JzL-jM-2d6" secondAttribute="bottom" id="kfe-uf-mwL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="269-gd-qGz" secondAttribute="trailing" constant="16" id="qVN-7h-khc"/>
                             <constraint firstItem="wNX-jX-V9R" firstAttribute="leading" secondItem="GdH-7O-BXJ" secondAttribute="trailing" constant="12" id="rou-Qi-HPh"/>
+                            <constraint firstItem="JzL-jM-2d6" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yA8-cf-olN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="GdH-7O-BXJ" id="low-lz-jTP"/>
+                        <outlet property="bottomBarView" destination="JzL-jM-2d6" id="S5s-ct-5Hg"/>
                         <outlet property="shareButton" destination="58N-cG-z03" id="TOg-q4-BJL"/>
                         <outlet property="tableView" destination="269-gd-qGz" id="jda-3I-QTO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="39" y="-2"/>
+            <point key="canvasLocation" x="38.931297709923662" y="-2.1126760563380285"/>
         </scene>
     </scenes>
     <resources>
         <image name="ShareNetwork" width="24" height="24"/>
         <image name="arowLeft" width="24" height="24"/>
+        <image name="printer" width="28" height="28"/>
+        <namedColor name="greyG150">
+            <color red="0.078000001609325409" green="0.14100000262260437" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="infoSoft">
             <color red="0.93300002813339233" green="0.9570000171661377" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="white">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

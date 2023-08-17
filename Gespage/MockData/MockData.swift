@@ -21,8 +21,8 @@ struct MockData {
         PrinterModel(printerId: "XTX123456", name: "RICOH MP C310", status: "Available")
     ].sorted {(a, b) -> Bool in return a.status < b.status }
     
-    static var dataPrintouts: [PrintoutModel] = [
-        PrintoutModel(
+    static var dataPrintouts: [PrintoutModelResponse] = [
+        PrintoutModelResponse(
             printoutId: 1,
             fileName: "Tai_lieu_mat_quoc_gia.pdf",
             bwPages: 12,
@@ -31,7 +31,7 @@ struct MockData {
             date: "2023-08-12T02:12:32.670+00:00",
             status: "completed"
         ),
-        PrintoutModel(
+        PrintoutModelResponse(
             printoutId: 2,
             fileName: "apple_docs.pdf",
             bwPages: 4,
@@ -40,7 +40,7 @@ struct MockData {
             date: "2023-07-07T02:55:32.670+00:00",
             status: "printing"
         ),
-        PrintoutModel(
+        PrintoutModelResponse(
             printoutId: 3,
             fileName: "google_docs.pdf",
             bwPages: 6,
@@ -49,7 +49,7 @@ struct MockData {
             date: "2023-04-01T02:15:32.670+00:00",
             status: "error"
         ),
-        PrintoutModel(
+        PrintoutModelResponse(
             printoutId: 4,
             fileName: "meries.pdf",
             bwPages: 12,
@@ -58,7 +58,7 @@ struct MockData {
             date: "2023-08-07T02:35:32.670+00:00",
             status: "pending"
         ),
-        PrintoutModel(
+        PrintoutModelResponse(
             printoutId: 5,
             fileName: "my_pdf.pdf",
             bwPages: 9,
@@ -67,7 +67,7 @@ struct MockData {
             date: "2023-08-07T02:09:34.670+00:00",
             status: "completed"
         ),
-        PrintoutModel(
+        PrintoutModelResponse(
             printoutId: 6,
             fileName: "Bi_mat_quoc_gia.pdf",
             bwPages: 8,
@@ -76,7 +76,7 @@ struct MockData {
             date: "2023-11-11T04:09:12.670+00:00",
             status: "error"
         ),
-        PrintoutModel(
+        PrintoutModelResponse(
             printoutId: 7,
             fileName: "Bi_mat_quan_doi.pdf",
             bwPages: 27,
@@ -85,7 +85,7 @@ struct MockData {
             date: "2023-12-24T05:09:43.670+00:00",
             status: "completed"
         ),
-        PrintoutModel(
+        PrintoutModelResponse(
             printoutId: 8,
             fileName: "MyImage.png",
             bwPages: 24,

@@ -14,6 +14,7 @@ class PreviewFileViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var bottomBarView: UIView!
     @IBOutlet weak var shareButton: UIButton!
     
     override func viewDidLoad() {
@@ -29,6 +30,9 @@ class PreviewFileViewController: UIViewController {
         for cellIdentifier in cellIdentifiers {
             tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         }
+        
+        bottomBarView.layer.cornerRadius = 16
+        bottomBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +44,6 @@ class PreviewFileViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.isHidden = true
     }
-
 }
 
 // MARK: - @IBAction
@@ -50,6 +53,13 @@ extension PreviewFileViewController {
     }
     
     @IBAction func buttonShareAction(_ sender: UIButton) {
+    }
+    
+    @IBAction func printButtonAction(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "PrintOptionStoryboard", bundle: nil)
+        if let printOptionVC = storyboard.instantiateViewController(withIdentifier: "PrintOptionViewController") as? PrintOptionViewController {
+            navigationController?.pushViewController(printOptionVC, animated: true)
+        }
     }
 }
 

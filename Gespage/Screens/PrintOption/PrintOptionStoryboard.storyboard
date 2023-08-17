@@ -1,30 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17150" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Print Option View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrintOptionViewController" id="Y6W-OH-hqX" customClass="PrintOptionViewController" customModule="Gespage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pbf-lf-fKa">
+                                <rect key="frame" x="0.0" y="59" width="48" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arowLeft"/>
+                                <connections>
+                                    <action selector="buttonBackAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="s8G-Vp-A7b"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBC-9l-kgb">
+                                <rect key="frame" x="345" y="71" width="48" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="1U6-G4-9ga"/>
+                                    <constraint firstAttribute="height" constant="38" id="eno-sR-3iu"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Print Option" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpw-FF-efZ">
+                                <rect key="frame" x="60" y="67" width="273" height="19.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNH-aK-wQf">
+                                <rect key="frame" x="16" y="754" width="361" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="wOF-f0-BEJ"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Print">
+                                    <color key="baseBackgroundColor" red="0.20000000000000001" green="0.34509803919999998" blue="0.61176470589999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPrintAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="MVV-01-ATc"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5yJ-ZW-loN">
+                                <rect key="frame" x="16" y="110.33333333333331" width="361" height="627.66666666666674"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="infoSoft"/>
+                        <constraints>
+                            <constraint firstItem="eNH-aK-wQf" firstAttribute="top" secondItem="5yJ-ZW-loN" secondAttribute="bottom" constant="16" id="0Ih-QZ-GXh"/>
+                            <constraint firstItem="Pbf-lf-fKa" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="0WF-Bb-Vf6"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="eNH-aK-wQf" secondAttribute="trailing" constant="16" id="5OQ-Zw-F7i"/>
+                            <constraint firstItem="Pbf-lf-fKa" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="6hH-Se-cab"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5yJ-ZW-loN" secondAttribute="trailing" constant="16" id="Gee-pU-OVC"/>
+                            <constraint firstItem="VBC-9l-kgb" firstAttribute="leading" secondItem="kpw-FF-efZ" secondAttribute="trailing" constant="12" id="HpP-W9-hCx"/>
+                            <constraint firstItem="5yJ-ZW-loN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Iqa-Wa-xQ4"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="eNH-aK-wQf" secondAttribute="bottom" constant="16" id="J7G-hg-arR"/>
+                            <constraint firstItem="5yJ-ZW-loN" firstAttribute="top" secondItem="kpw-FF-efZ" secondAttribute="bottom" constant="24" id="PGA-a4-OPX"/>
+                            <constraint firstItem="kpw-FF-efZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="8" id="PKv-VE-fVP"/>
+                            <constraint firstItem="VBC-9l-kgb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="12" id="WLL-2f-kaX"/>
+                            <constraint firstItem="eNH-aK-wQf" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="iDe-Dq-vhW"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="VBC-9l-kgb" secondAttribute="trailing" id="n7b-Kn-KRc"/>
+                            <constraint firstItem="kpw-FF-efZ" firstAttribute="leading" secondItem="Pbf-lf-fKa" secondAttribute="trailing" constant="12" id="v3s-OA-yIz"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonBack" destination="Pbf-lf-fKa" id="b4E-hr-ZXG"/>
+                        <outlet property="buttonPrint" destination="eNH-aK-wQf" id="uFE-cd-NT4"/>
+                        <outlet property="tableView" destination="5yJ-ZW-loN" id="4ev-ch-1D7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="132" y="-34"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="arowLeft" width="24" height="24"/>
+        <namedColor name="infoSoft">
+            <color red="0.93300002813339233" green="0.9570000171661377" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

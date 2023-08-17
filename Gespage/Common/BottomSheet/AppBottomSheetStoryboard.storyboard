@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--App Bottom Sheet View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="AppBottomSheetViewController" id="Y6W-OH-hqX" customClass="AppBottomSheetViewController" customModule="Gespage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1g-lB-5aq">
+                                <rect key="frame" x="0.0" y="632" width="393" height="220"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d5A-Fo-gOC">
+                                        <rect key="frame" x="180.66666666666666" y="10" width="32" height="4"/>
+                                        <color key="backgroundColor" name="greyG400"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="32" id="5au-bY-r66"/>
+                                            <constraint firstAttribute="height" constant="4" id="m3g-To-C9L"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bv-Q6-Fex">
+                                        <rect key="frame" x="16" y="24" width="361" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                        <color key="textColor" name="greyG100"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yRL-B5-B08">
+                                        <rect key="frame" x="16" y="64" width="361" height="140"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yRL-B5-B08" secondAttribute="trailing" constant="16" id="6WB-Pr-xzZ"/>
+                                    <constraint firstItem="3Bv-Q6-Fex" firstAttribute="leading" secondItem="Q1g-lB-5aq" secondAttribute="leading" constant="16" id="Gzu-1r-BTn"/>
+                                    <constraint firstItem="3Bv-Q6-Fex" firstAttribute="top" secondItem="d5A-Fo-gOC" secondAttribute="bottom" constant="10" id="JZJ-PT-1b3"/>
+                                    <constraint firstItem="d5A-Fo-gOC" firstAttribute="top" secondItem="Q1g-lB-5aq" secondAttribute="top" constant="10" id="NTC-NJ-Kc7"/>
+                                    <constraint firstItem="yRL-B5-B08" firstAttribute="leading" secondItem="Q1g-lB-5aq" secondAttribute="leading" constant="16" id="aui-WB-Gr1"/>
+                                    <constraint firstItem="d5A-Fo-gOC" firstAttribute="centerX" secondItem="Q1g-lB-5aq" secondAttribute="centerX" id="b3M-ns-MDF"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Bv-Q6-Fex" secondAttribute="trailing" constant="16" id="bRQ-9O-Xte"/>
+                                    <constraint firstItem="yRL-B5-B08" firstAttribute="top" secondItem="3Bv-Q6-Fex" secondAttribute="bottom" constant="16" id="eW6-pi-PrP"/>
+                                    <constraint firstAttribute="bottom" secondItem="yRL-B5-B08" secondAttribute="bottom" constant="16" id="iwW-uw-utV"/>
+                                    <constraint firstAttribute="height" constant="220" id="vm3-0n-i60"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Q1g-lB-5aq" secondAttribute="trailing" id="PEe-RR-qiM"/>
+                            <constraint firstAttribute="bottom" secondItem="Q1g-lB-5aq" secondAttribute="bottom" id="lsu-O7-eAz"/>
+                            <constraint firstItem="Q1g-lB-5aq" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="p8H-c9-eID"/>
+                            <constraint firstItem="Q1g-lB-5aq" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="tzi-UK-UQW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomSheetHeightConstraint" destination="vm3-0n-i60" id="l3f-AJ-fVm"/>
+                        <outlet property="bottomSheetView" destination="Q1g-lB-5aq" id="Axf-sw-Dir"/>
+                        <outlet property="iOSView" destination="d5A-Fo-gOC" id="snp-Yl-JAY"/>
+                        <outlet property="tableView" destination="yRL-B5-B08" id="y7h-cy-aco"/>
+                        <outlet property="titleLabel" destination="3Bv-Q6-Fex" id="At5-o8-Q3k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.53435114503816" y="-34.507042253521128"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="greyG100">
+            <color red="0.059000000357627869" green="0.086000002920627594" blue="0.14100000262260437" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="greyG400">
+            <color red="0.85100001096725464" green="0.85900002717971802" blue="0.91399997472763062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

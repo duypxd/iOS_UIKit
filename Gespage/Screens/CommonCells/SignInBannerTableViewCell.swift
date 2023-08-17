@@ -12,6 +12,8 @@ protocol SignInBannerTableViewCellDelegate: AnyObject {
 
 class SignInBannerTableViewCell: UITableViewCell {
     weak var delegate: SignInBannerTableViewCellDelegate?
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var iOSView: UIView!
     
     @IBOutlet weak var onLogin: UIButton!
     
