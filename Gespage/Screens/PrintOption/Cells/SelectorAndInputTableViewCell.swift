@@ -9,6 +9,7 @@ import UIKit
 
 class SelectorAndInputTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var errorMessageLabel: UILabel!
     @IBOutlet weak var paperSizeView: UIView!
     @IBOutlet weak var paperSizeLabel: UILabel!
     @IBOutlet weak var numberOfCopies: UITextField!
@@ -41,8 +42,8 @@ class SelectorAndInputTableViewCell: UITableViewCell {
     }
     
     deinit {
-           NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
-       }
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nil)
+    }
 }
 
 // MARK: - Private Extensions

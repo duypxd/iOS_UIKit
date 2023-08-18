@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1513A7632A8F17CF00407A51 /* DialogSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1513A7622A8F17CF00407A51 /* DialogSuccessViewController.swift */; };
+		1513A7652A8F17D900407A51 /* DialogSuccessStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1513A7642A8F17D900407A51 /* DialogSuccessStoryboard.storyboard */; };
 		1514FB5B2A808AEA0059BEB9 /* PrintoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1514FB5A2A808AEA0059BEB9 /* PrintoutModel.swift */; };
 		1514FB5F2A8092910059BEB9 /* PrintoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1514FB5D2A8092910059BEB9 /* PrintoutTableViewCell.swift */; };
 		1514FB602A8092910059BEB9 /* PrintoutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1514FB5E2A8092910059BEB9 /* PrintoutTableViewCell.xib */; };
@@ -96,6 +98,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1513A7622A8F17CF00407A51 /* DialogSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogSuccessViewController.swift; sourceTree = "<group>"; };
+		1513A7642A8F17D900407A51 /* DialogSuccessStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DialogSuccessStoryboard.storyboard; sourceTree = "<group>"; };
 		1514FB5A2A808AEA0059BEB9 /* PrintoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintoutModel.swift; sourceTree = "<group>"; };
 		1514FB5D2A8092910059BEB9 /* PrintoutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintoutTableViewCell.swift; sourceTree = "<group>"; };
 		1514FB5E2A8092910059BEB9 /* PrintoutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrintoutTableViewCell.xib; sourceTree = "<group>"; };
@@ -258,6 +262,8 @@
 			children = (
 				154EFC3E2A81DE3400B33062 /* DialogConfirmStoryboard.storyboard */,
 				154EFC402A81DE4D00B33062 /* DialogConfirmViewController.swift */,
+				1513A7622A8F17CF00407A51 /* DialogSuccessViewController.swift */,
+				1513A7642A8F17D900407A51 /* DialogSuccessStoryboard.storyboard */,
 			);
 			path = Dialog;
 			sourceTree = "<group>";
@@ -655,6 +661,7 @@
 				153597B02A796BEF009C3B22 /* HomeDistributionTableViewCell.xib in Resources */,
 				15A82A732A7432D0000F9194 /* WelcomeStoryboard.storyboard in Resources */,
 				1514FB602A8092910059BEB9 /* PrintoutTableViewCell.xib in Resources */,
+				1513A7652A8F17D900407A51 /* DialogSuccessStoryboard.storyboard in Resources */,
 				1516E2FB2A87695700C6C1B6 /* MenuItemProfileTableViewCell.xib in Resources */,
 				15ABB3012A7CFD8D005DCAB6 /* BalanceTableViewCell.xib in Resources */,
 				15A82A4C2A741CFD000F9194 /* LaunchScreen.storyboard in Resources */,
@@ -787,6 +794,7 @@
 				1594A6502A8B76EB0075B612 /* AppBottomSheetViewController.swift in Sources */,
 				1516E2FA2A87695700C6C1B6 /* MenuItemProfileTableViewCell.swift in Sources */,
 				15873F432A7B67E900F0F59D /* MockData.swift in Sources */,
+				1513A7632A8F17CF00407A51 /* DialogSuccessViewController.swift in Sources */,
 				152B54512A834AEB00F51E40 /* PreviewFileViewController.swift in Sources */,
 				156E8E2F2A89D9660046C95B /* SafariWebView.swift in Sources */,
 			);

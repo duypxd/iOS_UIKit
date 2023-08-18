@@ -59,7 +59,7 @@ extension MoreViewController {
         DialogManager.shared.showConfirmDialog(
             from: self,
             title: "Logout",
-            content: "Are you sure you want to log out?",
+            message: "Are you sure you want to log out?",
             labelConfirm: "Log out",
             backgroundColorConfirm: UIColor(named: "error")!,
             onConfirm: {
@@ -127,7 +127,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
             DialogManager.shared.showConfirmDialog(
                 from: self,
                 title: "Support",
-                content: "Contact support: \(userModel.supportEmail)",
+                message: "Contact support: \(userModel.supportEmail)",
                 labelConfirm: "Contact",
                 backgroundColorConfirm: UIColor(named: "primary600")!,
                 onConfirm: {

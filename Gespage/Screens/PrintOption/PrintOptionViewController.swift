@@ -13,6 +13,7 @@ class PrintOptionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var buttonPrint: UIButton!
     
+    var isDialogSuccess = false
     var dataPaperSize: [String] = []
     var printoutModelRequest: PrintoutModelRequest?
     
@@ -61,12 +62,46 @@ class PrintOptionViewController: UIViewController {
 
 // MARK: - @IBActions
 extension PrintOptionViewController {
+    
     @IBAction func buttonBackAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func buttonPrintAction(_ sender: Any) {
-       
+        isDialogSuccess = true
+        let indexPath = IndexPath(row: 0, section: 0)
+        if let cell = tableView.cellForRow(at: indexPath) as? SelectorAndInputTableViewCell {
+            if isValidNumberOfCopies(cell) {
+                DialogManager.shared.showSuccessDialog(
+                    from: self,
+                    title: "Added successfully!",
+                    message: "Successfully added to Ready to Release list. Go there to release your document(s)",
+                    labelButton: "Go To Release List",
+                    onConfirm: { [self] in
+                        isDialogSuccess = false
+                        dismiss(animated: true, completion: nil)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            self.navigationController?.popToRootViewController(animated: true)
+                        }
+                    }
+                )
+            }
+        }
+    }
+}
+
+// MARK: - Validation TextFields
+extension PrintOptionViewController {
+    private func isValidNumberOfCopies(_ cell: SelectorAndInputTableViewCell) -> Bool {
+        if let numberOfCopiesText = cell.numberOfCopies.text,
+           let numberOfCopies = Int(numberOfCopiesText), numberOfCopies > 0 {
+            cell.errorMessageLabel.isHidden = true
+            return true
+        } else {
+            cell.errorMessageLabel.text = "Invalid number of copies"
+            cell.errorMessageLabel.isHidden = false
+            return false
+        }
     }
 }
 
@@ -81,18 +116,19 @@ extension PrintOptionViewController: UITableViewDelegate, UITableViewDataSource 
         
         switch indexPath.row {
         case 0:
-            let firstCell = tableView.dequeueReusableCell(withIdentifier: "SelectorAndInputTableViewCell", for: indexPath) as! SelectorAndInputTableViewCell
-            firstCell.tapAction = {[weak self] in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SelectorAndInputTableViewCell", for: indexPath) as! SelectorAndInputTableViewCell
+            cell.tapAction = {[weak self] in
                 if indexPath.row == 0 {
                     self?.onChangedPaperSize()
                 }
             }
-            firstCell.onChangedNumberOfCopies = {[self] value in
+            cell.onChangedNumberOfCopies = {[self] value in
                 printoutModelRequest?.copies = value
+                if isValidNumberOfCopies(cell) {}
             }
-            firstCell.paperSizeLabel.text = printoutModelRequest?.format ?? ""
+            cell.paperSizeLabel.text = printoutModelRequest?.format ?? ""
             
-            return firstCell
+            return cell
         case 1...3:
             let selectorCell = tableView.dequeueReusableCell(withIdentifier: "SelectorTableViewCell", for: indexPath) as! SelectorTableViewCell
             selectorCell.tapAction = { [weak self] in
@@ -188,11 +224,15 @@ extension PrintOptionViewController: UIViewControllerTransitioningDelegate {
     }
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return CommonPresentationController(
-            presentedViewController: presented,
-            presenting: presenting,
-            height: (presented as? AppBottomSheetViewController)?.bottomSheetHeight,
-            isDialog: false
-        )
+        if isDialogSuccess {
+            return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: 276, isDialog: true)
+        } else {
+            return CommonPresentationController(
+                presentedViewController: presented,
+                presenting: presenting,
+                height: (presented as? AppBottomSheetViewController)?.bottomSheetHeight,
+                isDialog: false
+            )
+        }
     }
 }

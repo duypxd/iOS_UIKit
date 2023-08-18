@@ -16,24 +16,24 @@ class DialogConfirmViewController: UIViewController {
     @IBOutlet weak var confirmButton: UIButton!
     
     var titleText: String?
-    var contentText: String?
+    var messageText: String?
     var confirmButtonLabel: String?
     var confirmButtonBackgroundColor: UIColor?
-    var onConfirmAction: (() -> Void)?
+    var onConfirmed: (() -> Void)?
     
-    func showDialog(title: String, content: String, labelConfirm: String, backgroundColorConfirm: UIColor, onConfirm: (() -> Void)?) {
+    func showDialog(title: String, message: String, labelConfirm: String, backgroundColorConfirm: UIColor, onConfirm: (() -> Void)?) {
         titleText = title
-        contentText = content
+        messageText = message
         confirmButtonLabel = labelConfirm
         confirmButtonBackgroundColor = backgroundColorConfirm
-        self.onConfirmAction = onConfirm
+        self.onConfirmed = onConfirm
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // PassProps
         titleLabel.text = titleText
-        contentLabel.text = contentText
+        contentLabel.text = messageText
         
         setUpUIButtons()
     }
@@ -71,6 +71,6 @@ extension DialogConfirmViewController {
     }
     
     @IBAction func confirmButtonAction(_ sender: UIButton) {
-        onConfirmAction?()
+        onConfirmed?()
     }
 }

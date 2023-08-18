@@ -13,7 +13,7 @@ class DialogManager {
     func showConfirmDialog(
         from viewController: UIViewController,
         title: String,
-        content: String,
+        message: String,
         labelConfirm: String,
         backgroundColorConfirm: UIColor,
         onConfirm: @escaping () -> Void
@@ -24,11 +24,35 @@ class DialogManager {
         }
         dialogVC.showDialog(
             title: title,
-            content: content,
+            message: message,
             labelConfirm: labelConfirm,
             backgroundColorConfirm: backgroundColorConfirm,
             onConfirm: onConfirm
         )
+        viewController.view.endEditing(true)
+        dialogVC.modalPresentationStyle = .custom
+        dialogVC.transitioningDelegate = (viewController.self as! any UIViewControllerTransitioningDelegate)
+        viewController.present(dialogVC, animated: true, completion: nil)
+    }
+    
+    func showSuccessDialog(
+        from viewController: UIViewController,
+        title: String,
+        message: String,
+        labelButton: String,
+        onConfirm: @escaping () -> Void
+    ) {
+        let storyboard = UIStoryboard(name: "DialogSuccessStoryboard", bundle: nil)
+        guard let dialogVC = storyboard.instantiateViewController(withIdentifier: "DialogSuccessViewController") as? DialogSuccessViewController else {
+            return
+        }
+        dialogVC.showDialog(
+            title: title,
+            message: message,
+            labelButton: labelButton,
+            onConfirm: onConfirm
+        )
+        viewController.view.endEditing(true)
         dialogVC.modalPresentationStyle = .custom
         dialogVC.transitioningDelegate = (viewController.self as! any UIViewControllerTransitioningDelegate)
         viewController.present(dialogVC, animated: true, completion: nil)

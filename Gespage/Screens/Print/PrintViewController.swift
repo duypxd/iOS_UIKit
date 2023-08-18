@@ -131,7 +131,7 @@ extension PrintViewController {
         DialogManager.shared.showConfirmDialog(
             from: self,
             title: "Delete Document(s)",
-            content: "Do you want to delete the selected Documents?",
+            message: "Do you want to delete the selected Documents?",
             labelConfirm: "Delete",
             backgroundColorConfirm: UIColor(named: "error")!,
             onConfirm: {
