@@ -19,7 +19,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJr-No-DP5">
                                 <rect key="frame" x="16" y="300.66666666666669" width="361" height="276.00000000000006"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sucess" translatesAutoresizingMaskIntoConstraints="NO" id="hPh-i7-7S7">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="success" translatesAutoresizingMaskIntoConstraints="NO" id="hPh-i7-7S7">
                                         <rect key="frame" x="150.66666666666666" y="24" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="3eA-aB-G4X"/>
@@ -84,6 +84,7 @@
                         <outlet property="buttonConfirm" destination="H4R-tw-ehm" id="7z2-IE-M0Q"/>
                         <outlet property="dialogView" destination="RJr-No-DP5" id="4M5-Yx-hxW"/>
                         <outlet property="messageLabel" destination="EpX-4O-YWa" id="HbL-D3-4sn"/>
+                        <outlet property="statusImage" destination="hPh-i7-7S7" id="iu6-hn-CzR"/>
                         <outlet property="titleLabel" destination="jn9-55-VFj" id="U51-oM-YkC"/>
                     </connections>
                 </viewController>
@@ -93,7 +94,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="sucess" width="61" height="60"/>
+        <image name="success" width="61" height="60"/>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

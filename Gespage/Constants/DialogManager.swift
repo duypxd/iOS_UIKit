@@ -40,6 +40,7 @@ class DialogManager {
         title: String,
         message: String,
         labelButton: String,
+        statusImage: UIImage,
         onConfirm: @escaping () -> Void
     ) {
         let storyboard = UIStoryboard(name: "DialogSuccessStoryboard", bundle: nil)
@@ -50,6 +51,7 @@ class DialogManager {
             title: title,
             message: message,
             labelButton: labelButton,
+            image: statusImage,
             onConfirm: onConfirm
         )
         viewController.view.endEditing(true)

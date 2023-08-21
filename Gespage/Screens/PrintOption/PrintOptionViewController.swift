@@ -76,7 +76,7 @@ extension PrintOptionViewController {
                     from: self,
                     title: "Added successfully!",
                     message: "Successfully added to Ready to Release list. Go there to release your document(s)",
-                    labelButton: "Go To Release List",
+                    labelButton: "Go To Release List", statusImage: UIImage(named: "success")!,
                     onConfirm: { [self] in
                         isDialogSuccess = false
                         dismiss(animated: true, completion: nil)

@@ -1,40 +1,38 @@
-**/dgph
-*.mode1v3
-*.mode2v3
-*.moved-aside
-*.pbxuser
-*.perspectivev3
-**/*sync/
-.sconsign.dblite
-.tags*
-**/.vagrant/
-**/DerivedData/
-Icon?
-**/Pods/
-**/.symlinks/
-profile
-xcuserdata
-**/.generated/
-Flutter/App.framework
-Flutter/Flutter.framework
-Flutter/Flutter.podspec
-Flutter/Generated.xcconfig
-Flutter/ephemeral/
-Flutter/app.flx
-Flutter/app.zip
-Flutter/flutter_assets/y
-Flutter/flutter_export_environment.sh
-ServiceDefinitions.json
-Runner/GeneratedPluginRegistrant.*
+# Xcode
+#
+# It is better to be used with other `.gitignore` files for specific platforms.
+# Check https://github.com/github/gitignore/blob/master/Global/Xcode.gitignore
 
-# Exceptions to above rules.
-!default.mode1v3
-!default.mode2v3
-!default.pbxuser
-!default.perspectivev3
+## User settings
+xcuserdata/
 
-# ios zip/ipa
-Runner.app.dSYM.zip
-Runner.ipa
-# Fastlane
-fastlane/report.xml
+## Compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
+*.xcscmblueprint
+
+## Compatibility with Xcode 3.1 and earlier (ignoring not required starting Xcode 3.2)
+build/
+DerivedData/
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# CocoaPods
+Pods/
+
+# Carthage
+/Carthage/Build
+
+# Swift Package Manager
+/.build/
+
+# fastlane
+/.fastlane/report.xml
+/.fastlane/Preview.html
+/.fastlane/screenshots
+/.fastlane/test_output
+
+*.swiftdoc
+*.swiftmodule

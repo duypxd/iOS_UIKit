@@ -45,13 +45,10 @@
 		156E8E422A8A0AC60046C95B /* TermAndConditionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156E8E402A8A0AC60046C95B /* TermAndConditionTableViewCell.swift */; };
 		156E8E432A8A0AC60046C95B /* TermAndConditionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156E8E412A8A0AC60046C95B /* TermAndConditionTableViewCell.xib */; };
 		15873F432A7B67E900F0F59D /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15873F422A7B67E900F0F59D /* MockData.swift */; };
-		1589DEA62A87C67A00566369 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589DEA52A87C67A00566369 /* ProfileViewController.swift */; };
-		1589DEA82A87C68200566369 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1589DEA72A87C68200566369 /* ProfileStoryboard.storyboard */; };
 		1594A6422A8B171D0075B612 /* SelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1594A6402A8B171D0075B612 /* SelectorTableViewCell.swift */; };
 		1594A6432A8B171D0075B612 /* SelectorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1594A6412A8B171D0075B612 /* SelectorTableViewCell.xib */; };
 		1594A6462A8B25530075B612 /* SelectorAndInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1594A6442A8B25530075B612 /* SelectorAndInputTableViewCell.swift */; };
 		1594A6472A8B25530075B612 /* SelectorAndInputTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1594A6452A8B25530075B612 /* SelectorAndInputTableViewCell.xib */; };
-		1594A64D2A8B71920075B612 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1594A64C2A8B71920075B612 /* LoginManager.swift */; };
 		1594A6502A8B76EB0075B612 /* AppBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1594A64F2A8B76EB0075B612 /* AppBottomSheetViewController.swift */; };
 		1594A6522A8B76F30075B612 /* AppBottomSheetStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1594A6512A8B76F30075B612 /* AppBottomSheetStoryboard.storyboard */; };
 		1594A65A2A8B7A800075B612 /* AppLabelSelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1594A6582A8B7A800075B612 /* AppLabelSelectorTableViewCell.swift */; };
@@ -95,6 +92,9 @@
 		15E72F642A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E72F632A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard */; };
 		15E72F662A7E2D8B00579A1F /* CommonPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E72F652A7E2D8B00579A1F /* CommonPresentationController.swift */; };
 		E1CF16DAE54A4388323957C2 /* Pods_Gespage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */; };
+		F06540C52A93496400550326 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540C42A93496400550326 /* LoginManager.swift */; };
+		F06540CA2A9349B500550326 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540C92A9349B500550326 /* ProfileViewController.swift */; };
+		F06540CC2A9349C000550326 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,13 +138,10 @@
 		156E8E402A8A0AC60046C95B /* TermAndConditionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermAndConditionTableViewCell.swift; sourceTree = "<group>"; };
 		156E8E412A8A0AC60046C95B /* TermAndConditionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermAndConditionTableViewCell.xib; sourceTree = "<group>"; };
 		15873F422A7B67E900F0F59D /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
-		1589DEA52A87C67A00566369 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		1589DEA72A87C68200566369 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
 		1594A6402A8B171D0075B612 /* SelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTableViewCell.swift; sourceTree = "<group>"; };
 		1594A6412A8B171D0075B612 /* SelectorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectorTableViewCell.xib; sourceTree = "<group>"; };
 		1594A6442A8B25530075B612 /* SelectorAndInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorAndInputTableViewCell.swift; sourceTree = "<group>"; };
 		1594A6452A8B25530075B612 /* SelectorAndInputTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectorAndInputTableViewCell.xib; sourceTree = "<group>"; };
-		1594A64C2A8B71920075B612 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		1594A64F2A8B76EB0075B612 /* AppBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBottomSheetViewController.swift; sourceTree = "<group>"; };
 		1594A6512A8B76F30075B612 /* AppBottomSheetStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppBottomSheetStoryboard.storyboard; sourceTree = "<group>"; };
 		1594A6582A8B7A800075B612 /* AppLabelSelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLabelSelectorTableViewCell.swift; sourceTree = "<group>"; };
@@ -190,6 +187,9 @@
 		15E72F632A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginBottomSheetStoryboard.storyboard; sourceTree = "<group>"; };
 		15E72F652A7E2D8B00579A1F /* CommonPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPresentationController.swift; sourceTree = "<group>"; };
 		A33A9C0863757E249CCC5599 /* Pods-Gespage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gespage.debug.xcconfig"; path = "Target Support Files/Pods-Gespage/Pods-Gespage.debug.xcconfig"; sourceTree = "<group>"; };
+		F06540C42A93496400550326 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		F06540C92A9349B500550326 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
 		F3A49DEDA5FFF6B82EE9603C /* Pods-Gespage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gespage.release.xcconfig"; path = "Target Support Files/Pods-Gespage/Pods-Gespage.release.xcconfig"; sourceTree = "<group>"; };
 		FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gespage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -292,8 +292,8 @@
 		156C8E732A78A56700DAE0CA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F06540C32A93495B00550326 /* Profile */,
 				156E8E342A89E7860046C95B /* About */,
-				1589DEA32A87C63900566369 /* Profile */,
 				1560AF582A8521490027C023 /* PrintOption */,
 				152B544D2A834ACC00F51E40 /* PreviewFile */,
 				15E72F672A7E2DB400579A1F /* Login */,
@@ -397,16 +397,6 @@
 				15873F422A7B67E900F0F59D /* MockData.swift */,
 			);
 			path = MockData;
-			sourceTree = "<group>";
-		};
-		1589DEA32A87C63900566369 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				1589DEA52A87C67A00566369 /* ProfileViewController.swift */,
-				1589DEA72A87C68200566369 /* ProfileStoryboard.storyboard */,
-				1594A64C2A8B71920075B612 /* LoginManager.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		1594A63F2A8B15CF0075B612 /* Cells */ = {
@@ -598,6 +588,16 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		F06540C32A93495B00550326 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F06540C42A93496400550326 /* LoginManager.swift */,
+				F06540C92A9349B500550326 /* ProfileViewController.swift */,
+				F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -632,6 +632,7 @@
 				TargetAttributes = {
 					15A82A3B2A741CFC000F9194 = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -667,9 +668,9 @@
 				15A82A4C2A741CFD000F9194 /* LaunchScreen.storyboard in Resources */,
 				1594A6432A8B171D0075B612 /* SelectorTableViewCell.xib in Resources */,
 				1594A6472A8B25530075B612 /* SelectorAndInputTableViewCell.xib in Resources */,
+				F06540CC2A9349C000550326 /* ProfileStoryboard.storyboard in Resources */,
 				156E8E432A8A0AC60046C95B /* TermAndConditionTableViewCell.xib in Resources */,
 				15A885732A7683D500664BF8 /* ScanStoryboard.storyboard in Resources */,
-				1589DEA82A87C68200566369 /* ProfileStoryboard.storyboard in Resources */,
 				15D1E3542A7B5AF20059C3FE /* PrintersStoryboard.storyboard in Resources */,
 				15DDB43B2A7A1DD000499812 /* PrinterTableViewCell.xib in Resources */,
 				15ABB2F82A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib in Resources */,
@@ -749,6 +750,7 @@
 				15A91FC02A7E40EB0063735F /* LoginRequestModel.swift in Sources */,
 				156E8E362A89E7920046C95B /* AboutViewController.swift in Sources */,
 				15A82A712A743129000F9194 /* WelcomeViewController.swift in Sources */,
+				F06540C52A93496400550326 /* LoginManager.swift in Sources */,
 				159947882A762B3C00A2D012 /* PrintViewController.swift in Sources */,
 				15DDB4322A7A134200499812 /* HomePrinterFavoritesTableViewCell.swift in Sources */,
 				159947772A74F94700A2D012 /* ImageHelper.swift in Sources */,
@@ -773,9 +775,9 @@
 				1594A6422A8B171D0075B612 /* SelectorTableViewCell.swift in Sources */,
 				1594A65A2A8B7A800075B612 /* AppLabelSelectorTableViewCell.swift in Sources */,
 				159947962A7656C300A2D012 /* MainTabBarViewController.swift in Sources */,
-				1589DEA62A87C67A00566369 /* ProfileViewController.swift in Sources */,
 				159947842A76286800A2D012 /* Constants.swift in Sources */,
 				1560AF562A84D1020027C023 /* ImageTableViewCell.swift in Sources */,
+				F06540CA2A9349B500550326 /* ProfileViewController.swift in Sources */,
 				1514FB622A80CA7A0059BEB9 /* DateFormat.swift in Sources */,
 				15DDB43A2A7A1DD000499812 /* PrinterTableViewCell.swift in Sources */,
 				154EFC472A8264FA00B33062 /* FileSystemHelper.swift in Sources */,
@@ -790,7 +792,6 @@
 				15D1E3562A7B5AFB0059C3FE /* PrintersViewController.swift in Sources */,
 				153597AF2A796BEF009C3B22 /* HomeDistributionTableViewCell.swift in Sources */,
 				1599478C2A762B6500A2D012 /* ScanViewController.swift in Sources */,
-				1594A64D2A8B71920075B612 /* LoginManager.swift in Sources */,
 				1594A6502A8B76EB0075B612 /* AppBottomSheetViewController.swift in Sources */,
 				1516E2FA2A87695700C6C1B6 /* MenuItemProfileTableViewCell.swift in Sources */,
 				15873F432A7B67E900F0F59D /* MockData.swift in Sources */,
@@ -942,6 +943,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -959,6 +961,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.Gespage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -970,6 +973,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;

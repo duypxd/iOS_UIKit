@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmU-e9-UhC">
                         <rect key="frame" x="0.0" y="0.0" width="485" height="80"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_default" translatesAutoresizingMaskIntoConstraints="NO" id="Ntm-7h-pjO">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatarDefault" translatesAutoresizingMaskIntoConstraints="NO" id="Ntm-7h-pjO">
                                 <rect key="frame" x="16" y="16" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="48" id="0C5-7d-IN0"/>
@@ -30,8 +30,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Y8-3e-ybc">
                                 <rect key="frame" x="76" y="16" width="393" height="48"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="YTx-vt-yoS">
-                                        <rect key="frame" x="369" y="12" width="24" height="24"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="YTx-vt-yoS">
+                                        <rect key="frame" x="369" y="13.999999999999998" width="24" height="20.333333333333329"/>
+                                        <color key="tintColor" name="sencondary600"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="NyP-gt-IjG"/>
                                             <constraint firstAttribute="width" constant="24" id="OCJ-Wh-8Pe"/>
@@ -94,10 +95,13 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="arrowRight" width="24" height="24"/>
-        <image name="avatar_default" width="48" height="48"/>
+        <image name="avatarDefault" width="61" height="60"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
         <namedColor name="greyG200">
             <color red="0.23100000619888306" green="0.24300000071525574" blue="0.3529999852180481" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="sencondary600">
+            <color red="0.40400001406669617" green="0.57599997520446777" blue="0.16500000655651093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="white">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -9,17 +9,26 @@ import UIKit
 
 class DialogSuccessViewController: UIViewController {
 
+    @IBOutlet weak var statusImage: UIImageView!
     @IBOutlet weak var dialogView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var buttonConfirm: UIButton!
     
+    var receivedImage: UIImage?
     var titleText: String?
     var messageText: String?
     var buttonText: String?
     var onConfirmed: (() -> Void)?
     
-    func showDialog(title: String, message: String, labelButton: String, onConfirm: (() -> Void)?) {
+    func showDialog(
+        title: String,
+        message: String,
+        labelButton: String,
+        image: UIImage,
+        onConfirm: (() -> Void)?
+    ) {
+        receivedImage = image
         titleText = title
         messageText = message
         buttonText = labelButton
@@ -29,6 +38,7 @@ class DialogSuccessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Title, Message Dialog
+        statusImage.image = receivedImage
         titleLabel.text = titleText
         messageLabel.text = messageText
         // UI Dialogs
