@@ -8,9 +8,14 @@
 import UIKit
 
 class PrintersViewController: UIViewController {
+    
+    @IBOutlet weak var titlePage: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     private var refreshControl = UIRefreshControl()
+    
+    var receivedTitle: String?
+    var receivedPrintouts: [PrintoutModelResponse] = []
 }
 
 // MARK: Life Cycle
@@ -19,6 +24,8 @@ extension PrintersViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        
+        titlePage.text = receivedTitle
         
         // register Cells
         tableView.register(UINib(nibName: "PrinterTableViewCell", bundle: nil), forCellReuseIdentifier: "PrinterTableViewCell")
@@ -42,12 +49,6 @@ extension PrintersViewController {
     }
     
     @objc private func refreshData() {
-        // Implement the data refreshing logic here
-        // For example, you might fetch new data from the server or reload existing data.
-        // Once the data refreshing is completed, remember to stop the refresh control.
-        // Call tableView.reloadData() or any method to update the table view with the new data.
-        // For this example, let's just stop the refresh control after a brief delay to simulate some asynchronous task.
-            // Simulate data fetching or updating from the server
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             // Stop the refresh control
             self.refreshControl.endRefreshing()
@@ -94,11 +95,31 @@ extension PrintersViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !receivedPrintouts.isEmpty {
+            DialogManager.shared.showConfirmReleaseDialog(
+                from: self,
+                printouts: receivedPrintouts,
+                priner: MockData.dataPrinters[indexPath.row],
+                onConfirm: {[self] in
+                    dismiss(animated: true, completion: nil)
+                }
+            )
+        }
+    }
 }
 
 // MARK: - @IBOutlet
 extension PrintersViewController {
     @IBAction func backButtonAction(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+// MARK: - DialogPresentationController
+extension PrintersViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: 466, isDialog: true)
     }
 }

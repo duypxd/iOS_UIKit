@@ -86,8 +86,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 extension HomeViewController: HomePrinterFavoritesDelegate {
     func onViewAllPrintersTapped() {
         let storyboard = UIStoryboard(name: "PrintersStoryboard", bundle: nil)
-        if let printersViewController = storyboard.instantiateViewController(withIdentifier: "PrintersViewController") as? PrintersViewController {
-            navigationController?.pushViewController(printersViewController, animated: true)
+        if let printersVC = storyboard.instantiateViewController(withIdentifier: "PrintersViewController") as? PrintersViewController {
+            navigationController?.pushViewController(printersVC, animated: true)
+            printersVC.receivedTitle = "Printers List"
         }
     }
 }

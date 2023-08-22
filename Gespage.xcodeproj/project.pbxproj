@@ -92,9 +92,13 @@
 		15E72F642A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E72F632A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard */; };
 		15E72F662A7E2D8B00579A1F /* CommonPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E72F652A7E2D8B00579A1F /* CommonPresentationController.swift */; };
 		E1CF16DAE54A4388323957C2 /* Pods_Gespage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */; };
+		F00E56462A946D940068859A /* LabelDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E56442A946D940068859A /* LabelDocumentTableViewCell.swift */; };
+		F00E56472A946D940068859A /* LabelDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F00E56452A946D940068859A /* LabelDocumentTableViewCell.xib */; };
 		F06540C52A93496400550326 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540C42A93496400550326 /* LoginManager.swift */; };
 		F06540CA2A9349B500550326 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540C92A9349B500550326 /* ProfileViewController.swift */; };
 		F06540CC2A9349C000550326 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */; };
+		F06540CE2A9363E300550326 /* DialogReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */; };
+		F06540D02A9363ED00550326 /* DialogReleaseStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -187,9 +191,13 @@
 		15E72F632A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginBottomSheetStoryboard.storyboard; sourceTree = "<group>"; };
 		15E72F652A7E2D8B00579A1F /* CommonPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPresentationController.swift; sourceTree = "<group>"; };
 		A33A9C0863757E249CCC5599 /* Pods-Gespage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gespage.debug.xcconfig"; path = "Target Support Files/Pods-Gespage/Pods-Gespage.debug.xcconfig"; sourceTree = "<group>"; };
+		F00E56442A946D940068859A /* LabelDocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDocumentTableViewCell.swift; sourceTree = "<group>"; };
+		F00E56452A946D940068859A /* LabelDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelDocumentTableViewCell.xib; sourceTree = "<group>"; };
 		F06540C42A93496400550326 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		F06540C92A9349B500550326 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
+		F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogReleaseViewController.swift; sourceTree = "<group>"; };
+		F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DialogReleaseStoryboard.storyboard; sourceTree = "<group>"; };
 		F3A49DEDA5FFF6B82EE9603C /* Pods-Gespage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gespage.release.xcconfig"; path = "Target Support Files/Pods-Gespage/Pods-Gespage.release.xcconfig"; sourceTree = "<group>"; };
 		FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gespage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -563,6 +571,7 @@
 		15DDB4462A7A59F100499812 /* Printers */ = {
 			isa = PBXGroup;
 			children = (
+				F00E56432A946D7A0068859A /* DialogRelease */,
 				15D1E3532A7B5AF20059C3FE /* PrintersStoryboard.storyboard */,
 				15D1E3552A7B5AFB0059C3FE /* PrintersViewController.swift */,
 			);
@@ -586,6 +595,25 @@
 				15E72F632A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		F00E56402A946D4D0068859A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F00E56442A946D940068859A /* LabelDocumentTableViewCell.swift */,
+				F00E56452A946D940068859A /* LabelDocumentTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F00E56432A946D7A0068859A /* DialogRelease */ = {
+			isa = PBXGroup;
+			children = (
+				F00E56402A946D4D0068859A /* Cells */,
+				F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */,
+				F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */,
+			);
+			path = DialogRelease;
 			sourceTree = "<group>";
 		};
 		F06540C32A93495B00550326 /* Profile */ = {
@@ -677,6 +705,7 @@
 				1516E2F72A87693400C6C1B6 /* MenuItemTableViewCell.xib in Resources */,
 				15A885752A7683F400664BF8 /* MoreStoryboard.storyboard in Resources */,
 				1594A65B2A8B7A800075B612 /* AppLabelSelectorTableViewCell.xib in Resources */,
+				F06540D02A9363ED00550326 /* DialogReleaseStoryboard.storyboard in Resources */,
 				154CC9DD2A78FFD8009AE7C3 /* HomeTableViewCellEcologicalCell.xib in Resources */,
 				15A82A492A741CFD000F9194 /* Assets.xcassets in Resources */,
 				156E8E3A2A89EA080046C95B /* AboutStoryboard.storyboard in Resources */,
@@ -691,6 +720,7 @@
 				15D600672A76812400152BBF /* HomeStoryboard.storyboard in Resources */,
 				1594A6522A8B76F30075B612 /* AppBottomSheetStoryboard.storyboard in Resources */,
 				156E8E3F2A8A06AD0046C95B /* AboutTableViewCell.xib in Resources */,
+				F00E56472A946D940068859A /* LabelDocumentTableViewCell.xib in Resources */,
 				15A885772A76851B00664BF8 /* PrintStoryboard.storyboard in Resources */,
 				1560AF512A84A04F0027C023 /* FileTableViewCell.xib in Resources */,
 			);
@@ -755,8 +785,10 @@
 				15DDB4322A7A134200499812 /* HomePrinterFavoritesTableViewCell.swift in Sources */,
 				159947772A74F94700A2D012 /* ImageHelper.swift in Sources */,
 				156E8E2B2A89CF630046C95B /* UserModel.swift in Sources */,
+				F06540CE2A9363E300550326 /* DialogReleaseViewController.swift in Sources */,
 				156E8E3E2A8A06AD0046C95B /* AboutTableViewCell.swift in Sources */,
 				1516E2F62A87693300C6C1B6 /* MenuItemTableViewCell.swift in Sources */,
+				F00E56462A946D940068859A /* LabelDocumentTableViewCell.swift in Sources */,
 				15ABB2F72A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift in Sources */,
 				1560AF5E2A85219E0027C023 /* PrintOptionViewController.swift in Sources */,
 				156E8E422A8A0AC60046C95B /* TermAndConditionTableViewCell.swift in Sources */,

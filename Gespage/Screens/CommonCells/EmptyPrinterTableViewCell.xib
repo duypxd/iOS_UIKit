@@ -47,7 +47,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="emptyPrinter" width="145" height="120"/>
+        <image name="emptyPrinter" width="180" height="164"/>
         <namedColor name="greyG300">
             <color red="0.62699997425079346" green="0.63899999856948853" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -124,7 +124,12 @@ extension PrintViewController {
     }
     
     @IBAction func buttonReleaseAction(_ sender: UIButton) {
-        print("release")
+        let storyboard = UIStoryboard(name: "PrintersStoryboard", bundle: nil)
+        if let printersVC = storyboard.instantiateViewController(withIdentifier: "PrintersViewController") as? PrintersViewController {
+            navigationController?.pushViewController(printersVC, animated: true)
+            printersVC.receivedTitle = "Select Printer"
+            printersVC.receivedPrintouts = selectedPrintouts
+        }
     }
     
     @IBAction func buttonDeleteAction(_ sender: UIButton) {
