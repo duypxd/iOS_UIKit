@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class PrintersViewController: UIViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var titlePage: UILabel!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -16,26 +19,23 @@ class PrintersViewController: UIViewController {
     
     var receivedTitle: String?
     var receivedPrintouts: [PrintoutModelResponse] = []
+    
+    let disposeBag = DisposeBag()
+    var filterDataPrinters: BehaviorRelay<[PrinterModel]> = BehaviorRelay(value: MockData.dataPrinters)
 }
 
 // MARK: Life Cycle
 extension PrintersViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
-        
         titlePage.text = receivedTitle
         
-        // register Cells
-        tableView.register(UINib(nibName: "PrinterTableViewCell", bundle: nil), forCellReuseIdentifier: "PrinterTableViewCell")
-        tableView.register(UINib(nibName: "EmptyPrinterTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyPrinterTableViewCell")
         // Hide Header Default
         navigationController?.navigationBar.isHidden = true
         
-        // Refresh
-        tableView.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        setUpTableView()
+
+        setUpSearchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,27 +58,60 @@ extension PrintersViewController {
             self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: true)
         }
     }
+    
+    private func setUpTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(UINib(nibName: "PrinterTableViewCell", bundle: nil), forCellReuseIdentifier: "PrinterTableViewCell")
+        tableView.register(UINib(nibName: "EmptyPrinterTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyPrinterTableViewCell")
+        tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    private func setUpSearchBar() {
+        searchBar.rx.text
+            .orEmpty
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] query in
+                self?.filterPrinters(query)
+                self?.tableView.reloadData()
+            }).disposed(by: disposeBag)
+    }
+    
+    private func filterPrinters(_ query: String) {
+        var filtered: [PrinterModel] = []
+        if query.isEmpty {
+            filtered = MockData.dataPrinters
+        } else {
+            filtered = MockData.dataPrinters.filter{
+                $0.printerId.localizedStandardContains(query) ||
+                $0.name.localizedStandardContains(query)
+            }
+        }
+        filterDataPrinters.accept(filtered)
+    }
 }
 
 // MARK: - Table View Printers
 extension PrintersViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if MockData.dataPrinters.isEmpty {
+        if filterDataPrinters.value.isEmpty {
             return 1
         } else {
-            return MockData.dataPrinters.count
+            return filterDataPrinters.value.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if MockData.dataPrinters.isEmpty {
+        if filterDataPrinters.value.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyPrinterTableViewCell", for: indexPath) as! EmptyPrinterTableViewCell
             cell.backgroundColor = .clear
             return cell;
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PrinterTableViewCell", for: indexPath) as! PrinterTableViewCell
             
-            let printerModel = MockData.dataPrinters[indexPath.row];
+            let printerModel = filterDataPrinters.value[indexPath.row];
             
             cell.printerId.text = printerModel.printerId
             cell.printerName.text = printerModel.name
@@ -101,7 +134,7 @@ extension PrintersViewController: UITableViewDataSource, UITableViewDelegate {
             DialogManager.shared.showConfirmReleaseDialog(
                 from: self,
                 printouts: receivedPrintouts,
-                priner: MockData.dataPrinters[indexPath.row],
+                priner: filterDataPrinters.value[indexPath.row],
                 onConfirm: {[self] in
                     dismiss(animated: true, completion: nil)
                 }

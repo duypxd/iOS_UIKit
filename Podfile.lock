@@ -3,20 +3,34 @@ PODS:
     - Charts/Core (= 4.1.0)
   - Charts/Core (4.1.0):
     - SwiftAlgorithms (~> 1.0)
+  - RxCocoa (6.5.0):
+    - RxRelay (= 6.5.0)
+    - RxSwift (= 6.5.0)
+  - RxRelay (6.5.0):
+    - RxSwift (= 6.5.0)
+  - RxSwift (6.5.0)
   - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
   - Charts
+  - RxCocoa
+  - RxSwift
 
 SPEC REPOS:
   trunk:
     - Charts
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - SwiftAlgorithms
 
 SPEC CHECKSUMS:
   Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
+  RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
+  RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: 52e05ef12750860a549c69b66a08fc8da592a3fe
+PODFILE CHECKSUM: 4fe9ca90c3e6b1089d3f5ed240b6cc94dc2ae670
 
 COCOAPODS: 1.12.1

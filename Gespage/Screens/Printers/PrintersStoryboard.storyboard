@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="H06-Gf-cY9">
-                                <rect key="frame" x="16" y="111" width="361" height="721"/>
+                                <rect key="frame" x="16" y="176" width="361" height="656"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Printer List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtt-Za-BZ6">
@@ -38,6 +38,12 @@
                                 <color key="textColor" name="primary600"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Enter search printer..." translatesAutoresizingMaskIntoConstraints="NO" id="wes-ny-2fT">
+                                <rect key="frame" x="8" y="104" width="377" height="56"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" name="infoSoft"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="infoSoft"/>
@@ -46,9 +52,12 @@
                             <constraint firstItem="1ad-gO-h3v" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leadingMargin" id="GY9-5H-DXw"/>
                             <constraint firstAttribute="bottom" secondItem="H06-Gf-cY9" secondAttribute="bottom" constant="20" id="J68-An-xga"/>
                             <constraint firstItem="1ad-gO-h3v" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" id="Wog-Ua-KaS"/>
-                            <constraint firstItem="H06-Gf-cY9" firstAttribute="top" secondItem="1ad-gO-h3v" secondAttribute="bottom" constant="16" id="ZGH-fn-XYr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dtt-Za-BZ6" secondAttribute="trailing" constant="48" id="biE-Sd-J0u"/>
+                            <constraint firstItem="wes-ny-2fT" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="8" id="e19-Kx-CFl"/>
+                            <constraint firstItem="H06-Gf-cY9" firstAttribute="top" secondItem="wes-ny-2fT" secondAttribute="bottom" constant="16" id="gVM-Ls-L1h"/>
                             <constraint firstItem="dtt-Za-BZ6" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="topMargin" constant="9" id="hF8-f0-92r"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wes-ny-2fT" secondAttribute="trailing" constant="8" id="i4b-xN-ZEY"/>
+                            <constraint firstItem="wes-ny-2fT" firstAttribute="top" secondItem="dtt-Za-BZ6" secondAttribute="bottom" constant="16" id="p9I-7z-uo5"/>
                             <constraint firstAttribute="trailing" secondItem="H06-Gf-cY9" secondAttribute="trailing" constant="16" id="wcs-r9-VaS"/>
                             <constraint firstItem="dtt-Za-BZ6" firstAttribute="leading" secondItem="1ad-gO-h3v" secondAttribute="trailing" constant="12" id="xAQ-cr-Xek"/>
                         </constraints>
@@ -57,6 +66,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="1ad-gO-h3v" id="SUs-rh-XGh"/>
+                        <outlet property="searchBar" destination="wes-ny-2fT" id="cq4-zZ-Fei"/>
                         <outlet property="tableView" destination="H06-Gf-cY9" id="ICC-AY-L8s"/>
                         <outlet property="titlePage" destination="dtt-Za-BZ6" id="duv-eU-g2D"/>
                     </connections>

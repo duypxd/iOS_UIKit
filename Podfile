@@ -7,5 +7,7 @@ target 'Gespage' do
 
   # Pods for Gespage
   pod 'Charts'
+  pod "RxSwift"
+  pod "RxCocoa"
 
 end
