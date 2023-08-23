@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct UserModel {
-    let username: String
-    let email: String
-    let fullName: String
-    let printCode: String
-    let userCredit: Double
-    let limited: Bool
-    let currency: String
-    let department: String
-    let reloadable: Bool
-    let supportEmail: String
-    let paperFormats: [String]
+struct UserModel: Codable {
+    var username: String? = nil
+    var email: String? = nil
+    var fullName: String? = nil
+    var printCode: String? = nil
+    var userCredit: Double? = 0
+    var limited: Bool? = false
+    var currency: String? = nil
+    var department: String? = nil
+    var reloadable: Bool? = false
+    var supportEmail: String? = nil
+    var paperFormats: [String]? = nil
 }

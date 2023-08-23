@@ -72,7 +72,6 @@
 		15A885732A7683D500664BF8 /* ScanStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A885722A7683D500664BF8 /* ScanStoryboard.storyboard */; };
 		15A885752A7683F400664BF8 /* MoreStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A885742A7683F400664BF8 /* MoreStoryboard.storyboard */; };
 		15A885772A76851B00664BF8 /* PrintStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15A885762A76851B00664BF8 /* PrintStoryboard.storyboard */; };
-		15A91FC02A7E40EB0063735F /* LoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A91FBF2A7E40EB0063735F /* LoginRequestModel.swift */; };
 		15ABB2F72A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ABB2F52A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift */; };
 		15ABB2F82A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15ABB2F62A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib */; };
 		15ABB2FB2A7CFA74005DCAB6 /* SignInBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ABB2F92A7CFA74005DCAB6 /* SignInBannerTableViewCell.swift */; };
@@ -99,6 +98,7 @@
 		F06540CC2A9349C000550326 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */; };
 		F06540CE2A9363E300550326 /* DialogReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */; };
 		F06540D02A9363ED00550326 /* DialogReleaseStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */; };
+		F0BA25022A9608B800198935 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BA25012A9608B800198935 /* APIManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,7 +171,6 @@
 		15A885722A7683D500664BF8 /* ScanStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScanStoryboard.storyboard; sourceTree = "<group>"; };
 		15A885742A7683F400664BF8 /* MoreStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreStoryboard.storyboard; sourceTree = "<group>"; };
 		15A885762A76851B00664BF8 /* PrintStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PrintStoryboard.storyboard; sourceTree = "<group>"; };
-		15A91FBF2A7E40EB0063735F /* LoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequestModel.swift; sourceTree = "<group>"; };
 		15ABB2F52A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyPrinterTableViewCell.swift; sourceTree = "<group>"; };
 		15ABB2F62A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyPrinterTableViewCell.xib; sourceTree = "<group>"; };
 		15ABB2F92A7CFA74005DCAB6 /* SignInBannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInBannerTableViewCell.swift; sourceTree = "<group>"; };
@@ -198,6 +197,7 @@
 		F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
 		F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogReleaseViewController.swift; sourceTree = "<group>"; };
 		F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DialogReleaseStoryboard.storyboard; sourceTree = "<group>"; };
+		F0BA25012A9608B800198935 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F3A49DEDA5FFF6B82EE9603C /* Pods-Gespage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gespage.release.xcconfig"; path = "Target Support Files/Pods-Gespage/Pods-Gespage.release.xcconfig"; sourceTree = "<group>"; };
 		FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gespage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -475,6 +475,7 @@
 		15A82A3E2A741CFC000F9194 /* Gespage */ = {
 			isa = PBXGroup;
 			children = (
+				F0BA25002A9608A300198935 /* Service */,
 				15E72F512A7E0E9700579A1F /* Common */,
 				15873F412A7B67CD00F0F59D /* MockData */,
 				15DDB43C2A7A503600499812 /* Models */,
@@ -560,7 +561,6 @@
 			isa = PBXGroup;
 			children = (
 				15DDB43D2A7A504200499812 /* PrinterModel.swift */,
-				15A91FBF2A7E40EB0063735F /* LoginRequestModel.swift */,
 				1514FB5A2A808AEA0059BEB9 /* PrintoutModel.swift */,
 				156E8E2A2A89CF630046C95B /* UserModel.swift */,
 			);
@@ -624,6 +624,14 @@
 				F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		F0BA25002A9608A300198935 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				F0BA25012A9608B800198935 /* APIManager.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -777,7 +785,6 @@
 			files = (
 				15ABB3002A7CFD8D005DCAB6 /* BalanceTableViewCell.swift in Sources */,
 				1560AF502A84A04F0027C023 /* FileTableViewCell.swift in Sources */,
-				15A91FC02A7E40EB0063735F /* LoginRequestModel.swift in Sources */,
 				156E8E362A89E7920046C95B /* AboutViewController.swift in Sources */,
 				15A82A712A743129000F9194 /* WelcomeViewController.swift in Sources */,
 				F06540C52A93496400550326 /* LoginManager.swift in Sources */,
@@ -797,6 +804,7 @@
 				15A82A402A741CFC000F9194 /* AppDelegate.swift in Sources */,
 				15E72F662A7E2D8B00579A1F /* CommonPresentationController.swift in Sources */,
 				1599477C2A75053A00A2D012 /* OnboardCell.swift in Sources */,
+				F0BA25022A9608B800198935 /* APIManager.swift in Sources */,
 				159947862A762B2800A2D012 /* HomeViewController.swift in Sources */,
 				15A82A642A7428B4000F9194 /* OnboardViewController.swift in Sources */,
 				156E8E332A89DDD30046C95B /* DialogManager.swift in Sources */,

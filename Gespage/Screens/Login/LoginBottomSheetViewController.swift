@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+
 protocol LoginBottomSheetViewControllerDelegate: AnyObject {
     func didLoginSuccessfully()
 }
@@ -23,6 +26,8 @@ class LoginBottomSheetViewController: UIViewController {
     @IBOutlet weak var bottomSheetHeightConstraint: NSLayoutConstraint!
     
     var bottomSheetHeight: CGFloat = 0
+    private var isSignedIn = false
+    let disposeBag = DisposeBag()
 }
 
 // MARK: - Onchange TextField
@@ -40,14 +45,39 @@ extension LoginBottomSheetViewController: UIViewControllerTransitioningDelegate 
     }
 
     @IBAction func onLogin(_ button: UIButton) {
+        guard let username = textFieldUsername.text,
+              let password = textFieldPassword.text else {
+            return
+        }
         
-        textFieldResignFirstResponder()
-        let bodyRequest = LoginRequestModel(
-            serverAddress: textFieldServerAddress.text ?? "", username: textFieldUsername.text ?? "", password: textFieldPassword.text ?? ""
+        APIManager.shared.performRequest(
+            for: "/auth/login",
+            method: .POST,
+            parameters: [
+                "username": username,
+                "password": password
+            ],
+            responseType: UserModel.self
         )
-        print(bodyRequest)
-        self.dismiss(animated: true, completion: nil)
-        delegate?.didLoginSuccessfully()
+        .observe(on: MainScheduler.instance)
+        .subscribe(onNext: { [self] result in
+            switch result {
+            case .success(_):
+                APIManager.shared.setAuthToken(token: "accessToken")
+                self.dismiss(animated: true, completion: nil)
+            case .failure(let error):
+                if case .httpError(_, let message) = error,
+                   let apiErrorResponse = try? JSONDecoder().decode(APIErrorResponse.self, from: message.data(using: .utf8)!) {
+                    print("API Error Message: \(apiErrorResponse.message)")
+                } else if case .decodingError(let decodingError) = error {
+                    print("Decoding error: \(decodingError.localizedDescription)")
+                } else {
+                    print("Network error: \(error.localizedDescription)")
+                }
+                // Perform any error handling or UI updates
+            }
+        })
+        .disposed(by: disposeBag)
     }
     
     // Hide the keyboard when the "Return" key is tapped

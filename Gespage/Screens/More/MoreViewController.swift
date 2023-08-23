@@ -30,7 +30,7 @@ class MoreViewController: UIViewController {
             "A3",
             " A4",
             " A5"
-          ]
+        ]
     )
     
     override func viewDidLoad() {
