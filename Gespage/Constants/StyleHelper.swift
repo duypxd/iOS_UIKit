@@ -23,9 +23,32 @@ class StyleHelper {
         layer.shadowColor = UIColor.black.cgColor
     }
     
-    static func borderTopLefTopRight(layer: CALayer, cornerRadius: CGFloat) {
-        layer.maskedCorners = [.layerMinXMinYCorner]
-        layer.cornerRadius = cornerRadius
-        layer.maskedCorners.insert(.layerMaxXMinYCorner)
+    static func applyCornerRadius(layer: CALayer, corners: UIRectCorner = .allCorners, radius: CGFloat) {
+        var cornerMask: CACornerMask = []
+
+        if corners.contains(.topLeft) {
+            cornerMask.insert(.layerMinXMinYCorner)
+        }
+
+        if corners.contains(.topRight) {
+            cornerMask.insert(.layerMaxXMinYCorner)
+        }
+
+        if corners.contains(.bottomLeft) {
+            cornerMask.insert(.layerMinXMaxYCorner)
+        }
+
+        if corners.contains(.bottomRight) {
+            cornerMask.insert(.layerMaxXMaxYCorner)
+        }
+
+        if cornerMask.isEmpty {
+            layer.cornerRadius = 0
+        } else {
+            layer.maskedCorners = cornerMask
+            layer.cornerRadius = radius
+            layer.masksToBounds = true
+        }
     }
+
 }

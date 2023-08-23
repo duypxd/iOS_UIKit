@@ -31,7 +31,7 @@ class AppBottomSheetViewController: UIViewController {
         // setup layout in bottomsheet
         titleLabel.text = bottomSheetTitle
         iOSView.layer.cornerRadius = 3
-        StyleHelper.borderTopLefTopRight(layer: bottomSheetView.layer, cornerRadius: 12)
+        StyleHelper.applyCornerRadius(layer: bottomSheetView.layer, corners: [.topLeft, .topRight], radius: 12)
         
         // Setup height bottomsheet
         bottomSheetHeightConstraint.constant = bottomSheetHeight

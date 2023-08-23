@@ -15,6 +15,7 @@ struct PrintoutModelResponse {
     let price: Double
     let date: String
     let status: String
+    let description: String
 }
 
 struct PrintoutModelRequest {

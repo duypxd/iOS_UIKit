@@ -65,6 +65,7 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
         cell.prinoutPrice.text = Formater.formatAsUSD(amount: printoutModel.price)
         cell.printoutDate.text = DateFormat.formatYYYYMMDD(printoutModel.date,outputFormat: "yyyy/MM/dd HH:mm")
         cell.printoutStatus.text = printoutModel.status
+        cell.descriptionLabel.text = printoutModel.description
         
         // Prinout Status
         printoutStatus(printoutModel.status, cell)
@@ -74,10 +75,12 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
         if selectedIDs.contains(printoutModel.printoutId) {
             cell.printoutImage.image = UIImage(named: "printoutActive")
             cell.printoutCheckbox.isHidden = false
-            cell.labelDescription.isHidden = false
+            cell.descriptionView.isHidden = false
+            StyleHelper.applyCornerRadius(layer: cell.printoutView.layer, corners: [.topLeft, .topRight], radius: 12)
         } else {
             cell.printoutImage.image = UIImage(named: "printoutInActive")
-            cell.labelDescription.isHidden = true
+            cell.descriptionView.isHidden = true
+            
         }
         
         // Check SelectedIds > 0
@@ -88,16 +91,6 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
         }
 
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let printoutModel = MockData.dataPrintouts[indexPath.row]
-        let selectedIDs = selectedPrintouts.map { $0.printoutId }
-        if selectedIDs.contains(printoutModel.printoutId) {
-            return 180
-        } else {
-            return 110
-        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

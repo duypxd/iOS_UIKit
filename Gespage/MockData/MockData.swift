@@ -29,7 +29,8 @@ struct MockData {
             colorPages: 17,
             price: 83,
             date: "2023-08-12T02:12:32.670+00:00",
-            status: "completed"
+            status: "completed",
+            description: "Gespage Mobile is a secure mobile print solution that allows you to easily print from your smartphone or tablet"
         ),
         PrintoutModelResponse(
             printoutId: 2,
@@ -38,7 +39,8 @@ struct MockData {
             colorPages: 24,
             price: 4421,
             date: "2023-07-07T02:55:32.670+00:00",
-            status: "printing"
+            status: "printing",
+            description: "Easily print to printers on your network without having to install them on your smartphone. This service is compatible with various documents such as pdf, office, images..."
         ),
         PrintoutModelResponse(
             printoutId: 3,
@@ -47,7 +49,8 @@ struct MockData {
             colorPages: 62,
             price: 9828,
             date: "2023-04-01T02:15:32.670+00:00",
-            status: "error"
+            status: "error",
+            description: "Track the environmental impact of your documents and try to improve it"
         ),
         PrintoutModelResponse(
             printoutId: 4,
@@ -56,7 +59,8 @@ struct MockData {
             colorPages: 8,
             price: 1292,
             date: "2023-08-07T02:35:32.670+00:00",
-            status: "pending"
+            status: "pending",
+            description: "Before you can proceed, you must read and accept the Terms and Conditions."
         ),
         PrintoutModelResponse(
             printoutId: 5,
@@ -65,7 +69,8 @@ struct MockData {
             colorPages: 21,
             price: 7120,
             date: "2023-08-07T02:09:34.670+00:00",
-            status: "completed"
+            status: "completed",
+            description: "1. Enter or Scan Gespage server address"
         ),
         PrintoutModelResponse(
             printoutId: 6,
@@ -74,7 +79,8 @@ struct MockData {
             colorPages: 22,
             price: 9180,
             date: "2023-11-11T04:09:12.670+00:00",
-            status: "error"
+            status: "error",
+            description: "Gespage Terms and Conditions have changed. Gespage Mobile is a secure mobile print solution that allows you to easily print from your smartphone or tablet. Easily print to printers on your network without having to install them on your smartphone. This service is compatible with various documents such as pdf, office, images..."
         ),
         PrintoutModelResponse(
             printoutId: 7,
@@ -83,7 +89,8 @@ struct MockData {
             colorPages: 17,
             price: 1800,
             date: "2023-12-24T05:09:43.670+00:00",
-            status: "completed"
+            status: "completed",
+            description: "1. Enter or Scan Gespage server address"
         ),
         PrintoutModelResponse(
             printoutId: 8,
@@ -92,7 +99,8 @@ struct MockData {
             colorPages: 12,
             price: 2180,
             date: "2023-03-27T08:58:32.670+00:00",
-            status: "pending"
+            status: "pending",
+            description: "To sign in and connect your device to Gespage Mobile service. "
         ),
     ]
 }
