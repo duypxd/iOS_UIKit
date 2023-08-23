@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class PrintersViewController: UIViewController {
+class PrintersViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var titlePage: UILabel!
@@ -69,6 +69,7 @@ extension PrintersViewController {
     }
     
     private func setUpSearchBar() {
+        searchBar.delegate = self
         searchBar.rx.text
             .orEmpty
             .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
@@ -90,6 +91,10 @@ extension PrintersViewController {
             }
         }
         filterDataPrinters.accept(filtered)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }
 

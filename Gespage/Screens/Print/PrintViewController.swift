@@ -57,7 +57,7 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.backgroundColor = .clear
         
-        let printoutModel = MockData.dataPrintouts[indexPath.row];
+        let printoutModel = MockData.dataPrintouts[indexPath.row]
         
         cell.printoutName.text = printoutModel.fileName
         cell.printoutColor.text = String(printoutModel.colorPages)
@@ -74,8 +74,10 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
         if selectedIDs.contains(printoutModel.printoutId) {
             cell.printoutImage.image = UIImage(named: "printoutActive")
             cell.printoutCheckbox.isHidden = false
+            cell.labelDescription.isHidden = false
         } else {
             cell.printoutImage.image = UIImage(named: "printoutInActive")
+            cell.labelDescription.isHidden = true
         }
         
         // Check SelectedIds > 0
@@ -88,12 +90,21 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let printoutModel = MockData.dataPrintouts[indexPath.row]
+        let selectedIDs = selectedPrintouts.map { $0.printoutId }
+        if selectedIDs.contains(printoutModel.printoutId) {
+            return 180
+        } else {
+            return 110
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let printoutModel = MockData.dataPrintouts[indexPath.row]
         onSelectPrintout(printoutModel)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
-
 }
 
 

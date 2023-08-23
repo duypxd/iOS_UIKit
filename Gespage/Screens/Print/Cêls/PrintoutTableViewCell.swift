@@ -9,6 +9,8 @@ import UIKit
 
 class PrintoutTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var labelDescription: UILabel!
+    @IBOutlet weak var stackViewCollapse: UIStackView!
     @IBOutlet weak var printoutView: UIView!
     @IBOutlet weak var printoutName: UILabel!
     @IBOutlet weak var printoutDate: UILabel!
