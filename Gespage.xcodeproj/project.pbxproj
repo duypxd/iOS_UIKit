@@ -99,6 +99,9 @@
 		F06540CE2A9363E300550326 /* DialogReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */; };
 		F06540D02A9363ED00550326 /* DialogReleaseStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */; };
 		F0BA25022A9608B800198935 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BA25012A9608B800198935 /* APIManager.swift */; };
+		F0C13DE22A9703F40069FF0A /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C13DE02A9703F40069FF0A /* TextFieldTableViewCell.swift */; };
+		F0C13DE32A9703F40069FF0A /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C13DE12A9703F40069FF0A /* TextFieldTableViewCell.xib */; };
+		F0C13DE92A9749D30069FF0A /* UserCredentialState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C13DE82A9749D30069FF0A /* UserCredentialState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -198,6 +201,9 @@
 		F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogReleaseViewController.swift; sourceTree = "<group>"; };
 		F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DialogReleaseStoryboard.storyboard; sourceTree = "<group>"; };
 		F0BA25012A9608B800198935 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		F0C13DE02A9703F40069FF0A /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		F0C13DE12A9703F40069FF0A /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
+		F0C13DE82A9749D30069FF0A /* UserCredentialState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialState.swift; sourceTree = "<group>"; };
 		F3A49DEDA5FFF6B82EE9603C /* Pods-Gespage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gespage.release.xcconfig"; path = "Target Support Files/Pods-Gespage/Pods-Gespage.release.xcconfig"; sourceTree = "<group>"; };
 		FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gespage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -475,11 +481,11 @@
 		15A82A3E2A741CFC000F9194 /* Gespage */ = {
 			isa = PBXGroup;
 			children = (
+				F0C13DE72A97497A0069FF0A /* AppState */,
 				F0BA25002A9608A300198935 /* Service */,
 				15E72F512A7E0E9700579A1F /* Common */,
 				15873F412A7B67CD00F0F59D /* MockData */,
 				15DDB43C2A7A503600499812 /* Models */,
-				15DDB4372A7A1DB800499812 /* CommonCells */,
 				156C8E732A78A56700DAE0CA /* Screens */,
 				159947752A74F93600A2D012 /* Constants */,
 				15A82A672A742C8F000F9194 /* Application */,
@@ -542,21 +548,6 @@
 			path = PrinterFavorites;
 			sourceTree = "<group>";
 		};
-		15DDB4372A7A1DB800499812 /* CommonCells */ = {
-			isa = PBXGroup;
-			children = (
-				1599477B2A75053A00A2D012 /* OnboardCell.swift */,
-				15DDB4382A7A1DD000499812 /* PrinterTableViewCell.swift */,
-				15DDB4392A7A1DD000499812 /* PrinterTableViewCell.xib */,
-				15ABB2F52A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift */,
-				15ABB2F62A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib */,
-				15ABB2F92A7CFA74005DCAB6 /* SignInBannerTableViewCell.swift */,
-				15ABB2FA2A7CFA74005DCAB6 /* SignInBannerTableViewCell.xib */,
-			);
-			name = CommonCells;
-			path = Screens/CommonCells;
-			sourceTree = "<group>";
-		};
 		15DDB43C2A7A503600499812 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +572,7 @@
 		15E72F512A7E0E9700579A1F /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F0C13DE42A9706590069FF0A /* Cells */,
 				1594A64E2A8B76A20075B612 /* BottomSheet */,
 				154EFC392A81DDCF00B33062 /* Dialog */,
 				15E72F652A7E2D8B00579A1F /* CommonPresentationController.swift */,
@@ -591,6 +583,7 @@
 		15E72F672A7E2DB400579A1F /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				F06540C42A93496400550326 /* LoginManager.swift */,
 				15E72F5F2A7E259200579A1F /* LoginBottomSheetViewController.swift */,
 				15E72F632A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard */,
 			);
@@ -619,7 +612,6 @@
 		F06540C32A93495B00550326 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				F06540C42A93496400550326 /* LoginManager.swift */,
 				F06540C92A9349B500550326 /* ProfileViewController.swift */,
 				F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */,
 			);
@@ -632,6 +624,30 @@
 				F0BA25012A9608B800198935 /* APIManager.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		F0C13DE42A9706590069FF0A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F0C13DE02A9703F40069FF0A /* TextFieldTableViewCell.swift */,
+				F0C13DE12A9703F40069FF0A /* TextFieldTableViewCell.xib */,
+				1599477B2A75053A00A2D012 /* OnboardCell.swift */,
+				15DDB4382A7A1DD000499812 /* PrinterTableViewCell.swift */,
+				15DDB4392A7A1DD000499812 /* PrinterTableViewCell.xib */,
+				15ABB2F52A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.swift */,
+				15ABB2F62A7CB8AA005DCAB6 /* EmptyPrinterTableViewCell.xib */,
+				15ABB2F92A7CFA74005DCAB6 /* SignInBannerTableViewCell.swift */,
+				15ABB2FA2A7CFA74005DCAB6 /* SignInBannerTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F0C13DE72A97497A0069FF0A /* AppState */ = {
+			isa = PBXGroup;
+			children = (
+				F0C13DE82A9749D30069FF0A /* UserCredentialState.swift */,
+			);
+			path = AppState;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -721,6 +737,7 @@
 				1560AF5A2A85215E0027C023 /* PrintOptionStoryboard.storyboard in Resources */,
 				15A82A472A741CFC000F9194 /* Main.storyboard in Resources */,
 				154EFC3F2A81DE3400B33062 /* DialogConfirmStoryboard.storyboard in Resources */,
+				F0C13DE32A9703F40069FF0A /* TextFieldTableViewCell.xib in Resources */,
 				1560AF572A84D1020027C023 /* ImageTableViewCell.xib in Resources */,
 				15E72F642A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard in Resources */,
 				152B54532A834BFB00F51E40 /* PreviewFileStoryboard.storyboard in Resources */,
@@ -831,9 +848,11 @@
 				1560AF532A84A2F00027C023 /* StyleHelper.swift in Sources */,
 				15D1E3562A7B5AFB0059C3FE /* PrintersViewController.swift in Sources */,
 				153597AF2A796BEF009C3B22 /* HomeDistributionTableViewCell.swift in Sources */,
+				F0C13DE92A9749D30069FF0A /* UserCredentialState.swift in Sources */,
 				1599478C2A762B6500A2D012 /* ScanViewController.swift in Sources */,
 				1594A6502A8B76EB0075B612 /* AppBottomSheetViewController.swift in Sources */,
 				1516E2FA2A87695700C6C1B6 /* MenuItemProfileTableViewCell.swift in Sources */,
+				F0C13DE22A9703F40069FF0A /* TextFieldTableViewCell.swift in Sources */,
 				15873F432A7B67E900F0F59D /* MockData.swift in Sources */,
 				1513A7632A8F17CF00407A51 /* DialogSuccessViewController.swift in Sources */,
 				152B54512A834AEB00F51E40 /* PreviewFileViewController.swift in Sources */,

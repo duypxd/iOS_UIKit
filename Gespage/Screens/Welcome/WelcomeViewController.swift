@@ -12,10 +12,6 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var continueGuestButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
 
-}
-
-// MARK: - View Life Cycle
-extension WelcomeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white

@@ -38,7 +38,6 @@ extension OnboardViewController {
         super.viewDidLoad()
         let firstLaunchValue = UserDefaults.standard.bool(forKey: AppDefaultsKeys.firstLaunchKey)
         let skipWelcomeValue = UserDefaults.standard.bool(forKey: AppDefaultsKeys.skipWelcomeKey)
-        print("skipWelcomeValue \(skipWelcomeValue)")
         if firstLaunchValue {
             onSkipOnboardView()
             if skipWelcomeValue {

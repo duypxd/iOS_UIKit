@@ -12,12 +12,12 @@ struct SignInModelRequest: Codable {
     let password: String
 }
 
-struct UserModelResponse: Codable {
+struct UserCredentialModel: Codable {
     var username: String? = nil
     var email: String? = nil
     var fullName: String? = nil
     var printCode: String? = nil
-    var userCredit: Double? = 0
+    var userCredit: Double? = 0.0
     var limited: Bool? = false
     var currency: String? = nil
     var department: String? = nil

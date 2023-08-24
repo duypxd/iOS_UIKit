@@ -18,15 +18,15 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var printCodeLabel: UILabel!
     
     @IBOutlet weak var avatar: UIImageView!
-    var userModel: UserModelResponse?
+    var userCredential: UserCredentialModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fullNameLabel.text = userModel?.fullName
-        departmentLabel.text = userModel?.department
-        emailLabel.text = userModel?.email
-        currentCreditLabel.text = userModel?.limited == true ? "Limited": "Unlimited"
-        printCodeLabel.text = userModel?.printCode
+        fullNameLabel.text = userCredential?.fullName
+        departmentLabel.text = userCredential?.department
+        emailLabel.text = userCredential?.email
+        currentCreditLabel.text = userCredential?.limited == true ? "Limited": "Unlimited"
+        printCodeLabel.text = userCredential?.printCode
 
         StyleHelper.commonLayer(layer: viewContainer.layer)
     }

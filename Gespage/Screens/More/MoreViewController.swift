@@ -7,6 +7,8 @@
 
 import UIKit
 import SafariServices
+import RxCocoa
+import RxSwift
 
 class MoreViewController: UIViewController {
     
@@ -15,26 +17,20 @@ class MoreViewController: UIViewController {
     @IBOutlet weak var buttonLogout: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var userModel = UserModelResponse(
-        username: "duypham",
-        email: "duy.pham+1@team.enouvo.com",
-        fullName: "Duy Pham",
-        printCode: "12345678",
-        userCredit: 999999,
-        limited: true,
-        currency: "EUR",
-        department: "eNouvo",
-        reloadable: true,
-        supportEmail: "test_gespage_support@gmail.com",
-        paperFormats: [
-            "A3",
-            " A4",
-            " A5"
-        ]
-    )
+    var userCredential: UserCredentialModel?
+    let disposed = DisposeBag()
+    var isDialog = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UserCredentialState.shared.userCredential.subscribe(onNext: { [weak self] user in
+            self?.userCredential = user
+            self?.tableView?.reloadData()
+            
+            // Hide UI
+            self?.buttonLogout.isHidden = user == nil
+        }).disposed(by: disposed)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -63,16 +59,10 @@ extension MoreViewController {
             labelConfirm: "Log out",
             backgroundColorConfirm: UIColor(named: "error")!,
             onConfirm: {
+                UserCredentialState.shared.deleteUserCredential()
                 self.dismiss(animated: true, completion: nil)
             }
         )
-    }
-}
-
-// MARK: - DialogPresentationController
-extension MoreViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: 180, isDialog: true)
     }
 }
 
@@ -91,8 +81,8 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cellMenuProfile = tableView.dequeueReusableCell(withIdentifier: "MenuItemProfileTableViewCell", for: indexPath) as! MenuItemProfileTableViewCell
             cellMenuProfile.viewContainer.layer.cornerRadius = 8
-            cellMenuProfile.labelFullName.text = userModel.fullName
-            cellMenuProfile.labelEmail.text = userModel.email
+            cellMenuProfile.labelFullName.text = userCredential?.fullName ?? "Login"
+            cellMenuProfile.labelEmail.text = userCredential?.email ?? "Please login to view Profile"
             return cellMenuProfile
         case 1:
             cellMenuItem.label.text = "Account top up"
@@ -114,10 +104,14 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let storyboard = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
-            if let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
-                profileVC.userModel = userModel
-                self.navigationController?.pushViewController(profileVC, animated: true)
+            if userCredential == nil {
+                self.openBottomSheetLogin()
+            } else {
+                let storyboard = UIStoryboard(name: "ProfileStoryboard", bundle: nil)
+                if let profileVC = storyboard.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController {
+                    profileVC.userCredential = userCredential
+                    self.navigationController?.pushViewController(profileVC, animated: true)
+                }
             }
             break
         case 1:
@@ -127,11 +121,11 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
             DialogManager.shared.showConfirmDialog(
                 from: self,
                 title: "Support",
-                message: "Contact support: \(userModel.supportEmail)",
+                message: "Contact support: \(String(describing: userCredential?.supportEmail))",
                 labelConfirm: "Contact",
                 backgroundColorConfirm: UIColor(named: "primary600")!,
                 onConfirm: {
-                    EmailManager.shared.openEmailApp(to: "duy.pham@team.enouvo.com")
+                    EmailManager.shared.openEmailApp(to: self.userCredential?.supportEmail ?? "")
                     self.dismiss(animated: true, completion: nil)
                 }
             )
@@ -145,5 +139,25 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
+    }
+}
+
+// MARK: - LoginBottomSheetViewControllerDelegate
+extension MoreViewController: UIViewControllerTransitioningDelegate, LoginBottomSheetViewControllerDelegate {
+    func openBottomSheetLogin() {
+        isDialog = false
+        LoginManager.presentBottomSheet(from: self, delegate: self)
+    }
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        if isDialog {
+            return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: 180, isDialog: true)
+        }
+        return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: isDialog ? 180 :(presented as? LoginBottomSheetViewController)?.bottomSheetHeight, isDialog: isDialog)
+    }
+    
+    func didLoginSuccessfully() {
+        isDialog = true
+        self.dismiss(animated: true, completion: nil)
     }
 }
