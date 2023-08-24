@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct UserModel: Codable {
+struct SignInModelRequest: Codable {
+    let username: String
+    let password: String
+}
+
+struct UserModelResponse: Codable {
     var username: String? = nil
     var email: String? = nil
     var fullName: String? = nil
@@ -19,4 +24,5 @@ struct UserModel: Codable {
     var reloadable: Bool? = false
     var supportEmail: String? = nil
     var paperFormats: [String]? = nil
+    var accessToken: String? = nil
 }

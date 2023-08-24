@@ -18,7 +18,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var printCodeLabel: UILabel!
     
     @IBOutlet weak var avatar: UIImageView!
-    var userModel: UserModel?
+    var userModel: UserModelResponse?
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -53,18 +53,15 @@ extension LoginBottomSheetViewController: UIViewControllerTransitioningDelegate 
         APIManager.shared.performRequest(
             for: "/auth/login",
             method: .POST,
-            parameters: [
-                "username": username,
-                "password": password
-            ],
-            responseType: UserModel.self
+            requestModel: SignInModelRequest(username: username, password: password).self,
+            responseType: UserModelResponse.self
         )
         .observe(on: MainScheduler.instance)
         .subscribe(onNext: { [self] result in
             switch result {
             case .success(_):
-                APIManager.shared.setAuthToken(token: "accessToken")
                 self.dismiss(animated: true, completion: nil)
+                self.delegate?.didLoginSuccessfully()
             case .failure(let error):
                 if case .httpError(_, let message) = error,
                    let apiErrorResponse = try? JSONDecoder().decode(APIErrorResponse.self, from: message.data(using: .utf8)!) {

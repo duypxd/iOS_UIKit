@@ -32,11 +32,26 @@ class APIManager {
     private let session = URLSession.shared
     private var authToken: String?
     
-    func setAuthToken(token: String) {
-        authToken = token
+//    func setAuthToken(token: String) {
+//        authToken = token
+//    }
+    
+    // Lấy accessToken từ Local Storage
+    private var accessToken: String? {
+        return UserDefaults.standard.string(forKey: "accessToken")
     }
     
-    func performRequest<T: Decodable>(for path: String, method: HTTPMethod, parameters: [String: Any]?, responseType: T.Type) -> Observable<Result<T, APIError>> {
+    // Lưu accessToken vào Local Storage
+    private func saveAccessToken(_ token: String) {
+        UserDefaults.standard.set(token, forKey: "accessToken")
+    }
+    
+    func performRequest<T: Decodable, R: Encodable>(
+        for path: String,
+        method: HTTPMethod,
+        requestModel: R?,
+        responseType: T.Type
+    ) -> Observable<Result<T, APIError>> {
         guard let url = URL(string: path, relativeTo: baseURL) else {
             return Observable.just(.failure(.networkError(NSError(domain: "APIManager", code: -1, userInfo: nil))))
         }
@@ -44,13 +59,19 @@ class APIManager {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         
-        if let authToken = authToken {
-            request.setValue("Bearer \(authToken)", forHTTPHeaderField: "Authorization")
+//        if let authToken = authToken {
+//            request.setValue("Bearer \(authToken)", forHTTPHeaderField: "Authorization")
+//        }
+        
+        if let accessToken = accessToken {
+            request.setValue(accessToken, forHTTPHeaderField: "cookie")
         }
         
-        if let parameters = parameters {
+        if let requestModel = requestModel {
+            // Sử dụng JSONEncoder để mã hóa requestModel thành JSON data
+            let encoder = JSONEncoder()
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters)
+            request.httpBody = try? encoder.encode(requestModel)
         }
         
         return Observable.create { observer in
@@ -65,6 +86,13 @@ class APIManager {
                     observer.onNext(.failure(.networkError(NSError(domain: "APIManager", code: -1, userInfo: nil))))
                     observer.onCompleted()
                     return
+                }
+                
+                if let cookieHeader = httpResponse.allHeaderFields["Set-Cookie"] as? String {
+                    let parts = cookieHeader.components(separatedBy: "; ")
+                    if let accessToken = parts.first?.components(separatedBy: "cartadis=").last {
+                        self.saveAccessToken(accessToken)
+                    }
                 }
                 
                 let statusCode = httpResponse.statusCode

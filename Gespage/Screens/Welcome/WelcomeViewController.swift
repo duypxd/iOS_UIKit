@@ -28,7 +28,7 @@ extension WelcomeViewController {
 extension WelcomeViewController: UIViewControllerTransitioningDelegate, LoginBottomSheetViewControllerDelegate {
     private func onReplaceMainPage() {
         navigationController?.setViewControllers([MainTabBarViewController()], animated: true)
-        UserDefaults.standard.set(true, forKey: Constants.skipWelcomeKey)
+        UserDefaults.standard.set(true, forKey: AppDefaultsKeys.skipWelcomeKey)
     }
     
     @IBAction func loginButtonAction(_ sender: UIButton) {

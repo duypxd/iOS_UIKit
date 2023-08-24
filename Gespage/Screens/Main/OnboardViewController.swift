@@ -36,8 +36,9 @@ class OnboardViewController: UIViewController {
 extension OnboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let firstLaunchValue = UserDefaults.standard.bool(forKey: Constants.firstLaunchKey)
-        let skipWelcomeValue = UserDefaults.standard.bool(forKey: Constants.skipWelcomeKey)
+        let firstLaunchValue = UserDefaults.standard.bool(forKey: AppDefaultsKeys.firstLaunchKey)
+        let skipWelcomeValue = UserDefaults.standard.bool(forKey: AppDefaultsKeys.skipWelcomeKey)
+        print("skipWelcomeValue \(skipWelcomeValue)")
         if firstLaunchValue {
             onSkipOnboardView()
             if skipWelcomeValue {
@@ -67,7 +68,7 @@ extension OnboardViewController {
 extension OnboardViewController {
     private func onReplaceMainPage() {
         navigationController?.setViewControllers([MainTabBarViewController()], animated: true)
-        UserDefaults.standard.set(true, forKey: Constants.skipWelcomeKey)
+        UserDefaults.standard.set(true, forKey: AppDefaultsKeys.skipWelcomeKey)
     }
     
     private func onSkipOnboardView() {
@@ -75,7 +76,7 @@ extension OnboardViewController {
         if let welcomeViewController = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
             navigationController?.setViewControllers([welcomeViewController], animated: true)
         }
-        UserDefaults.standard.set(true, forKey: Constants.firstLaunchKey)
+        UserDefaults.standard.set(true, forKey: AppDefaultsKeys.firstLaunchKey)
     }
     
     @IBAction func skipButtonAction(_ sender: UIButton) {

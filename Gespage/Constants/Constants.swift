@@ -7,7 +7,9 @@
 
 import UIKit
 
-struct Constants {
-    static let firstLaunchKey = "onboardLaunchKey"
+struct AppDefaultsKeys {
+    static let firstLaunchKey = "firstLaunchKey"
     static let skipWelcomeKey = "skipWelcomeKey"
+    static let accessTokenKey = "accessTokenKey"
+    static let userCredentialsKey = "userCredentialsKey"
 }

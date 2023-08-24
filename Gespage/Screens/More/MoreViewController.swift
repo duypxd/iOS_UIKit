@@ -15,7 +15,7 @@ class MoreViewController: UIViewController {
     @IBOutlet weak var buttonLogout: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var userModel = UserModel(
+    var userModel = UserModelResponse(
         username: "duypham",
         email: "duy.pham+1@team.enouvo.com",
         fullName: "Duy Pham",
