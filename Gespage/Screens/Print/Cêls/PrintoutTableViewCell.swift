@@ -24,6 +24,16 @@ class PrintoutTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionView: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    func bind(printoutModel: PrintoutModelResponse) {
+        printoutName.text = printoutModel.fileName
+        printoutColor.text = String(printoutModel.colorPages)
+        printoutBlackWhite.text = String(printoutModel.bwPages)
+        prinoutPrice.text = Formater.formatAsUSD(amount: printoutModel.price)
+        printoutDate.text = DateFormat.formatYYYYMMDD(printoutModel.date,outputFormat: "yyyy/MM/dd HH:mm")
+        printoutStatus.text = printoutModel.status
+        descriptionLabel.text = "printoutModel.description"
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         StyleHelper.applyCornerRadius(layer: printoutView.layer, corners: .allCorners, radius: 12)

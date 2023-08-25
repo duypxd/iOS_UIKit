@@ -19,9 +19,9 @@ class PrintersViewController: UIViewController, UISearchBarDelegate {
     
     var receivedTitle: String?
     var receivedPrintouts: [PrintoutModelResponse] = []
-    
-    let disposeBag = DisposeBag()
-    var filterDataPrinters: BehaviorRelay<[PrinterModel]> = BehaviorRelay(value: MockData.dataPrinters)
+    let disposed = DisposeBag()
+    var dataPrinters: [PrinterModel] = []
+    var filterDataPrinters: BehaviorRelay<[PrinterModel]> = BehaviorRelay(value: [])
 }
 
 // MARK: Life Cycle
@@ -34,8 +34,9 @@ extension PrintersViewController {
         navigationController?.navigationBar.isHidden = true
         
         setUpTableView()
-
         setUpSearchBar()
+        
+        onGetPrinters()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +47,27 @@ extension PrintersViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    private func onGetPrinters() {
+        APIManager.shared.performRequest(
+            for: "/mobileprint/printers",
+            method: .GET,
+            responseType: [PrinterModel].self
+        ).subscribe(onNext: { [self] result in
+            switch result {
+            case .success(let response):
+                let data = response.sorted {(a, b) -> Bool in return a.printerStatus < b.printerStatus }
+                
+                self.dataPrinters = data
+                self.filterDataPrinters.accept(data)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                APIManager.shared.handlerError(error: error)
+            }
+        }).disposed(by: disposed)
     }
     
     @objc private func refreshData() {
@@ -77,17 +99,17 @@ extension PrintersViewController {
             .subscribe(onNext: { [weak self] query in
                 self?.filterPrinters(query)
                 self?.tableView.reloadData()
-            }).disposed(by: disposeBag)
+            }).disposed(by: disposed)
     }
     
     private func filterPrinters(_ query: String) {
         var filtered: [PrinterModel] = []
         if query.isEmpty {
-            filtered = MockData.dataPrinters
+            filtered = dataPrinters
         } else {
-            filtered = MockData.dataPrinters.filter{
+            filtered = dataPrinters.filter{
                 $0.printerId.localizedStandardContains(query) ||
-                $0.name.localizedStandardContains(query)
+                $0.printerName.localizedStandardContains(query)
             }
         }
         filterDataPrinters.accept(filtered)
@@ -115,21 +137,7 @@ extension PrintersViewController: UITableViewDataSource, UITableViewDelegate {
             return cell;
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "PrinterTableViewCell", for: indexPath) as! PrinterTableViewCell
-            
-            let printerModel = filterDataPrinters.value[indexPath.row];
-            
-            cell.printerId.text = printerModel.printerId
-            cell.printerName.text = printerModel.name
-            cell.printerStatus.text = printerModel.status
-            
-            if printerModel.status == "Available" {
-                cell.printerStatus.textColor = UIColor(named: "sencondary600")
-                cell.iconPrinter.tintColor = UIColor(named: "primary600")
-            } else {
-                cell.printerStatus.textColor = UIColor(named: "alert")
-                cell.iconPrinter.tintColor = UIColor(named: "greyG300")
-            }
-            
+            cell.bind(printerModel: dataPrinters[indexPath.row])
             return cell
         }
     }

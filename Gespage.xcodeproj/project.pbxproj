@@ -44,7 +44,6 @@
 		156E8E3F2A8A06AD0046C95B /* AboutTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156E8E3D2A8A06AD0046C95B /* AboutTableViewCell.xib */; };
 		156E8E422A8A0AC60046C95B /* TermAndConditionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156E8E402A8A0AC60046C95B /* TermAndConditionTableViewCell.swift */; };
 		156E8E432A8A0AC60046C95B /* TermAndConditionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156E8E412A8A0AC60046C95B /* TermAndConditionTableViewCell.xib */; };
-		15873F432A7B67E900F0F59D /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15873F422A7B67E900F0F59D /* MockData.swift */; };
 		1594A6422A8B171D0075B612 /* SelectorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1594A6402A8B171D0075B612 /* SelectorTableViewCell.swift */; };
 		1594A6432A8B171D0075B612 /* SelectorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1594A6412A8B171D0075B612 /* SelectorTableViewCell.xib */; };
 		1594A6462A8B25530075B612 /* SelectorAndInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1594A6442A8B25530075B612 /* SelectorAndInputTableViewCell.swift */; };
@@ -143,7 +142,6 @@
 		156E8E3D2A8A06AD0046C95B /* AboutTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutTableViewCell.xib; sourceTree = "<group>"; };
 		156E8E402A8A0AC60046C95B /* TermAndConditionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermAndConditionTableViewCell.swift; sourceTree = "<group>"; };
 		156E8E412A8A0AC60046C95B /* TermAndConditionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermAndConditionTableViewCell.xib; sourceTree = "<group>"; };
-		15873F422A7B67E900F0F59D /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		1594A6402A8B171D0075B612 /* SelectorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTableViewCell.swift; sourceTree = "<group>"; };
 		1594A6412A8B171D0075B612 /* SelectorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectorTableViewCell.xib; sourceTree = "<group>"; };
 		1594A6442A8B25530075B612 /* SelectorAndInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorAndInputTableViewCell.swift; sourceTree = "<group>"; };
@@ -403,14 +401,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		15873F412A7B67CD00F0F59D /* MockData */ = {
-			isa = PBXGroup;
-			children = (
-				15873F422A7B67E900F0F59D /* MockData.swift */,
-			);
-			path = MockData;
-			sourceTree = "<group>";
-		};
 		1594A63F2A8B15CF0075B612 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,7 +472,6 @@
 				F0C13DE72A97497A0069FF0A /* AppState */,
 				F0BA25002A9608A300198935 /* Service */,
 				15E72F512A7E0E9700579A1F /* Common */,
-				15873F412A7B67CD00F0F59D /* MockData */,
 				15DDB43C2A7A503600499812 /* Models */,
 				156C8E732A78A56700DAE0CA /* Screens */,
 				159947752A74F93600A2D012 /* Constants */,
@@ -851,7 +840,6 @@
 				1594A6502A8B76EB0075B612 /* AppBottomSheetViewController.swift in Sources */,
 				1516E2FA2A87695700C6C1B6 /* MenuItemProfileTableViewCell.swift in Sources */,
 				F0C13DE22A9703F40069FF0A /* TextFieldTableViewCell.swift in Sources */,
-				15873F432A7B67E900F0F59D /* MockData.swift in Sources */,
 				1513A7632A8F17CF00407A51 /* DialogSuccessViewController.swift in Sources */,
 				152B54512A834AEB00F51E40 /* PreviewFileViewController.swift in Sources */,
 				156E8E2F2A89D9660046C95B /* SafariWebView.swift in Sources */,

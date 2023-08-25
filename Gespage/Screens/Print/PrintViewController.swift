@@ -24,6 +24,7 @@ class PrintViewController: UIViewController {
     var pickerImageHelper: PickerImageHelper!
     var fileSystemHelper: FileSystemHelper!
     
+    var dataPrintouts: [PrintoutModelResponse] = []
     let disposed = DisposeBag()
 
     override func viewDidLoad() {
@@ -49,14 +50,16 @@ class PrintViewController: UIViewController {
     
     private func onGetPrintous() {
         APIManager.shared.performRequest(
-            for: "mobileprint/printouts",
+            for: "/mobileprint/printouts",
             method: .GET,
-            responseType: PrintoutModelResponse.self
+            responseType: [PrintoutModelResponse].self
         ).subscribe(onNext: { [self] result in
             switch result {
-                
             case .success(let response):
-                print("response \(response)")
+                self.dataPrintouts = response
+                DispatchQueue.main.sync {
+                    self.tableView.reloadData()
+                }
             case .failure(let error):
                 APIManager.shared.handlerError(error: error)
             }
@@ -67,7 +70,7 @@ class PrintViewController: UIViewController {
 // MARK: - UITableView
 extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MockData.dataPrintouts.count
+        return dataPrintouts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,15 +82,8 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.backgroundColor = .clear
         
-        let printoutModel = MockData.dataPrintouts[indexPath.row]
-        
-        cell.printoutName.text = printoutModel.fileName
-        cell.printoutColor.text = String(printoutModel.colorPages)
-        cell.printoutBlackWhite.text = String(printoutModel.bwPages)
-        cell.prinoutPrice.text = Formater.formatAsUSD(amount: printoutModel.price)
-        cell.printoutDate.text = DateFormat.formatYYYYMMDD(printoutModel.date,outputFormat: "yyyy/MM/dd HH:mm")
-        cell.printoutStatus.text = printoutModel.status
-        cell.descriptionLabel.text = printoutModel.description
+        let printoutModel = dataPrintouts[indexPath.row]
+        cell.bind(printoutModel: printoutModel)
         
         // Prinout Status
         printoutStatus(printoutModel.status, cell)
@@ -116,7 +112,7 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let printoutModel = MockData.dataPrintouts[indexPath.row]
+        let printoutModel = dataPrintouts[indexPath.row]
         onSelectPrintout(printoutModel)
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
@@ -232,7 +228,7 @@ extension PrintViewController {
             
         }
         
-        if selectedPrintouts.count == MockData.dataPrintouts.count {
+        if selectedPrintouts.count == dataPrintouts.count {
             setSelectAllStyle("Deselect All", "error")
         } else {
             setSelectAllStyle("Select All", "greyG100")
@@ -249,8 +245,8 @@ extension PrintViewController {
     }
     
     private func selectAllPrintout() {
-        if selectedPrintouts.count != MockData.dataPrintouts.count {
-            selectedPrintouts = MockData.dataPrintouts
+        if selectedPrintouts.count != dataPrintouts.count {
+            selectedPrintouts = dataPrintouts
             setSelectAllStyle("Deselect All", "error")
         } else {
             setSelectAllStyle("Select All", "greyG100")

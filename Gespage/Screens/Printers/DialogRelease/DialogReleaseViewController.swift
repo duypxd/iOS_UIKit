@@ -43,12 +43,12 @@ class DialogReleaseViewController: UIViewController {
         
         StyleHelper.commonLayer(layer: dialogView.layer)
         
-        printerNameLabel.text = receivedPrinter?.name
+        printerNameLabel.text = receivedPrinter?.printerName
         printerIdLabel.text = receivedPrinter?.printerId
         documentsLabel.text = "Document release (\(receivedPrintouts.count))"
         // Status Style
-        printerStatusLabel.text = receivedPrinter?.status
-        if receivedPrinter?.status == "Available" {
+        printerStatusLabel.text = receivedPrinter?.printerStatus == 0 ? "Available" : "UnAvailable"
+        if receivedPrinter?.printerStatus == 0 {
             printerStatusLabel.textColor = UIColor(named: "sencondary600")
         } else {
             printerStatusLabel.textColor = UIColor(named: "alert")

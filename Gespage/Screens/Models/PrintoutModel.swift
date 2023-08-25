@@ -8,14 +8,13 @@
 import Foundation
 
 struct PrintoutModelResponse: Decodable {
-    let printoutId: Int
-    let fileName: String
-    let bwPages: Int
-    let colorPages: Int
-    let price: Double
-    let date: String
-    let status: String
-    let description: String
+    var printoutId: Int
+    var fileName: String
+    var bwPages: Int
+    var colorPages: Int
+    var price: Double
+    var date: String
+    var status: String
 }
 
 struct PrintoutModelRequest: Decodable {

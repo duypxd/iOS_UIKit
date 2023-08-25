@@ -59,10 +59,6 @@ class APIManager {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         
-//        if let authToken = authToken {
-//            request.setValue("Bearer \(authToken)", forHTTPHeaderField: "Authorization")
-//        }
-        
         if let accessToken = accessToken {
             request.setValue(accessToken, forHTTPHeaderField: "cookie")
         }
@@ -90,8 +86,7 @@ class APIManager {
                 }
                 
                 if let cookieHeader = httpResponse.allHeaderFields["Set-Cookie"] as? String {
-                    let parts = cookieHeader.components(separatedBy: "; ")
-                    if let accessToken = parts.first?.components(separatedBy: "cartadis=").last {
+                    if let accessToken = cookieHeader.components(separatedBy: "; ").first {
                         self.saveAccessToken(accessToken)
                     }
                 }
@@ -99,6 +94,7 @@ class APIManager {
                 let statusCode = httpResponse.statusCode
                 if (200..<300).contains(statusCode), let data = data {
                     do {
+                        print(String(data: data, encoding: .utf8))
                         let decodedResponse = try JSONDecoder().decode(responseType, from: data)
                         observer.onNext(.success(decodedResponse))
                         observer.onCompleted()

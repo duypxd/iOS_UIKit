@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct PrinterModel {
+struct PrinterModel: Decodable {
     let printerId: String
-    let name: String
-    let status: String
+    let printerName: String
+    let printerStatus: Int
+    let printerLocations: String
 }
