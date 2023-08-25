@@ -90,7 +90,7 @@
 		15E72F602A7E259200579A1F /* LoginBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E72F5F2A7E259200579A1F /* LoginBottomSheetViewController.swift */; };
 		15E72F642A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E72F632A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard */; };
 		15E72F662A7E2D8B00579A1F /* CommonPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E72F652A7E2D8B00579A1F /* CommonPresentationController.swift */; };
-		E1CF16DAE54A4388323957C2 /* Pods_Gespage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */; };
+		EEAE2B642332190353B4A010 /* Pods_Gespage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC6F010CFE5408A23C9DFE3 /* Pods_Gespage.framework */; };
 		F00E56462A946D940068859A /* LabelDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E56442A946D940068859A /* LabelDocumentTableViewCell.swift */; };
 		F00E56472A946D940068859A /* LabelDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F00E56452A946D940068859A /* LabelDocumentTableViewCell.xib */; };
 		F06540C52A93496400550326 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540C42A93496400550326 /* LoginManager.swift */; };
@@ -116,7 +116,6 @@
 		1516E2F82A87695700C6C1B6 /* MenuItemProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemProfileTableViewCell.swift; sourceTree = "<group>"; };
 		1516E2F92A87695700C6C1B6 /* MenuItemProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuItemProfileTableViewCell.xib; sourceTree = "<group>"; };
 		15190AB42A7C034A00D5FA3D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = System/Library/Frameworks/Charts.framework; sourceTree = SDKROOT; };
-		15190AB62A7C099800D5FA3D /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		152B54502A834AEB00F51E40 /* PreviewFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewFileViewController.swift; sourceTree = "<group>"; };
 		152B54522A834BFB00F51E40 /* PreviewFileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreviewFileStoryboard.storyboard; sourceTree = "<group>"; };
 		153597AD2A796BEF009C3B22 /* HomeDistributionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDistributionTableViewCell.swift; sourceTree = "<group>"; };
@@ -193,6 +192,7 @@
 		15E72F632A7E26E900579A1F /* LoginBottomSheetStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginBottomSheetStoryboard.storyboard; sourceTree = "<group>"; };
 		15E72F652A7E2D8B00579A1F /* CommonPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPresentationController.swift; sourceTree = "<group>"; };
 		A33A9C0863757E249CCC5599 /* Pods-Gespage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gespage.debug.xcconfig"; path = "Target Support Files/Pods-Gespage/Pods-Gespage.debug.xcconfig"; sourceTree = "<group>"; };
+		ACC6F010CFE5408A23C9DFE3 /* Pods_Gespage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gespage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00E56442A946D940068859A /* LabelDocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDocumentTableViewCell.swift; sourceTree = "<group>"; };
 		F00E56452A946D940068859A /* LabelDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelDocumentTableViewCell.xib; sourceTree = "<group>"; };
 		F06540C42A93496400550326 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
@@ -205,7 +205,6 @@
 		F0C13DE12A9703F40069FF0A /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
 		F0C13DE82A9749D30069FF0A /* UserCredentialState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentialState.swift; sourceTree = "<group>"; };
 		F3A49DEDA5FFF6B82EE9603C /* Pods-Gespage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gespage.release.xcconfig"; path = "Target Support Files/Pods-Gespage/Pods-Gespage.release.xcconfig"; sourceTree = "<group>"; };
-		FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gespage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,7 +212,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1CF16DAE54A4388323957C2 /* Pods_Gespage.framework in Frameworks */,
+				EEAE2B642332190353B4A010 /* Pods_Gespage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,9 +222,8 @@
 		038793DD9E389BB21C9464D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				15190AB62A7C099800D5FA3D /* Charts.framework */,
 				15190AB42A7C034A00D5FA3D /* Charts.framework */,
-				FB42F57F02E734B60B1D3080 /* Pods_Gespage.framework */,
+				ACC6F010CFE5408A23C9DFE3 /* Pods_Gespage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

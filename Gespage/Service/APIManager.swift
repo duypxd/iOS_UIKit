@@ -27,9 +27,9 @@ struct APIErrorResponse: Codable {
 
 class APIManager {
     static let shared = APIManager()
+    private let sessionDelegate = SessionDelegate()
     
     private let baseURL = URL(string: "https://mobile-app.gespage.com:8443")!
-    private let session = URLSession.shared
     private var authToken: String?
     
 //    func setAuthToken(token: String) {
@@ -75,7 +75,8 @@ class APIManager {
         }
         
         return Observable.create { observer in
-            let task = self.session.dataTask(with: request) { data, response, error in
+            let session = URLSession(configuration: .default, delegate: self.sessionDelegate, delegateQueue: nil)
+            let task = session.dataTask(with: request) { data, response, error in
                 if let error = error {
                     observer.onNext(.failure(.networkError(error)))
                     observer.onCompleted()
@@ -140,5 +141,18 @@ class APIManager {
             print("Network error: \(error.localizedDescription)")
         }
 
+    }
+}
+
+class SessionDelegate: NSObject, URLSessionDelegate {
+    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge,
+                    completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust {
+            if let serverTrust = challenge.protectionSpace.serverTrust {
+                completionHandler(.useCredential, URLCredential(trust: serverTrust))
+            }
+        } else {
+            completionHandler(.performDefaultHandling, nil)
+        }
     }
 }
