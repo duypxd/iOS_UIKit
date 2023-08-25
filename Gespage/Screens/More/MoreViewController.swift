@@ -10,16 +10,46 @@ import SafariServices
 import RxCocoa
 import RxSwift
 
-class MoreViewController: UIViewController {
-    
-    // Init User Model
+struct MenuItemModel {
+    let identifier: String
+    let label: String
+    let iconName: String
+}
 
+enum TableViewCellIdentifier {
+    case profile(model: MenuItemModel)
+    case accountTopUp(model: MenuItemModel)
+    case contactSupport(model: MenuItemModel)
+    case about(model: MenuItemModel)
+    
+    var model: MenuItemModel {
+        switch self {
+        case .profile(let info),
+            .accountTopUp(let info),
+            .contactSupport(let info),
+            .about(let info):
+            return info
+        }
+    }
+}
+
+let cellIdentifiers: [TableViewCellIdentifier] = [
+    .profile(model: MenuItemModel(identifier: "MenuItemProfileTableViewCell", label: "Login", iconName: "")),
+    .accountTopUp(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Account top up", iconName: "creditCard")),
+    .contactSupport(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Contact support", iconName: "chatCircleDots")),
+    .about(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "About", iconName: "info"))
+]
+
+
+class MoreViewController: UIViewController {
     @IBOutlet weak var buttonLogout: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     var userCredential: UserCredentialModel?
     let disposed = DisposeBag()
     var isDialog = true
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +69,8 @@ class MoreViewController: UIViewController {
         buttonLogout.layer.borderWidth = 1
         buttonLogout.layer.borderColor = UIColor(named: "primary600")?.cgColor
         
-        let cellIdentifiers = [
-            "MenuItemProfileTableViewCell",
-            "MenuItemTableViewCell"
-        ]
         for cellIdentifier in cellIdentifiers {
-            tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+            tableView.register(UINib(nibName: cellIdentifier.model.identifier, bundle: nil), forCellReuseIdentifier: cellIdentifier.model.identifier)
         }
     }
 }
@@ -69,35 +95,26 @@ extension MoreViewController {
 // MARK: - Table view
 extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return cellIdentifiers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = cellIdentifiers[indexPath.row]
         
-        let cellMenuItem = tableView.dequeueReusableCell(withIdentifier: "MenuItemTableViewCell", for: indexPath) as! MenuItemTableViewCell
-        cellMenuItem.viewContainer.layer.cornerRadius = 8
-        
-        switch indexPath.row {
-        case 0:
-            let cellMenuProfile = tableView.dequeueReusableCell(withIdentifier: "MenuItemProfileTableViewCell", for: indexPath) as! MenuItemProfileTableViewCell
-            cellMenuProfile.viewContainer.layer.cornerRadius = 8
-            cellMenuProfile.labelFullName.text = userCredential?.fullName ?? "Login"
-            cellMenuProfile.labelEmail.text = userCredential?.email ?? "Please login to view Profile"
-            return cellMenuProfile
-        case 1:
-            cellMenuItem.label.text = "Account top up"
-            cellMenuItem.firstIcon.image = UIImage(named: "creditCard")
-            return cellMenuItem
-        case 2:
-            cellMenuItem.label.text = "Contact support"
-            cellMenuItem.firstIcon.image = UIImage(named: "chatCircleDots")
-            return cellMenuItem
-        case 3:
-            cellMenuItem.label.text = "About"
-            cellMenuItem.firstIcon.image = UIImage(named: "info")
-            return cellMenuItem
-        default:
-            return UITableViewCell()
+        switch cellIdentifier {
+        case .profile(let model):
+            let cell = tableView.dequeueReusableCell(withIdentifier: model.identifier, for: indexPath) as! MenuItemProfileTableViewCell
+            cell.viewContainer.layer.cornerRadius = 8
+            cell.labelFullName.text = model.label
+            cell.labelEmail.text = userCredential?.email ?? "Please login to view Profile"
+            return cell
+            
+        case .accountTopUp(let model), .contactSupport(let model), .about(let model):
+            let cell = tableView.dequeueReusableCell(withIdentifier: model.identifier, for: indexPath) as! MenuItemTableViewCell
+            cell.viewContainer.layer.cornerRadius = 8
+            cell.label.text = model.label
+            cell.firstIcon.image = UIImage(named: model.iconName)
+            return cell
         }
     }
     
@@ -121,7 +138,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
             DialogManager.shared.showConfirmDialog(
                 from: self,
                 title: "Support",
-                message: "Contact support: \(String(describing: userCredential?.supportEmail))",
+                message: "Contact support: \(self.userCredential?.supportEmail ?? "")",
                 labelConfirm: "Contact",
                 backgroundColorConfirm: UIColor(named: "primary600")!,
                 onConfirm: {

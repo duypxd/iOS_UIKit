@@ -13,16 +13,16 @@ struct SignInModelRequest: Codable {
 }
 
 struct UserCredentialModel: Codable {
-    var username: String? = nil
-    var email: String? = nil
-    var fullName: String? = nil
-    var printCode: String? = nil
-    var userCredit: Double? = 0.0
-    var limited: Bool? = false
-    var currency: String? = nil
-    var department: String? = nil
-    var reloadable: Bool? = false
-    var supportEmail: String? = nil
-    var paperFormats: [String]? = nil
+    var username: String
+    var email: String
+    var fullName: String
+    var printCode: String
+    var userCredit: Double
+    var limited: Bool
+    var currency: String
+    var department: String
+    var reloadable: Bool
+    var supportEmail: String
+    var paperFormats: [String]
     var accessToken: String? = nil
 }
