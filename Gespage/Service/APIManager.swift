@@ -46,10 +46,10 @@ class APIManager {
         UserDefaults.standard.set(token, forKey: "accessToken")
     }
     
-    func performRequest<T: Decodable, R: Encodable>(
+    func performRequest<T: Decodable>(
         for path: String,
         method: HTTPMethod,
-        requestModel: R?,
+        requestModel: Encodable? = nil,
         responseType: T.Type
     ) -> Observable<Result<T, APIError>> {
         guard let url = URL(string: path, relativeTo: baseURL) else {
@@ -128,5 +128,17 @@ class APIManager {
                 task.cancel()
             }
         }
+    }
+    
+    func handlerError(error: APIError) {
+        if case .httpError(_, let message) = error,
+           let apiErrorResponse = try? JSONDecoder().decode(APIErrorResponse.self, from: message.data(using: .utf8)!) {
+            print("API Error Message: \(apiErrorResponse.message)")
+        } else if case .decodingError(let decodingError) = error {
+            print("Decoding error: \(decodingError.localizedDescription)")
+        } else {
+            print("Network error: \(error.localizedDescription)")
+        }
+
     }
 }

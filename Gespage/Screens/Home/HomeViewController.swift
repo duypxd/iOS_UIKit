@@ -40,9 +40,11 @@ class HomeViewController: UIViewController {
                         self?.cellIdentifiers.remove(at: indexToRemove)
                     }
                 } else {
+                    self?.tableView.register(UINib(nibName: "SignInBannerTableViewCell", bundle: nil), forCellReuseIdentifier: "SignInBannerTableViewCell")
                     self?.cellIdentifiers.insert(TableViewCellIdentifier.signInBanner.rawValue, at: 1)
                 }
                 self?.tableView?.reloadData()
+                
             })
             .disposed(by: disposeBag)
         

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class PrintViewController: UIViewController {
     @IBOutlet weak var buttonRelease: UIButton!
@@ -21,9 +23,13 @@ class PrintViewController: UIViewController {
     var selectedPrintouts: [PrintoutModelResponse] = []
     var pickerImageHelper: PickerImageHelper!
     var fileSystemHelper: FileSystemHelper!
+    
+    let disposed = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        onGetPrintous()
+        
         pickerImageHelper = PickerImageHelper(viewController: self)
         fileSystemHelper = FileSystemHelper(viewController: self)
         
@@ -39,6 +45,22 @@ class PrintViewController: UIViewController {
         tableView.dataSource = self
         // Register Cells
         tableView.register(UINib(nibName: "PrintoutTableViewCell", bundle: nil), forCellReuseIdentifier: "PrintoutTableViewCell")
+    }
+    
+    private func onGetPrintous() {
+        APIManager.shared.performRequest(
+            for: "mobileprint/printouts",
+            method: .GET,
+            responseType: PrintoutModelResponse.self
+        ).subscribe(onNext: { [self] result in
+            switch result {
+                
+            case .success(let response):
+                print("response \(response)")
+            case .failure(let error):
+                APIManager.shared.handlerError(error: error)
+            }
+        }).disposed(by: disposed)
     }
 }
 

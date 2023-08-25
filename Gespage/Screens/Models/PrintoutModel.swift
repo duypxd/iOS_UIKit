@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PrintoutModelResponse {
+struct PrintoutModelResponse: Decodable {
     let printoutId: Int
     let fileName: String
     let bwPages: Int
@@ -18,7 +18,7 @@ struct PrintoutModelResponse {
     let description: String
 }
 
-struct PrintoutModelRequest {
+struct PrintoutModelRequest: Decodable {
     var copies: String
     var color: String
     var format: String

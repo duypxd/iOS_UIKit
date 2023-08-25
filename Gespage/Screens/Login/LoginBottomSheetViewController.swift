@@ -114,19 +114,12 @@ extension LoginBottomSheetViewController: UIViewControllerTransitioningDelegate 
                 case .success(let response):
                     stopLoading()
                     UserCredentialState.shared.saveUserCredential(response)
+                    self.dismiss(animated: true, completion: nil)
                     self.delegate?.didLoginSuccessfully()
                 case .failure(let error):
                     stopLoading()
                     
-                    if case .httpError(_, let message) = error,
-                       let apiErrorResponse = try? JSONDecoder().decode(APIErrorResponse.self, from: message.data(using: .utf8)!) {
-                        print("API Error Message: \(apiErrorResponse.message)")
-                    } else if case .decodingError(let decodingError) = error {
-                        print("Decoding error: \(decodingError.localizedDescription)")
-                    } else {
-                        print("Network error: \(error.localizedDescription)")
-                    }
-                    // Perform any error handling or UI updates
+                    APIManager.shared.handlerError(error: error)
                 }
             })
             .disposed(by: disposeBag)

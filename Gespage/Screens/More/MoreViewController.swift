@@ -18,26 +18,21 @@ struct MenuItemModel {
 
 enum TableViewCellIdentifier {
     case profile(model: MenuItemModel)
-    case accountTopUp(model: MenuItemModel)
-    case contactSupport(model: MenuItemModel)
-    case about(model: MenuItemModel)
+    case menuItem(model: MenuItemModel)
     
     var model: MenuItemModel {
         switch self {
-        case .profile(let info),
-            .accountTopUp(let info),
-            .contactSupport(let info),
-            .about(let info):
-            return info
+        case .profile(let model), .menuItem(let model):
+            return model
         }
     }
 }
 
 let cellIdentifiers: [TableViewCellIdentifier] = [
     .profile(model: MenuItemModel(identifier: "MenuItemProfileTableViewCell", label: "Login", iconName: "")),
-    .accountTopUp(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Account top up", iconName: "creditCard")),
-    .contactSupport(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Contact support", iconName: "chatCircleDots")),
-    .about(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "About", iconName: "info"))
+    .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Account top up", iconName: "creditCard")),
+    .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Contact support", iconName: "chatCircleDots")),
+    .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "About", iconName: "info"))
 ]
 
 
@@ -104,16 +99,15 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         switch cellIdentifier {
         case .profile(let model):
             let cell = tableView.dequeueReusableCell(withIdentifier: model.identifier, for: indexPath) as! MenuItemProfileTableViewCell
-            cell.viewContainer.layer.cornerRadius = 8
-            cell.labelFullName.text = model.label
-            cell.labelEmail.text = userCredential?.email ?? "Please login to view Profile"
+            cell.bind(
+                fullName: userCredential?.fullName ?? model.label,
+                email: userCredential?.email ?? "Please login to view Profile"
+            )
             return cell
             
-        case .accountTopUp(let model), .contactSupport(let model), .about(let model):
+        case .menuItem(let model):
             let cell = tableView.dequeueReusableCell(withIdentifier: model.identifier, for: indexPath) as! MenuItemTableViewCell
-            cell.viewContainer.layer.cornerRadius = 8
-            cell.label.text = model.label
-            cell.firstIcon.image = UIImage(named: model.iconName)
+            cell.bind(labelName: model.label, iconName: model.iconName)
             return cell
         }
     }

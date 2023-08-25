@@ -13,9 +13,14 @@ class MenuItemTableViewCell: UITableViewCell {
     @IBOutlet weak var firstIcon: UIImageView!
     @IBOutlet weak var label: UILabel!
     
+    func bind(labelName: String, iconName: String){
+        label.text = labelName
+        firstIcon.image = UIImage(named: iconName)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        viewContainer.layer.cornerRadius = 8
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
