@@ -160,6 +160,7 @@ extension LoginBottomSheetViewController {
             } else {
                 showErrorMessage(for: nil, in: rowIndex)
             }
+            self.updateTableView()
         }
         return isValid
     }
@@ -221,21 +222,18 @@ extension LoginBottomSheetViewController: UITableViewDelegate, UITableViewDataSo
             configureCell(cell, title: "Gespage Server Address", placeholder: "Enter your server address", keyboardType: .URL) { value in
                 self.serverAddressChanged = value
                 let _ = self.validateForm([0])
-                self.updateTableView()
             }
             break
         case 1:
             configureCell(cell, title: "Username", placeholder: "Enter your username") { value in
                 self.usernameChanged = value
                 let _ = self.validateForm([1])
-                self.updateTableView()
             }
             break
         case 2:
             configureCell(cell, title: "Password", placeholder: "Enter your password", isSecureTextEntry: true) { value in
                 self.passwordChanged = value
                 let _ = self.validateForm([2])
-                self.updateTableView()
             }
             break
         default:

@@ -12,6 +12,12 @@ class ImageTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var fileImageView: UIImageView!
     
+    func bind(url: URL) {
+        if let image = UIImage(contentsOfFile: url.path) {
+            fileImageView.image = image
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         StyleHelper.commonLayer(layer: containerView.layer)

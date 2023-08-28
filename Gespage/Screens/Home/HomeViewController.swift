@@ -20,8 +20,9 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
 
-    let disposeBag = DisposeBag()
+    let disposed = DisposeBag()
     var userCredential: UserCredentialModel?
+    var statsModel: StatsModelResponse?
     
     var cellIdentifiers = [
         TableViewCellIdentifier.balance.rawValue,
@@ -32,21 +33,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserCredentialState.shared.userCredential
-            .subscribe(onNext: { [weak self] user in
-                self?.userCredential = user
-                if user != nil {
-                    if let indexToRemove = self?.cellIdentifiers.firstIndex(of: TableViewCellIdentifier.signInBanner.rawValue) {
-                        self?.cellIdentifiers.remove(at: indexToRemove)
-                    }
-                } else {
-                    self?.tableView.register(UINib(nibName: "SignInBannerTableViewCell", bundle: nil), forCellReuseIdentifier: "SignInBannerTableViewCell")
-                    self?.cellIdentifiers.insert(TableViewCellIdentifier.signInBanner.rawValue, at: 1)
-                }
-                self?.tableView?.reloadData()
-                
-            })
-            .disposed(by: disposeBag)
+        checkPermissionSignIn()
+        getUserCredential()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -54,6 +42,65 @@ class HomeViewController: UIViewController {
         for cellIdentifier in cellIdentifiers {
             tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         }
+    }
+}
+
+// MARK: - Call APIs
+extension HomeViewController {
+    private func getStatsFromAPI() {
+        APIManager.shared.performRequest(
+            for: "/mobileprint/stats",
+            method: .GET,
+            responseType: StatsModelResponse.self
+        ).subscribe(onNext: { [self] result in
+            switch result {
+            case .success(let response):
+                self.statsModel = response
+                
+                DispatchQueue.main.sync {
+                    tableView.reloadData()
+                }
+            case .failure(let error):
+                APIManager.shared.handlerError(error: error)
+            }
+        }).disposed(by: disposed)
+    }
+    
+    private func getUserCredential() {
+        APIManager.shared.performRequest(
+            for: "/mobileprint/user",
+            method: .GET,
+            responseType: UserCredentialModel?.self
+        ).subscribe(onNext: { [self] result in
+            switch result {
+            case .success(let user):
+                if user != nil {
+                    self.userCredential = user
+                }
+            case .failure(let error):
+                APIManager.shared.handlerError(error: error)
+            }
+        }).disposed(by: disposed)
+    }
+    
+    private func checkPermissionSignIn() {
+        UserCredentialState.shared.userCredential
+            .subscribe(onNext: { [weak self] user in
+                self?.userCredential = user
+                if user != nil {
+                    if let indexToRemove = self?.cellIdentifiers.firstIndex(of: TableViewCellIdentifier.signInBanner.rawValue) {
+                        self?.cellIdentifiers.remove(at: indexToRemove)
+                    }
+                    self?.getStatsFromAPI()
+                } else {
+                    self?.tableView.register(UINib(nibName: "SignInBannerTableViewCell", bundle: nil), forCellReuseIdentifier: "SignInBannerTableViewCell")
+                    self?.cellIdentifiers.insert(TableViewCellIdentifier.signInBanner.rawValue, at: 1)
+                    
+                    self?.statsModel = nil
+                }
+                self?.tableView?.reloadData()
+            })
+            .disposed(by: disposed)
     }
 }
 
@@ -69,14 +116,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         switch TableViewCellIdentifier(rawValue: cellIndentifier) {
         case .balance:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier, for: indexPath) as! BalanceTableViewCell
-                cell.backgroundColor = .clear
-                cell.username.text = userCredential?.fullName ?? "Gespage User"
-                cell.balance.text = Formater.formatAsUSD(amount: userCredential?.userCredit ?? 0.0)
+                cell.bind(userCredential: userCredential)
                 return cell
             
         case .signInBanner:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier, for: indexPath) as! SignInBannerTableViewCell
-                cell.backgroundColor = .clear
+            
                 cell.delegate = self
                 return cell
             
@@ -85,24 +130,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
                     withIdentifier: cellIndentifier,
                     for: indexPath) as! HomeTableViewCellEcologicalCell
             
-                    cell.backgroundColor = .clear
-            
-                    StyleHelper.commonLayer(layer: cell.savedTreesView.layer)
-                    StyleHelper.commonLayer(layer: cell.savedWaterView.layer)
-                    StyleHelper.commonLayer(layer: cell.greenScoreView.layer)
+                    cell.bind(statsModel)
                return cell
             
         case .homeDistribution:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier, for: indexPath) as! HomeDistributionTableViewCell
-            
-                cell.backgroundColor = .clear
-                StyleHelper.commonLayer(layer: cell.distributionView.layer)
-            
+                cell.setupPieChart([statsModel?.prints ?? 0.0, statsModel?.copies ?? 0.0, statsModel?.scans ?? 0.0])
                 return cell
         case .homePrinterFavorites:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier, for: indexPath) as! HomePrinterFavoritesTableViewCell
-
-                cell.backgroundColor = .clear
                 cell.delegate = self
             
                 return cell

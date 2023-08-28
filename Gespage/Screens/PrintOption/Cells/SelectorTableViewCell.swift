@@ -14,6 +14,22 @@ class SelectorTableViewCell: UITableViewCell {
     
     var tapAction: (() -> Void)? // Closure to handle the tap action
     
+    func bind(indexPath: IndexPath, printoutModelRequest: PrintoutModelRequest?) {
+        switch indexPath.row {
+        case 1:
+            titleLabel?.text = "Orientation"
+            selectorLabel.text = printoutModelRequest?.landscape
+        case 2:
+            titleLabel?.text = "Color"
+            selectorLabel.text = printoutModelRequest?.color
+        case 3:
+            titleLabel?.text = "Two-side"
+            selectorLabel.text = printoutModelRequest?.duplex
+        default:
+            break
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         StyleHelper.selectorLayer(layer: selectorView.layer)

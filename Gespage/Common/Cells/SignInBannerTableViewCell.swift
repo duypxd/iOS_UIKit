@@ -19,7 +19,7 @@ class SignInBannerTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        backgroundColor = .clear
         // Initialization code
     }
 

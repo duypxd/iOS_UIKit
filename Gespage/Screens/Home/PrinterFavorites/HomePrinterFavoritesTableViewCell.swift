@@ -24,8 +24,8 @@ class HomePrinterFavoritesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        onGetPrinters()
-        
+        checkPermissionSignIn()
+        backgroundColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -43,6 +43,22 @@ class HomePrinterFavoritesTableViewCell: UITableViewCell {
     
     @IBAction func onViewAllPrintersAction(_ sender: UIButton) {
         delegate?.onViewAllPrintersTapped()
+    }
+}
+
+// MARK: - Call APIs
+extension HomePrinterFavoritesTableViewCell {
+    private func checkPermissionSignIn() {
+        UserCredentialState.shared.userCredential
+            .subscribe(onNext: { [weak self] user in
+                if user != nil {
+                    self?.onGetPrinters()
+                } else {
+                    self?.dataPrinters = []
+                }
+                self?.tableView?.reloadData()
+            })
+            .disposed(by: disposed)
     }
     
     private func onGetPrinters() {
@@ -64,7 +80,6 @@ class HomePrinterFavoritesTableViewCell: UITableViewCell {
             }
         }).disposed(by: disposed)
     }
-    
 }
 
 // MARK: - Life Cycle Table View

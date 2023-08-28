@@ -36,7 +36,7 @@ extension PrintersViewController {
         setUpTableView()
         setUpSearchBar()
         
-        onGetPrinters()
+        checkPermissionSignIn()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,33 +49,11 @@ extension PrintersViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
-    private func onGetPrinters() {
-        APIManager.shared.performRequest(
-            for: "/mobileprint/printers",
-            method: .GET,
-            responseType: [PrinterModel].self
-        ).subscribe(onNext: { [self] result in
-            switch result {
-            case .success(let response):
-                let data = response.sorted {(a, b) -> Bool in return a.printerStatus < b.printerStatus }
-                
-                self.dataPrinters = data
-                self.filterDataPrinters.accept(data)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            case .failure(let error):
-                APIManager.shared.handlerError(error: error)
-            }
-        }).disposed(by: disposed)
-    }
-    
     @objc private func refreshData() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.onGetPrinters()
             // Stop the refresh control
             self.refreshControl.endRefreshing()
-
-            // Scroll to the top of the table view
             let topIndexPath = IndexPath(row: 0, section: 0)
             self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: true)
         }
@@ -117,6 +95,43 @@ extension PrintersViewController {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+    }
+}
+
+// MARK: - APIs
+extension PrintersViewController {
+    private func checkPermissionSignIn() {
+        UserCredentialState.shared.userCredential
+            .subscribe(onNext: { [weak self] user in
+                if user != nil {
+                    self?.onGetPrinters()
+                } else {
+                    self?.dataPrinters = []
+                }
+                self?.tableView?.reloadData()
+            })
+            .disposed(by: disposed)
+    }
+    
+    private func onGetPrinters() {
+        APIManager.shared.performRequest(
+            for: "/mobileprint/printers",
+            method: .GET,
+            responseType: [PrinterModel].self
+        ).subscribe(onNext: { [self] result in
+            switch result {
+            case .success(let response):
+                let data = response.sorted {(a, b) -> Bool in return a.printerStatus < b.printerStatus }
+                
+                self.dataPrinters = data
+                self.filterDataPrinters.accept(data)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                APIManager.shared.handlerError(error: error)
+            }
+        }).disposed(by: disposed)
     }
 }
 

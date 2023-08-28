@@ -14,22 +14,34 @@ class HomeDistributionTableViewCell: UITableViewCell, ChartViewDelegate {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupPieChart()
+        setupPieChart([1])
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupPieChart()
+        setupPieChart([1])
     }
 
     
     override func awakeFromNib() {
         super.awakeFromNib()
         pieChartView.delegate = self
+        backgroundColor = .clear
+        StyleHelper.commonLayer(layer: distributionView.layer)
     }
     
 
-    private func setupPieChart() {
+    func setupPieChart(_ values: [Double]) {
+        // Init data
+        let defaultValues = [0.0, 0.0, 0.0]
+        var chartValues = Array(values.prefix(3)) + defaultValues.suffix(max(0, 3 - values.count))
+        
+        let daraEntries: [PieChartDataEntry] = [
+            PieChartDataEntry(value: chartValues[0], label: "Printing"),
+            PieChartDataEntry(value: chartValues[1], label: "Copies"),
+            PieChartDataEntry(value: chartValues[2], label: "Scan"),
+        ]
+        
         // Create the PieChartView
         pieChartView = PieChartView()
         addSubview(pieChartView)
@@ -42,18 +54,15 @@ class HomeDistributionTableViewCell: UITableViewCell, ChartViewDelegate {
         pieChartView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5).isActive = true
         pieChartView.heightAnchor.constraint(equalToConstant: 140).isActive = true
         
-        // Sample data entries for the Pie Chart
-        let dataEntries = [
-            PieChartDataEntry(value: 30, label: "Printing"),
-            PieChartDataEntry(value: 30, label: "Copies"),
-            PieChartDataEntry(value: 30, label: "Scan"),
-        ]
         
-        let dataSet = PieChartDataSet(entries: dataEntries, label: "")
-        dataSet.colors = [UIColor(named: "primary600") ?? .clear, UIColor(named: "primary400") ?? .clear, UIColor(named: "sencondary500") ?? .clear]
+        let dataSet = PieChartDataSet(entries: daraEntries, label: "")
+        let isEmptyDataEntries = values.count == 1
+        dataSet.colors = isEmptyDataEntries ?
+        [UIColor(named: "greyG400") ?? .clear] :
+        [UIColor(named: "primary600") ?? .clear, UIColor(named: "primary400") ?? .clear, UIColor(named: "sencondary500") ?? .clear]
 
         // Additional customization options for the pie chart
-        dataSet.drawValuesEnabled = true // Hide values within the chart
+        dataSet.drawValuesEnabled = false // Hide values within the chart
         dataSet.drawIconsEnabled = false // Hide icons within the chart
         
         
@@ -70,20 +79,10 @@ class HomeDistributionTableViewCell: UITableViewCell, ChartViewDelegate {
         pieChartView.isUserInteractionEnabled = false
         
         pieChartView.chartDescription.enabled = false
-        pieChartView.usePercentValuesEnabled = true
+        pieChartView.usePercentValuesEnabled = false
         pieChartView.drawHoleEnabled = true
         pieChartView.holeRadiusPercent = 0.7
         pieChartView.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
-        // legend
-//        let legend = pieChartView.legend
-//        legend.enabled = true
-//        legend.xEntrySpace = 0
-//        legend.xOffset = 52
-//        legend.yOffset = 0
-//        legend.font = UIFont.systemFont(ofSize: 14)
-//        legend.orientation = .vertical
-//        legend.horizontalAlignment = .right
-//        legend.verticalAlignment = .center
         
         // Create an entry size that includes spacing for the icon and label
         let entrySize: CGFloat = 24 // You can adjust the entry size as needed
@@ -91,7 +90,7 @@ class HomeDistributionTableViewCell: UITableViewCell, ChartViewDelegate {
         // Set the custom legend view as a custom legend for the pie chart
         pieChartView.legend.enabled = false // Disable default legend
         
-        for (index, entry) in dataEntries.enumerated() {
+        for (index, entry) in daraEntries.enumerated() {
             let color = dataSet.color(atIndex: index)
             
             let legendView = UIView()

@@ -43,7 +43,7 @@
                                         <color key="textColor" name="greyG200"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkSquare" translatesAutoresizingMaskIntoConstraints="NO" id="EjO-I3-Yap">
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkSquare" translatesAutoresizingMaskIntoConstraints="NO" id="EjO-I3-Yap">
                                         <rect key="frame" x="326" y="16" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="QTR-Qp-UZI"/>

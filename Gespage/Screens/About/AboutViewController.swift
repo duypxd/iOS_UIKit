@@ -6,24 +6,66 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
+
+struct AboutItemModel {
+    let identifier: String
+    let title: String
+    var subTitle: String
+}
 
 class AboutViewController: UIViewController {
+    enum TableViewCellIdentifier {
+        case aboutItem(model: AboutItemModel)
+        case termAndCondition(model: AboutItemModel)
+        
+        var model: AboutItemModel {
+            switch self {
+            case .aboutItem(let model), .termAndCondition(let model):
+                return model
+            }
+        }
+    }
+
+    var cellIdentifiers: [TableViewCellIdentifier] = [
+        .aboutItem(
+            model: AboutItemModel(
+                identifier: "AboutTableViewCell",
+                title: "App Version",
+                subTitle: "1.0.0"
+            )
+        ),
+        .aboutItem(
+            model: AboutItemModel(
+                identifier: "AboutTableViewCell",
+                title: "Gespage sever address",
+                subTitle: "https://mobile-app.gespage.com:8443"
+            )
+        ),
+        .termAndCondition(
+            model: AboutItemModel(
+                identifier: "TermAndConditionTableViewCell",
+                title: "Terms & Conditions",
+                subTitle: ""
+            )
+        )
+    ]
+    
     @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    private var disposed = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkPermissionSignIn()
+        
         tableView.delegate = self
         tableView.dataSource = self
-        
-        let cellIdentifiers = [
-            "AboutTableViewCell",
-            "TermAndConditionTableViewCell"
-        ]
 
         for cellIdentifier in cellIdentifiers {
-            tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+            tableView.register(UINib(nibName: cellIdentifier.model.identifier, bundle: nil), forCellReuseIdentifier: cellIdentifier.model.identifier)
         }
     }
     
@@ -38,6 +80,31 @@ class AboutViewController: UIViewController {
     }
 }
 
+// MARK: - APIs
+extension AboutViewController {
+    private func checkPermissionSignIn() {
+        UserCredentialState.shared.userCredential
+            .subscribe(onNext: { [weak self] user in
+                var gespageServerModel = self?.cellIdentifiers[1].model
+                if user != nil {
+                    self?.updateAboutItem(1, "https://mobile-app.gespage.com:8443")
+                } else {
+                    self?.updateAboutItem(1, "N/A")
+                    self?.cellIdentifiers.remove(at: 2)
+                }
+                self?.tableView?.reloadData()
+            })
+            .disposed(by: disposed)
+    }
+    
+    private func updateAboutItem(_ indexPath: Int, _ subTitle: String) {
+        if case .aboutItem(var model) = cellIdentifiers[indexPath] {
+            model.subTitle = subTitle
+            cellIdentifiers[indexPath] = .aboutItem(model: model)
+        }
+    }
+}
+
 // MARK: - @IBActions
 extension AboutViewController {
     @IBAction func buttonBackAction(_ sender: UIButton) {
@@ -48,28 +115,21 @@ extension AboutViewController {
 // MARK: - TableView
 extension AboutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return cellIdentifiers.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let aboutCell = tableView.dequeueReusableCell(withIdentifier: "AboutTableViewCell", for: indexPath) as! AboutTableViewCell
-        StyleHelper.commonLayer(layer: aboutCell.aboutViewContainer.layer)
+        let cellIdentifier = cellIdentifiers[indexPath.row]
         
-        switch indexPath.row {
-        case 0:
-            aboutCell.titleLabel.text = "App Version"
-            aboutCell.subTitleLabel.text = "V1.0.0(1)"
-            return aboutCell
-        case 1:
-            aboutCell.titleLabel.text = "Gespage sever address"
-            aboutCell.subTitleLabel.text = "htps://mobile-app.gespage.com:8443"
-            return aboutCell
-        case 2:
-            let tcCell = tableView.dequeueReusableCell(withIdentifier: "TermAndConditionTableViewCell", for: indexPath) as! TermAndConditionTableViewCell
-            StyleHelper.commonLayer(layer: tcCell.tcViewContainer.layer)
-            return tcCell
-        default:
-            return UITableViewCell()
+        switch cellIdentifier {
+        case .aboutItem(let model):
+            let cell = tableView.dequeueReusableCell(withIdentifier: model.identifier, for: indexPath) as! AboutTableViewCell
+            cell.bind(title: model.title, subTitle: model.subTitle)
+            return cell
+            
+        case .termAndCondition(let model):
+            let cell = tableView.dequeueReusableCell(withIdentifier: model.identifier, for: indexPath) as! TermAndConditionTableViewCell
+            return cell
         }
     }
     

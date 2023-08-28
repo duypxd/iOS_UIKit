@@ -28,15 +28,13 @@ enum TableViewCellIdentifier {
     }
 }
 
-let cellIdentifiers: [TableViewCellIdentifier] = [
-    .profile(model: MenuItemModel(identifier: "MenuItemProfileTableViewCell", label: "Login", iconName: "")),
-    .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Account top up", iconName: "creditCard")),
-    .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Contact support", iconName: "chatCircleDots")),
-    .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "About", iconName: "info"))
-]
-
-
 class MoreViewController: UIViewController {
+    let initCellIdentifiers: [TableViewCellIdentifier] = [
+        .profile(model: MenuItemModel(identifier: "MenuItemProfileTableViewCell", label: "Login", iconName: "")),
+        .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "About", iconName: "info"))
+    ]
+    var cellIdentifiers: [TableViewCellIdentifier] = []
+    
     @IBOutlet weak var buttonLogout: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
@@ -44,18 +42,11 @@ class MoreViewController: UIViewController {
     let disposed = DisposeBag()
     var isDialog = true
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        cellIdentifiers = initCellIdentifiers
         
-        UserCredentialState.shared.userCredential.subscribe(onNext: { [weak self] user in
-            self?.userCredential = user
-            self?.tableView?.reloadData()
-            
-            // Hide UI
-            self?.buttonLogout.isHidden = user == nil
-        }).disposed(by: disposed)
+        checkPermissionSignIn()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -70,8 +61,29 @@ class MoreViewController: UIViewController {
     }
 }
 
-// MARK: - @IBAction
+// MARK: - APIs
 extension MoreViewController {
+    @IBAction func checkPermissionSignIn() {
+        UserCredentialState.shared.userCredential.subscribe(onNext: { [weak self] user in
+            self?.userCredential = user
+            var indexsToRemove = [1, 2]
+            if user != nil {
+                let newElements: [TableViewCellIdentifier] = [
+                    .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Account top up", iconName: "creditCard")),
+                    .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Contact support", iconName: "chatCircleDots")),
+                ]
+                self?.cellIdentifiers.insert(contentsOf: newElements, at: 1)
+            } else {
+                self?.cellIdentifiers = self?.cellIdentifiers.enumerated().filter {
+                    !indexsToRemove.contains($0.offset)
+                }.map { $0.element } ?? []
+            }
+            
+            self?.tableView?.reloadData()
+            self?.buttonLogout.isHidden = user == nil
+        }).disposed(by: disposed)
+    }
+    
     @IBAction func buttonLogoutAction(_ sender: Any) {
         DialogManager.shared.showConfirmDialog(
             from: self,
@@ -80,6 +92,7 @@ extension MoreViewController {
             labelConfirm: "Log out",
             backgroundColorConfirm: UIColor(named: "error")!,
             onConfirm: {
+                APIManager.shared.deleteCookies()
                 UserCredentialState.shared.deleteUserCredential()
                 self.dismiss(animated: true, completion: nil)
             }
@@ -113,8 +126,10 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
+        let cellIdentifier = cellIdentifiers[indexPath.row]
+        switch cellIdentifier {
+            
+        case .profile(model:_):
             if userCredential == nil {
                 self.openBottomSheetLogin()
             } else {
@@ -125,30 +140,33 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
             break
-        case 1:
-            SafariWebViewHelper.openSafariWebView(from: self, withURL: "https://google.com.vn")
-            break
-        case 2:
-            DialogManager.shared.showConfirmDialog(
-                from: self,
-                title: "Support",
-                message: "Contact support: \(self.userCredential?.supportEmail ?? "")",
-                labelConfirm: "Contact",
-                backgroundColorConfirm: UIColor(named: "primary600")!,
-                onConfirm: {
-                    EmailManager.shared.openEmailApp(to: self.userCredential?.supportEmail ?? "")
-                    self.dismiss(animated: true, completion: nil)
+        case .menuItem(model: let model):
+            switch model.iconName {
+            case "creditCard":
+                SafariWebViewHelper.openSafariWebView(from: self, withURL: "https://google.com.vn")
+                break
+            case "chatCircleDots":
+                DialogManager.shared.showConfirmDialog(
+                    from: self,
+                    title: "Support",
+                    message: "Contact support: \(self.userCredential?.supportEmail ?? "")",
+                    labelConfirm: "Contact",
+                    backgroundColorConfirm: UIColor(named: "primary600")!,
+                    onConfirm: {
+                        EmailManager.shared.openEmailApp(to: self.userCredential?.supportEmail ?? "")
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                )
+                break
+            case "info":
+                let storyboard = UIStoryboard(name: "AboutStoryboard", bundle: nil)
+                if let aboutVC = storyboard.instantiateViewController(withIdentifier: "AboutViewController") as? AboutViewController {
+                    self.navigationController?.pushViewController(aboutVC, animated: true)
                 }
-            )
-            break
-        case 3:
-            let storyboard = UIStoryboard(name: "AboutStoryboard", bundle: nil)
-            if let aboutVC = storyboard.instantiateViewController(withIdentifier: "AboutViewController") as? AboutViewController {
-                self.navigationController?.pushViewController(aboutVC, animated: true)
+                break
+            default:
+                break
             }
-            break
-        default:
-            break
         }
     }
 }
@@ -164,7 +182,7 @@ extension MoreViewController: UIViewControllerTransitioningDelegate, LoginBottom
         if isDialog {
             return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: 180, isDialog: true)
         }
-        return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: isDialog ? 180 :(presented as? LoginBottomSheetViewController)?.bottomSheetHeight, isDialog: isDialog)
+        return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: (presented as? LoginBottomSheetViewController)?.bottomSheetHeight, isDialog: isDialog)
     }
     
     func didLoginSuccessfully() {

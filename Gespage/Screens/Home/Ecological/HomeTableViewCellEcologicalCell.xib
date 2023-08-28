@@ -143,8 +143,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="GreenCoreLabel" destination="vvO-SM-Oya" id="cQv-u9-rFj"/>
                 <outlet property="greenScoreView" destination="4LF-qp-eEw" id="9gn-4n-ECk"/>
                 <outlet property="savedTreesView" destination="Tvy-Z9-HCz" id="53A-hG-zAW"/>
+                <outlet property="savedTressLabel" destination="DPt-ch-Gh6" id="0vi-3m-QYT"/>
+                <outlet property="savedWaterLabel" destination="BaO-sL-eAb" id="yfj-qA-UJ5"/>
                 <outlet property="savedWaterView" destination="qtN-3E-gYI" id="jNY-wS-cGp"/>
             </connections>
             <point key="canvasLocation" x="-18.320610687022899" y="27.464788732394368"/>

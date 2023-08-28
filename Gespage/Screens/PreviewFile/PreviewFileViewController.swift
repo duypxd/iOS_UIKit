@@ -71,17 +71,14 @@ extension PreviewFileViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let url = receivedPaths[indexPath.row]
-        let cellImage = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCell", for: indexPath) as! ImageTableViewCell
-        let cellFile = tableView.dequeueReusableCell(withIdentifier: "FileTableViewCell", for: indexPath) as! FileTableViewCell
+        
         if FileSystemHelper.isImageFile(atPath: url.path) {
-            if let image = UIImage(contentsOfFile: url.path) {
-                cellImage.fileImageView.image = image
-            }
+            let cellImage = tableView.dequeueReusableCell(withIdentifier: "ImageTableViewCell", for: indexPath) as! ImageTableViewCell
+            cellImage.bind(url: url)
             return cellImage
         } else {
-            cellFile.fileNameLabel.text = url.lastPathComponent
-            cellFile.fileSizeLabel.text = ImageHelper.fileSizeString(fromAbsoluteURL: url)
-            
+            let cellFile = tableView.dequeueReusableCell(withIdentifier: "FileTableViewCell", for: indexPath) as! FileTableViewCell
+            cellFile.bind(url: url)
             return cellFile
         }
     }

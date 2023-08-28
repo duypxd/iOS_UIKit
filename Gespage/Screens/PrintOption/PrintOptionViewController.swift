@@ -144,19 +144,7 @@ extension PrintOptionViewController: UITableViewDelegate, UITableViewDataSource 
                 }
             }
                         
-            switch indexPath.row {
-            case 1:
-                selectorCell.titleLabel?.text = "Orientation"
-                selectorCell.selectorLabel.text = printoutModelRequest?.landscape
-            case 2:
-                selectorCell.titleLabel?.text = "Color"
-                selectorCell.selectorLabel.text = printoutModelRequest?.color
-            case 3:
-                selectorCell.titleLabel?.text = "Two-side"
-                selectorCell.selectorLabel.text = printoutModelRequest?.duplex
-            default:
-                break
-            }
+            selectorCell.bind(indexPath: indexPath, printoutModelRequest: printoutModelRequest)
             return selectorCell
         default:
             return UITableViewCell()

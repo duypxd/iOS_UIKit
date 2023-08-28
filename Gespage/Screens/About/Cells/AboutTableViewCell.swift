@@ -13,8 +13,14 @@ class AboutTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     
+    func bind(title: String, subTitle: String) {
+        titleLabel.text = title
+        subTitleLabel.text = subTitle
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        StyleHelper.commonLayer(layer: aboutViewContainer.layer)
         // Initialization code
     }
 

@@ -14,6 +14,11 @@ class FileTableViewCell: UITableViewCell {
     @IBOutlet weak var fileSizeLabel: UILabel!
     @IBOutlet weak var fileNameLabel: UILabel!
     
+    func bind(url: URL) {
+        fileNameLabel.text = url.lastPathComponent
+        fileSizeLabel.text = ImageHelper.fileSizeString(fromAbsoluteURL: url)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

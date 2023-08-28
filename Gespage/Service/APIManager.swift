@@ -30,11 +30,6 @@ class APIManager {
     private let sessionDelegate = SessionDelegate()
     
     private let baseURL = URL(string: "https://mobile-app.gespage.com:8443")!
-    private var authToken: String?
-    
-//    func setAuthToken(token: String) {
-//        authToken = token
-//    }
     
     // Lấy accessToken từ Local Storage
     private var accessToken: String? {
@@ -44,6 +39,22 @@ class APIManager {
     // Lưu accessToken vào Local Storage
     private func saveAccessToken(_ token: String) {
         UserDefaults.standard.set(token, forKey: "accessToken")
+    }
+    
+    private func deleteAccessToken() {
+        UserDefaults.standard.removeObject(forKey: "accessToken")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func deleteCookies() {
+        let storage = HTTPCookieStorage.shared
+        
+        if let cookies = storage.cookies {
+            for cookie in cookies {
+                storage.deleteCookie(cookie)
+            }
+        }
+        deleteAccessToken()
     }
     
     func performRequest<T: Decodable>(
@@ -88,13 +99,14 @@ class APIManager {
                 if let cookieHeader = httpResponse.allHeaderFields["Set-Cookie"] as? String {
                     if let accessToken = cookieHeader.components(separatedBy: "; ").first {
                         self.saveAccessToken(accessToken)
+                    }  else {
+                        self.deleteCookies()
                     }
                 }
                 
                 let statusCode = httpResponse.statusCode
                 if (200..<300).contains(statusCode), let data = data {
                     do {
-                        print(String(data: data, encoding: .utf8))
                         let decodedResponse = try JSONDecoder().decode(responseType, from: data)
                         observer.onNext(.success(decodedResponse))
                         observer.onCompleted()

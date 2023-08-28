@@ -10,8 +10,10 @@ import UIKit
 class TermAndConditionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var tcViewContainer: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        StyleHelper.commonLayer(layer: tcViewContainer.layer)
         // Initialization code
     }
 

@@ -20,6 +20,8 @@ class PrintViewController: UIViewController {
     @IBOutlet weak var buttonSelectAll: UIButton!
     @IBOutlet weak var buttonAddDocs: UIButton!
     
+    private var refreshControl = UIRefreshControl()
+    
     var selectedPrintouts: [PrintoutModelResponse] = []
     var pickerImageHelper: PickerImageHelper!
     var fileSystemHelper: FileSystemHelper!
@@ -29,7 +31,7 @@ class PrintViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        onGetPrintous()
+        checkPermissionSignIn()
         
         pickerImageHelper = PickerImageHelper(viewController: self)
         fileSystemHelper = FileSystemHelper(viewController: self)
@@ -44,8 +46,25 @@ class PrintViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        // Register Cells
         tableView.register(UINib(nibName: "PrintoutTableViewCell", bundle: nil), forCellReuseIdentifier: "PrintoutTableViewCell")
+        tableView.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+}
+
+// MARK: - APIs
+extension PrintViewController {
+    private func checkPermissionSignIn() {
+        UserCredentialState.shared.userCredential
+            .subscribe(onNext: { [weak self] user in
+                if user != nil {
+                    self?.onGetPrintous()
+                } else {
+                    self?.dataPrintouts = []
+                }
+                self?.tableView?.reloadData()
+            })
+            .disposed(by: disposed)
     }
     
     private func onGetPrintous() {
@@ -55,8 +74,8 @@ class PrintViewController: UIViewController {
             responseType: [PrintoutModelResponse].self
         ).subscribe(onNext: { [self] result in
             switch result {
-            case .success(let response):
-                self.dataPrintouts = response
+            case .success(let printouts):
+                self.dataPrintouts = printouts
                 DispatchQueue.main.sync {
                     self.tableView.reloadData()
                 }
@@ -69,6 +88,15 @@ class PrintViewController: UIViewController {
 
 // MARK: - UITableView
 extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
+    @objc private func refreshData() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.onGetPrintous()
+            self.refreshControl.endRefreshing()
+            let topIndexPath = IndexPath(row: 0, section: 0)
+            self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataPrintouts.count
     }
@@ -76,29 +104,16 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PrintoutTableViewCell", for: indexPath) as! PrintoutTableViewCell
         // Init Hide UI
-        cell.printoutCheckbox.isHidden = true
         selectedDocsLabel.isHidden = true
         totalPriceLabel.isHidden = true
         
-        cell.backgroundColor = .clear
-        
         let printoutModel = dataPrintouts[indexPath.row]
-        cell.bind(printoutModel: printoutModel)
-        
-        // Prinout Status
-        printoutStatus(printoutModel.status, cell)
-        
-        // Check Selected Printout
         let selectedIDs = selectedPrintouts.map { $0.printoutId }
-        if selectedIDs.contains(printoutModel.printoutId) {
-            cell.printoutImage.image = UIImage(named: "printoutActive")
-            cell.printoutCheckbox.isHidden = false
-            cell.descriptionView.isHidden = false
-            StyleHelper.applyCornerRadius(layer: cell.printoutView.layer, corners: [.topLeft, .topRight], radius: 12)
-        } else {
-            cell.printoutImage.image = UIImage(named: "printoutInActive")
-            cell.descriptionView.isHidden = true
-            
+        
+        cell.bind(printoutModel, selectedIDs)
+        
+        if !dataPrintouts.isEmpty {
+            buttonSelectAll.isHidden = false
         }
         
         // Check SelectedIds > 0
@@ -180,43 +195,8 @@ extension PrintViewController {
     }
 }
 
-// MARK: - DialogPresentationController
-extension PrintViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: 180, isDialog: true)
-    }
-}
-
 // MARK: - Printout Actions
 extension PrintViewController {
-    
-    private func printoutStatus(_ status: String, _ cell:  PrintoutTableViewCell) {
-        // Status Printing
-        switch status {
-        case "pending":
-            cell.printoutDotView.isHidden = false
-            cell.printoutStatus.isHidden = false
-            cell.printoutStatus.textColor = UIColor(named: "alert")
-            break
-        case "completed":
-            cell.printoutDotView.isHidden = true
-            cell.printoutStatus.isHidden = true
-            break
-        case"printing":
-            cell.printoutDotView.isHidden = false
-            cell.printoutStatus.isHidden = false
-            cell.printoutStatus.textColor = UIColor(named: "primary600")
-            break
-        case "error":
-            cell.printoutDotView.isHidden = false
-            cell.printoutStatus.isHidden = false
-            cell.printoutStatus.textColor = UIColor(named: "error")
-            break
-        default:
-            break
-        }
-    }
-    
     private func onSelectPrintout(_ printoutModel: PrintoutModelResponse) {
         let selectedIDs: [Int] = selectedPrintouts.map{$0.printoutId}
         if selectedIDs.contains(printoutModel.printoutId) {
@@ -225,7 +205,6 @@ extension PrintViewController {
             }
         } else {
             selectedPrintouts.append(printoutModel)
-            
         }
         
         if selectedPrintouts.count == dataPrintouts.count {
@@ -270,5 +249,12 @@ extension PrintViewController {
         buttonSelectAll.setTitle(labelName, for: .normal)
         buttonSelectAll.setTitleColor(UIColor(named: colorName), for: .normal)
         buttonSelectAll.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+    }
+}
+
+// MARK: - DialogPresentationController
+extension PrintViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: 180, isDialog: true)
     }
 }
