@@ -66,18 +66,7 @@ extension MoreViewController {
     @IBAction func checkPermissionSignIn() {
         UserCredentialState.shared.userCredential.subscribe(onNext: { [weak self] user in
             self?.userCredential = user
-            var indexsToRemove = [1, 2]
-            if user != nil {
-                let newElements: [TableViewCellIdentifier] = [
-                    .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Account top up", iconName: "creditCard")),
-                    .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Contact support", iconName: "chatCircleDots")),
-                ]
-                self?.cellIdentifiers.insert(contentsOf: newElements, at: 1)
-            } else {
-                self?.cellIdentifiers = self?.cellIdentifiers.enumerated().filter {
-                    !indexsToRemove.contains($0.offset)
-                }.map { $0.element } ?? []
-            }
+            self?.insertCellToTableView()
             
             self?.tableView?.reloadData()
             self?.buttonLogout.isHidden = user == nil
@@ -97,6 +86,23 @@ extension MoreViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         )
+    }
+    
+    private func insertCellToTableView() {
+        if userCredential != nil {
+            let newElements: [TableViewCellIdentifier] = [
+                .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Account top up", iconName: "creditCard")),
+                .menuItem(model: MenuItemModel(identifier: "MenuItemTableViewCell", label: "Contact support", iconName: "chatCircleDots")),
+            ]
+           cellIdentifiers.insert(contentsOf: newElements, at: 1)
+        } else {
+            if cellIdentifiers.count == 4 {
+                let indexsToRemove = [1, 2]
+                cellIdentifiers = cellIdentifiers.enumerated().filter {
+                    !indexsToRemove.contains($0.offset)
+                }.map { $0.element }
+            }
+        }
     }
 }
 

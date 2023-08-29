@@ -168,10 +168,7 @@ extension LoginBottomSheetViewController {
 
     private func showErrorMessage(for message: String? = nil, in row: Int) {
         if let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as? TextFieldTableViewCell {
-            let isHidden = message != nil && ((message?.isEmpty) == nil)
-            cell.viewErrorMessage.isHidden = isHidden
-            cell.errorMessageLabel.isHidden = isHidden
-            cell.errorMessageLabel.text = message ?? nil
+            cell.bindValidateError(message)
         }
     }
 }
@@ -190,17 +187,18 @@ extension LoginBottomSheetViewController: UITableViewDelegate, UITableViewDataSo
         _ cell: TextFieldTableViewCell,
         title: String,
         placeholder: String,
-        errorMessageLabel: String? = nil,
+        errMessage: String? = nil,
         isSecureTextEntry: Bool? = false,
         keyboardType: UIKeyboardType? = nil,
         onChange: @escaping (String) -> Void
     ) {
-        cell.titleTextFieldLabel.text = title
-        cell.textField.placeholder = placeholder
-        cell.textField.keyboardType = keyboardType ?? .default
-        cell.textField.returnKeyType = .done
-        cell.textField.isSecureTextEntry = isSecureTextEntry ?? false
-        cell.errorMessageLabel.text = errorMessageLabel
+        cell.bindConfigureCell(
+            title,
+            placeholder,
+            errMessage,
+            isSecureTextEntry,
+            keyboardType
+        )
         bindTextField(cell.textField, onChange: onChange)
     }
     

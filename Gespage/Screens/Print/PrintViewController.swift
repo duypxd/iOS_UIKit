@@ -47,6 +47,7 @@ class PrintViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "PrintoutTableViewCell", bundle: nil), forCellReuseIdentifier: "PrintoutTableViewCell")
+        tableView.register(UINib(nibName: "EmptyPrinterTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyPrinterTableViewCell")
         tableView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
@@ -60,7 +61,7 @@ extension PrintViewController {
                 if user != nil {
                     self?.onGetPrintous()
                 } else {
-                    self?.dataPrintouts = []
+                    self?.reset()
                 }
                 self?.tableView?.reloadData()
             })
@@ -84,6 +85,16 @@ extension PrintViewController {
             }
         }).disposed(by: disposed)
     }
+    
+    private func reset() {
+        dataPrintouts = []
+        buttonSelectAll.isHidden = true
+        selectedDocsLabel.isHidden = true
+        totalPriceLabel.isHidden = true
+        viewButtons.isHidden = true
+        selectedPrintouts = []
+        setSelectAllStyle("Select All", "greyG100")
+    }
 }
 
 // MARK: - UITableView
@@ -98,38 +109,50 @@ extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataPrintouts.count
+        if dataPrintouts.isEmpty {
+            return 1
+        } else {
+            return dataPrintouts.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PrintoutTableViewCell", for: indexPath) as! PrintoutTableViewCell
-        // Init Hide UI
-        selectedDocsLabel.isHidden = true
-        totalPriceLabel.isHidden = true
-        
-        let printoutModel = dataPrintouts[indexPath.row]
-        let selectedIDs = selectedPrintouts.map { $0.printoutId }
-        
-        cell.bind(printoutModel, selectedIDs)
-        
-        if !dataPrintouts.isEmpty {
-            buttonSelectAll.isHidden = false
-        }
-        
-        // Check SelectedIds > 0
-        if selectedIDs.count > 0 {
-            selectedDocsLabel.isHidden = false
-            totalPriceLabel.isHidden = false
-            sumTotalPrintout()
-        }
+        if dataPrintouts.isEmpty {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EmptyPrinterTableViewCell", for: indexPath) as! EmptyPrinterTableViewCell
+            cell.backgroundColor = .clear
+            return cell;
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PrintoutTableViewCell", for: indexPath) as! PrintoutTableViewCell
+            // Init Hide UI
+            selectedDocsLabel.isHidden = true
+            totalPriceLabel.isHidden = true
+            
+            let printoutModel = dataPrintouts[indexPath.row]
+            let selectedIDs = selectedPrintouts.map { $0.printoutId }
+            
+            cell.bind(printoutModel, selectedIDs)
+            
+            if !dataPrintouts.isEmpty {
+                buttonSelectAll.isHidden = false
+            }
+            
+            // Check SelectedIds > 0
+            if selectedIDs.count > 0 {
+                selectedDocsLabel.isHidden = false
+                totalPriceLabel.isHidden = false
+                sumTotalPrintout()
+            }
 
-        return cell
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let printoutModel = dataPrintouts[indexPath.row]
-        onSelectPrintout(printoutModel)
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        if !dataPrintouts.isEmpty {
+            let printoutModel = dataPrintouts[indexPath.row]
+            onSelectPrintout(printoutModel)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
 }
 

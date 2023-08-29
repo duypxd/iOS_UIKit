@@ -135,7 +135,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             
         case .homeDistribution:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier, for: indexPath) as! HomeDistributionTableViewCell
-                cell.setupPieChart([statsModel?.prints ?? 0.0, statsModel?.copies ?? 0.0, statsModel?.scans ?? 0.0])
+                if statsModel != nil {
+                    cell.setupPieChart([statsModel?.prints ?? 0.0, statsModel?.copies ?? 0.0, statsModel?.scans ?? 0.0])
+                } else {
+                    cell.setupPieChart([0.0, 0.0, 0.0])
+                }
                 return cell
         case .homePrinterFavorites:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellIndentifier, for: indexPath) as! HomePrinterFavoritesTableViewCell
