@@ -56,6 +56,7 @@ extension HomePrinterFavoritesTableViewCell {
                 } else {
                     self?.dataPrinters = []
                 }
+                self?.onViewAllPrintersAction.isHidden = user == nil
                 self?.tableView?.reloadData()
             })
             .disposed(by: disposed)

@@ -68,7 +68,10 @@ extension PrintViewController {
             .disposed(by: disposed)
     }
     
-    private func onGetPrintous() {
+    private func onGetPrintous(isFetching: Bool = true) {
+        if isFetching {
+            ManagerAlert.showLoading(in: self)
+        }
         APIManager.shared.performRequest(
             for: "/mobileprint/printouts",
             method: .GET,
@@ -83,6 +86,7 @@ extension PrintViewController {
             case .failure(let error):
                 APIManager.shared.handlerError(error: error)
             }
+            ManagerAlert.dismissLoading(in: self)
         }).disposed(by: disposed)
     }
     
@@ -101,7 +105,7 @@ extension PrintViewController {
 extension PrintViewController: UITableViewDataSource, UITableViewDelegate {
     @objc private func refreshData() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.onGetPrintous()
+            self.onGetPrintous(isFetching: false)
             self.refreshControl.endRefreshing()
             let topIndexPath = IndexPath(row: 0, section: 0)
             self.tableView.scrollToRow(at: topIndexPath, at: .top, animated: true)

@@ -97,6 +97,7 @@
 		F06540CC2A9349C000550326 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */; };
 		F06540CE2A9363E300550326 /* DialogReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */; };
 		F06540D02A9363ED00550326 /* DialogReleaseStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */; };
+		F0AA53202A9DA0820058946C /* ManagerAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA531F2A9DA0820058946C /* ManagerAlert.swift */; };
 		F0BA25022A9608B800198935 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BA25012A9608B800198935 /* APIManager.swift */; };
 		F0C13DE22A9703F40069FF0A /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C13DE02A9703F40069FF0A /* TextFieldTableViewCell.swift */; };
 		F0C13DE32A9703F40069FF0A /* TextFieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C13DE12A9703F40069FF0A /* TextFieldTableViewCell.xib */; };
@@ -200,6 +201,7 @@
 		F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
 		F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogReleaseViewController.swift; sourceTree = "<group>"; };
 		F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DialogReleaseStoryboard.storyboard; sourceTree = "<group>"; };
+		F0AA531F2A9DA0820058946C /* ManagerAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerAlert.swift; sourceTree = "<group>"; };
 		F0BA25012A9608B800198935 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F0C13DE02A9703F40069FF0A /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		F0C13DE12A9703F40069FF0A /* TextFieldTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextFieldTableViewCell.xib; sourceTree = "<group>"; };
@@ -567,6 +569,7 @@
 				1594A64E2A8B76A20075B612 /* BottomSheet */,
 				154EFC392A81DDCF00B33062 /* Dialog */,
 				15E72F652A7E2D8B00579A1F /* CommonPresentationController.swift */,
+				F0AA531F2A9DA0820058946C /* ManagerAlert.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				156E8E332A89DDD30046C95B /* DialogManager.swift in Sources */,
 				15A82A422A741CFC000F9194 /* SceneDelegate.swift in Sources */,
 				1514FB5B2A808AEA0059BEB9 /* PrintoutModel.swift in Sources */,
+				F0AA53202A9DA0820058946C /* ManagerAlert.swift in Sources */,
 				15E72F602A7E259200579A1F /* LoginBottomSheetViewController.swift in Sources */,
 				154EFC412A81DE4D00B33062 /* DialogConfirmViewController.swift in Sources */,
 				1594A6422A8B171D0075B612 /* SelectorTableViewCell.swift in Sources */,

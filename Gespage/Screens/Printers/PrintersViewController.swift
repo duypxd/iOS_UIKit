@@ -51,7 +51,7 @@ extension PrintersViewController {
     
     @objc private func refreshData() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.onGetPrinters()
+            self.onGetPrinters(isFetching: false)
             // Stop the refresh control
             self.refreshControl.endRefreshing()
             let topIndexPath = IndexPath(row: 0, section: 0)
@@ -113,7 +113,10 @@ extension PrintersViewController {
             .disposed(by: disposed)
     }
     
-    private func onGetPrinters() {
+    private func onGetPrinters(isFetching: Bool = true) {
+        if isFetching {
+            ManagerAlert.showLoading(in: self)
+        }
         APIManager.shared.performRequest(
             for: "/mobileprint/printers",
             method: .GET,
@@ -128,6 +131,7 @@ extension PrintersViewController {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
+                ManagerAlert.dismissLoading(in: self)
             case .failure(let error):
                 APIManager.shared.handlerError(error: error)
             }
