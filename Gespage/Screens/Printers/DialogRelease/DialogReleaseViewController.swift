@@ -26,41 +26,19 @@ class DialogReleaseViewController: UIViewController {
     
     func showDialog(
         printouts: [PrintoutModelResponse],
-        priner: PrinterModel,
+        printer: PrinterModel,
         onConfirm: (() -> Void)?
     ) {
-        receivedPrinter = priner
+        receivedPrinter = printer
         receivedPrintouts = printouts
         self.onConfirmed = onConfirm
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "LabelDocumentTableViewCell", bundle: nil), forCellReuseIdentifier: "LabelDocumentTableViewCell")
-        
-        StyleHelper.commonLayer(layer: dialogView.layer)
-        
-        printerNameLabel.text = receivedPrinter?.printerName
-        printerIdLabel.text = receivedPrinter?.printerId
-        documentsLabel.text = "Document release (\(receivedPrintouts.count))"
-        // Status Style
-        printerStatusLabel.text = receivedPrinter?.printerStatus == 0 ? "Available" : "UnAvailable"
-        if receivedPrinter?.printerStatus == 0 {
-            printerStatusLabel.textColor = UIColor(named: "sencondary600")
-        } else {
-            printerStatusLabel.textColor = UIColor(named: "alert")
-            confirmButton.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
-            confirmButton.isEnabled = false
-        }
-        // Buttons Style
-        confirmButton.layer.cornerRadius = 12
-        cancelButton.layer.borderWidth = 1
-        cancelButton.layer.cornerRadius = 12
-        cancelButton.layer.borderColor = UIColor.black.cgColor
-        
+        setUpTableView()
+        setUpUI()
+        bindingData()
     }
     
     override public func viewDidLayoutSubviews() {
@@ -69,7 +47,10 @@ class DialogReleaseViewController: UIViewController {
         tableView.isScrollEnabled = tableViewHeight > 136
         heightDialog.constant = (tableViewHeight > 136 ? 136 : tableViewHeight) + 330
     }
-    
+}
+
+// MARK: - Functions
+extension DialogReleaseViewController {
     @IBAction func buttonConfirmAction(_ sender: UIButton) {
         onConfirmed?()
     }
@@ -77,10 +58,43 @@ class DialogReleaseViewController: UIViewController {
     @IBAction func buttonCancelAction(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    private func setUpTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "LabelDocumentTableViewCell", bundle: nil), forCellReuseIdentifier: "LabelDocumentTableViewCell")
+    }
+    
+    private func bindingData() {
+        printerNameLabel.text = receivedPrinter?.printerName
+        printerIdLabel.text = receivedPrinter?.printerId
+        documentsLabel.text = "Document release (\(receivedPrintouts.count))"
+        // Status Style
+        printerStatusLabel.text = receivedPrinter?.printerStatus == 0 ? "Available" : "UnAvailable"
+        // calc Price
+        let price = receivedPrintouts.map { $0.price }.reduce(0.0, { a, b in
+            a + b
+        })
+        totalPriceLabel.text = Formater.formatAsUSD(amount: price)
+        if receivedPrinter?.printerStatus == 0 {
+            printerStatusLabel.textColor = UIColor(named: "sencondary600")
+        } else {
+            printerStatusLabel.textColor = UIColor(named: "alert")
+            confirmButton.backgroundColor = UIColor.gray.withAlphaComponent(0.4)
+            confirmButton.isEnabled = false
+        }
+    }
+    
+    private func setUpUI() {
+        StyleHelper.commonLayer(layer: dialogView.layer)
+        confirmButton.layer.cornerRadius = 12
+        cancelButton.layer.borderWidth = 1
+        cancelButton.layer.cornerRadius = 12
+        cancelButton.layer.borderColor = UIColor.black.cgColor
+    }
 }
 
 // MARK: - tablebiew
-
 extension DialogReleaseViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return receivedPrintouts.count
@@ -92,5 +106,4 @@ extension DialogReleaseViewController: UITableViewDataSource, UITableViewDelegat
         cell.priceLabel.text = Formater.formatAsUSD(amount: receivedPrintouts[indexPath.row].price)
         return cell
     }
-    
 }

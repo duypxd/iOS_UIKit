@@ -72,7 +72,7 @@ extension PrintOptionViewController {
         let indexPath = IndexPath(row: 0, section: 0)
         if let cell = tableView.cellForRow(at: indexPath) as? SelectorAndInputTableViewCell {
             if isValidNumberOfCopies(cell) {
-                DialogManager.shared.showSuccessDialog(
+                DialogManager.shared.showCommonDialog(
                     from: self,
                     title: "Added successfully!",
                     message: "Successfully added to Ready to Release list. Go there to release your document(s)",

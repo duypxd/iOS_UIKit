@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class PrintViewController: UIViewController {
+class PrintViewController: UIViewController, PrintersViewControllerDelegate {
     @IBOutlet weak var buttonRelease: UIButton!
     @IBOutlet weak var buttonDelete: UIButton!
     @IBOutlet weak var viewButtons: UIView!
@@ -22,11 +22,12 @@ class PrintViewController: UIViewController {
     
     private var refreshControl = UIRefreshControl()
     
-    var selectedPrintouts: [PrintoutModelResponse] = []
     var pickerImageHelper: PickerImageHelper!
     var fileSystemHelper: FileSystemHelper!
     
     var dataPrintouts: [PrintoutModelResponse] = []
+    var selectedPrintouts: [PrintoutModelResponse] = []
+    
     let disposed = DisposeBag()
 
     override func viewDidLoad() {
@@ -38,18 +39,29 @@ class PrintViewController: UIViewController {
         
         // Hide UI
         viewButtons.isHidden = true
-        // Custom UI
+        setUpUIButton()
+        setUpTableView()
+    }
+    
+    private func setUpUIButton() {
         buttonRelease.layer.cornerRadius = 12
         buttonDelete.layer.borderWidth = 1
         buttonDelete.layer.cornerRadius = 12
         buttonDelete.layer.borderColor = UIColor.black.cgColor
-        
+    }
+    
+    private func setUpTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "PrintoutTableViewCell", bundle: nil), forCellReuseIdentifier: "PrintoutTableViewCell")
         tableView.register(UINib(nibName: "EmptyPrinterTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyPrinterTableViewCell")
         tableView.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+    }
+    
+    func onRequestReset() {
+        self.reset()
+        self.refreshData()
     }
 }
 
@@ -61,6 +73,7 @@ extension PrintViewController {
                 if user != nil {
                     self?.onGetPrintous()
                 } else {
+                    self?.dataPrintouts = []
                     self?.reset()
                 }
                 self?.tableView?.reloadData()
@@ -84,14 +97,43 @@ extension PrintViewController {
                     self.tableView.reloadData()
                 }
             case .failure(let error):
-                APIManager.shared.handlerError(error: error)
+                APIManager.shared.logError(error: error)
             }
             ManagerAlert.dismissLoading(in: self)
         }).disposed(by: disposed)
     }
     
+    private func onDeleteDocument() {
+        let printoutIds = selectedPrintouts.map { $0.printoutId }
+        ManagerAlert.showLoading(in: self, message: "Delete Document(s)...")
+        // Delete Printout From Local
+        dataPrintouts = dataPrintouts.filter { item in
+            !printoutIds.contains { printoutId in
+                return printoutId == item.printoutId
+            }
+        }
+        tableView.reloadData()
+        reset()
+        // Call API to Deleted
+        APIManager.shared.performRequest(
+            for: "/mobileprint/printouts",
+            method: .DELETE,
+            requestModel: PrintoutIdsModel(printouts: printoutIds),
+            responseType: String.self
+        ).subscribe(onNext: { [self] result in
+            ManagerAlert.dismissLoading(in: self)
+            switch result {
+            case .success(_):
+                break
+            case .failure(let error):
+                APIManager.shared.showError(in: self, error: error)
+            }
+
+        }
+        ).disposed(by: disposed)
+    }
+    
     private func reset() {
-        dataPrintouts = []
         buttonSelectAll.isHidden = true
         selectedDocsLabel.isHidden = true
         totalPriceLabel.isHidden = true
@@ -191,6 +233,7 @@ extension PrintViewController {
         let storyboard = UIStoryboard(name: "PrintersStoryboard", bundle: nil)
         if let printersVC = storyboard.instantiateViewController(withIdentifier: "PrintersViewController") as? PrintersViewController {
             navigationController?.pushViewController(printersVC, animated: true)
+            printersVC.delegate = self
             printersVC.receivedTitle = "Select Printer"
             printersVC.receivedPrintouts = selectedPrintouts
         }
@@ -204,13 +247,10 @@ extension PrintViewController {
             labelConfirm: "Delete",
             backgroundColorConfirm: UIColor(named: "error")!,
             onConfirm: {
-                self.onConfirmDeleteDoc()
+                self.dismiss(animated: true, completion: nil)
+                self.onDeleteDocument()
             }
         )
-    }
-    
-    private func onConfirmDeleteDoc() {
-        dismiss(animated: true, completion: nil)
     }
     
     private func navigateToPreview(_ paths: [URL]) {

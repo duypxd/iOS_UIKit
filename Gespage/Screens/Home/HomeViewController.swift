@@ -61,7 +61,7 @@ extension HomeViewController {
                     tableView.reloadData()
                 }
             case .failure(let error):
-                APIManager.shared.handlerError(error: error)
+                APIManager.shared.logError(error: error)
             }
         }).disposed(by: disposed)
     }
@@ -78,7 +78,7 @@ extension HomeViewController {
                     self.userCredential = user
                 }
             case .failure(let error):
-                APIManager.shared.handlerError(error: error)
+                APIManager.shared.logError(error: error)
             }
         }).disposed(by: disposed)
     }
@@ -176,6 +176,5 @@ extension HomeViewController: SignInBannerTableViewCellDelegate, UIViewControlle
     
     func didLoginSuccessfully() {
         self.dismiss(animated: true, completion: nil)
-        
     }
 }

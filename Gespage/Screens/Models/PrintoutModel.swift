@@ -26,3 +26,7 @@ struct PrintoutModelRequest: Decodable {
     var selectedPages: String?
     var landscape: String
 }
+
+struct PrintoutIdsModel: Encodable {
+    var printouts: [Int]
+}

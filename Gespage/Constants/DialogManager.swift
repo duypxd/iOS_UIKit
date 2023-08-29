@@ -35,7 +35,7 @@ class DialogManager {
         viewController.present(dialogVC, animated: true, completion: nil)
     }
     
-    func showSuccessDialog(
+    func showCommonDialog(
         from viewController: UIViewController,
         title: String,
         message: String,
@@ -63,14 +63,14 @@ class DialogManager {
     func showConfirmReleaseDialog(
         from viewController: UIViewController,
         printouts: [PrintoutModelResponse],
-        priner: PrinterModel,
+        printer: PrinterModel,
         onConfirm: @escaping () -> Void
     ) {
         let storyboard = UIStoryboard(name: "DialogReleaseStoryboard", bundle: nil)
         guard let dialogVC = storyboard.instantiateViewController(withIdentifier: "DialogReleaseViewController") as? DialogReleaseViewController else {
             return
         }
-        dialogVC.showDialog(printouts: printouts, priner: priner, onConfirm: onConfirm)
+        dialogVC.showDialog(printouts: printouts, printer: printer, onConfirm: onConfirm)
         viewController.view.endEditing(true)
         dialogVC.modalPresentationStyle = .custom
         dialogVC.transitioningDelegate = (viewController.self as? any UIViewControllerTransitioningDelegate)

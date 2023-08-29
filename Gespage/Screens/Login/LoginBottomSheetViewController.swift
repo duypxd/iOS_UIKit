@@ -118,8 +118,7 @@ extension LoginBottomSheetViewController: UIViewControllerTransitioningDelegate 
                     self.delegate?.didLoginSuccessfully()
                 case .failure(let error):
                     stopLoading()
-                    
-                    APIManager.shared.handlerError(error: error)
+                    APIManager.shared.showError(in: self, title: "Oops!", msg: "Username or password is not correct!", error: error)
                 }
             })
             .disposed(by: disposeBag)

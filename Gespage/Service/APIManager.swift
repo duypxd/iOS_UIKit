@@ -99,22 +99,27 @@ class APIManager {
                 if let cookieHeader = httpResponse.allHeaderFields["Set-Cookie"] as? String {
                     if let accessToken = cookieHeader.components(separatedBy: "; ").first {
                         self.saveAccessToken(accessToken)
-                    }  else {
+                    } else {
                         self.deleteCookies()
                     }
                 }
                 
                 let statusCode = httpResponse.statusCode
                 if (200..<300).contains(statusCode), let data = data {
+                    print("T.self \(T.self)")
                     do {
-                        let decodedResponse = try JSONDecoder().decode(responseType, from: data)
-                        observer.onNext(.success(decodedResponse))
-                        observer.onCompleted()
+                        if let responseDataString = String(data: data, encoding: .utf8), T.self == String.self {
+                            observer.onNext(.success(responseDataString as! T))
+                        } else {
+                            let decodedResponse = try JSONDecoder().decode(responseType, from: data)
+                            observer.onNext(.success(decodedResponse))
+                        }
                     } catch {
                         observer.onNext(.failure(.decodingError(error)))
-                        observer.onCompleted()
                     }
-                } else if let data = data, let errorMessage = String(data: data, encoding: .utf8) {
+                    observer.onCompleted()
+                }
+                else if let data = data, let errorMessage = String(data: data, encoding: .utf8) {
                     if let apiErrorResponse = try? JSONDecoder().decode(APIErrorResponse.self, from: data) {
                         let customError = APIError.httpError(apiErrorResponse.status, errorMessage)
                         observer.onNext(.failure(customError))
@@ -138,8 +143,38 @@ class APIManager {
             }
         }
     }
+
+    func showError(
+        in viewController: UIViewController,
+        title: String? = "Error",
+        msg: String? = nil,
+        error: APIError
+    ) {
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+                
+        switch error {
+        case .networkError(let underlyingError):
+            alertController.message = "Network error: \(underlyingError.localizedDescription)"
+            
+        case .httpError(_, let message):
+            if let apiErrorResponse = try? JSONDecoder().decode(APIErrorResponse.self, from: message.data(using: .utf8)!) {
+                alertController.message = msg ?? apiErrorResponse.message
+            } else {
+                alertController.message = "HTTP error: \(message)"
+            }
+            
+        case .decodingError(let decodingError):
+            alertController.message = "Decoding error: \(decodingError.localizedDescription)"
+        }
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        DispatchQueue.main.async {
+            viewController.present(alertController, animated: true, completion: nil)
+        }
+    }
     
-    func handlerError(error: APIError) {
+    func logError(error: APIError) {
         if case .httpError(_, let message) = error,
            let apiErrorResponse = try? JSONDecoder().decode(APIErrorResponse.self, from: message.data(using: .utf8)!) {
             print("API Error Message: \(apiErrorResponse.message)")
@@ -148,7 +183,6 @@ class APIManager {
         } else {
             print("Network error: \(error.localizedDescription)")
         }
-
     }
 }
 

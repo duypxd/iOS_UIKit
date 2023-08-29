@@ -9,7 +9,12 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+protocol PrintersViewControllerDelegate: AnyObject {
+    func onRequestReset()
+}
+
 class PrintersViewController: UIViewController, UISearchBarDelegate {
+    weak var delegate: PrintersViewControllerDelegate?
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var titlePage: UILabel!
@@ -17,6 +22,10 @@ class PrintersViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     private var refreshControl = UIRefreshControl()
     
+    // init state
+    var printerId: String?
+    var isDialogConfirm = false
+    // received Data
     var receivedTitle: String?
     var receivedPrintouts: [PrintoutModelResponse] = []
     let disposed = DisposeBag()
@@ -133,9 +142,63 @@ extension PrintersViewController {
                 }
                 ManagerAlert.dismissLoading(in: self)
             case .failure(let error):
-                APIManager.shared.handlerError(error: error)
+                APIManager.shared.logError(error: error)
             }
         }).disposed(by: disposed)
+    }
+    
+    private func onReleaseDocs() {
+        let printoutIds = receivedPrintouts.map { $0.printoutId }
+        ManagerAlert.showLoading(in: self, message: "Release Documents...")
+        APIManager.shared.performRequest(
+            for: "/mobileprint/release/\(printerId!)",
+            method: .POST,
+            requestModel: PrintoutIdsModel(printouts: printoutIds),
+            responseType: String.self
+        ).subscribe(onNext: { [self] result in
+            ManagerAlert.dismissLoading(in: self)
+            switch result {
+            case .success(_):
+                self.showDialog(
+                    title: "Releasing document(s)",
+                    message: "Your documents have been released successfully.",
+                    status: "success"
+                )
+            case .failure(let error):
+                self.showDialog(
+                    title: "Document release error",
+                    message: "Your document could not be released.",
+                    status: "error"
+                )
+                APIManager.shared.logError(error: error)
+            }
+            
+        }
+        ).disposed(by: disposed)
+    }
+    
+    private func showDialog(
+        title: String,
+        message: String,
+        status: String
+    ) {
+        DialogManager.shared.showCommonDialog(
+            from: self,
+            title: title,
+            message: "Your documents have been released successfully.",
+            labelButton: "Go To Release List", statusImage: UIImage(named: status)!,
+            onConfirm: { [self] in
+                dismiss(animated: true, completion: nil)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    if status == "success" {
+                        self.delegate?.onRequestReset()
+                        self.navigationController?.popToRootViewController(animated: true)
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }
+        )
     }
 }
 
@@ -162,13 +225,18 @@ extension PrintersViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        isDialogConfirm = true
+        let printer = filterDataPrinters.value[indexPath.row]
+        printerId = printer.printerId
         if !receivedPrintouts.isEmpty {
             DialogManager.shared.showConfirmReleaseDialog(
                 from: self,
                 printouts: receivedPrintouts,
-                priner: filterDataPrinters.value[indexPath.row],
+                printer: printer,
                 onConfirm: {[self] in
-                    dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
+                    isDialogConfirm = false
+                    self.onReleaseDocs()
                 }
             )
         }
@@ -178,6 +246,7 @@ extension PrintersViewController: UITableViewDataSource, UITableViewDelegate {
 // MARK: - @IBOutlet
 extension PrintersViewController {
     @IBAction func backButtonAction(_ sender: UIButton) {
+        isDialogConfirm = false
         navigationController?.popViewController(animated: true)
     }
 }
@@ -185,6 +254,6 @@ extension PrintersViewController {
 // MARK: - DialogPresentationController
 extension PrintersViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: 466, isDialog: true)
+        return CommonPresentationController(presentedViewController: presented, presenting: presenting, height: isDialogConfirm ? 466 : 276, isDialog: true)
     }
 }

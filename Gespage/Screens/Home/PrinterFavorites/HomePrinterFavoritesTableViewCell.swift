@@ -77,7 +77,7 @@ extension HomePrinterFavoritesTableViewCell {
                     self.tableView.reloadData()
                 }
             case .failure(let error):
-                APIManager.shared.handlerError(error: error)
+                APIManager.shared.logError(error: error)
             }
         }).disposed(by: disposed)
     }
