@@ -30,9 +30,12 @@ class APIManager {
     private let sessionDelegate = SessionDelegate()
     
     let baseURL = URL(string: "https://mobile-app.gespage.com:8443")!
-    
+    lazy var session: URLSession = {
+        return URLSession(configuration: .default, delegate: sessionDelegate, delegateQueue: nil)
+    }()
+
     // Lấy accessToken từ Local Storage
-    private var accessToken: String? {
+    var accessToken: String? {
         return UserDefaults.standard.string(forKey: "accessToken")
     }
     
@@ -82,8 +85,7 @@ class APIManager {
         }
         
         return Observable.create { observer in
-            let session = URLSession(configuration: .default, delegate: self.sessionDelegate, delegateQueue: nil)
-            let task = session.dataTask(with: request) { data, response, error in
+            let task = self.session.dataTask(with: request) { data, response, error in
                 if let error = error {
                     observer.onNext(.failure(.networkError(error)))
                     observer.onCompleted()

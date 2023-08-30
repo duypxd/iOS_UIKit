@@ -31,6 +31,8 @@ class HomeViewController: UIViewController {
         TableViewCellIdentifier.homePrinterFavorites.rawValue
     ]
     
+    private var sseClient: SSEClient = SSEClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkPermissionSignIn()
@@ -42,11 +44,35 @@ class HomeViewController: UIViewController {
         for cellIdentifier in cellIdentifiers {
             tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         }
+        setupSSEClient()
     }
 }
 
 // MARK: - Call APIs
 extension HomeViewController {
+    private func setupSSEClient() {
+        sseClient.startListening(for: "/mobileprint/event")
+        sseClient.sseEventObservable
+            .compactMap { result -> SSEData? in
+                switch result {
+                case .success(let sseData):
+                    return sseData
+                case .failure:
+                    return nil
+                }
+            }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { sseData in
+                // Handle SSE data here
+                print("Received SSE data: \(sseData)")
+            }, onError: { error in
+                // Handle SSE error here
+                print("SSE error: \(error)")
+            })
+            .disposed(by: disposed)
+    }
+    
+    
     private func getStatsFromAPI() {
         APIManager.shared.performRequest(
             for: "/mobileprint/stats",

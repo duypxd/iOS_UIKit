@@ -97,6 +97,7 @@
 		F06540CC2A9349C000550326 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */; };
 		F06540CE2A9363E300550326 /* DialogReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */; };
 		F06540D02A9363ED00550326 /* DialogReleaseStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */; };
+		F071D16D2A9F4C2000D30DB7 /* SSEClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F071D16C2A9F4C2000D30DB7 /* SSEClient.swift */; };
 		F0AA53202A9DA0820058946C /* ManagerAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0AA531F2A9DA0820058946C /* ManagerAlert.swift */; };
 		F0BA25022A9608B800198935 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BA25012A9608B800198935 /* APIManager.swift */; };
 		F0C13DE22A9703F40069FF0A /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C13DE02A9703F40069FF0A /* TextFieldTableViewCell.swift */; };
@@ -201,6 +202,7 @@
 		F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
 		F06540CD2A9363E300550326 /* DialogReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogReleaseViewController.swift; sourceTree = "<group>"; };
 		F06540CF2A9363ED00550326 /* DialogReleaseStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DialogReleaseStoryboard.storyboard; sourceTree = "<group>"; };
+		F071D16C2A9F4C2000D30DB7 /* SSEClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSEClient.swift; sourceTree = "<group>"; };
 		F0AA531F2A9DA0820058946C /* ManagerAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerAlert.swift; sourceTree = "<group>"; };
 		F0BA25012A9608B800198935 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F0C13DE02A9703F40069FF0A /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				F0C13DE82A9749D30069FF0A /* UserCredentialState.swift */,
 				F0BA25012A9608B800198935 /* APIManager.swift */,
 				F0EC39432A9B46E900F83C5D /* StatsState.swift */,
+				F071D16C2A9F4C2000D30DB7 /* SSEClient.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				F0C13DE22A9703F40069FF0A /* TextFieldTableViewCell.swift in Sources */,
 				1513A7632A8F17CF00407A51 /* DialogSuccessViewController.swift in Sources */,
 				152B54512A834AEB00F51E40 /* PreviewFileViewController.swift in Sources */,
+				F071D16D2A9F4C2000D30DB7 /* SSEClient.swift in Sources */,
 				156E8E2F2A89D9660046C95B /* SafariWebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1006,6 +1010,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}\"",
+					/usr/lib/swift,
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.Gespage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1035,6 +1044,11 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}\"",
+					/usr/lib/swift,
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ios.Gespage;
