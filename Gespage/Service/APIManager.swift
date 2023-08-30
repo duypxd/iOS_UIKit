@@ -29,7 +29,7 @@ class APIManager {
     static let shared = APIManager()
     private let sessionDelegate = SessionDelegate()
     
-    private let baseURL = URL(string: "https://mobile-app.gespage.com:8443")!
+    let baseURL = URL(string: "https://mobile-app.gespage.com:8443")!
     
     // Lấy accessToken từ Local Storage
     private var accessToken: String? {
@@ -106,7 +106,6 @@ class APIManager {
                 
                 let statusCode = httpResponse.statusCode
                 if (200..<300).contains(statusCode), let data = data {
-                    print("T.self \(T.self)")
                     do {
                         if let responseDataString = String(data: data, encoding: .utf8), T.self == String.self {
                             observer.onNext(.success(responseDataString as! T))

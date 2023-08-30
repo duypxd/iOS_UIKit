@@ -61,7 +61,7 @@ class PrintViewController: UIViewController, PrintersViewControllerDelegate {
     
     func onRequestReset() {
         self.reset()
-        self.refreshData()
+        // self.refreshData()
     }
 }
 
