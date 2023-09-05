@@ -73,7 +73,7 @@ extension DialogReleaseViewController {
         printerStatusLabel.text = receivedPrinter?.printerStatus == 0 ? "Available" : "UnAvailable"
         // calc Price
         let price = receivedPrintouts.map { $0.price }.reduce(0.0, { a, b in
-            a + b
+            a + (b ?? 0)
         })
         totalPriceLabel.text = Formater.formatAsUSD(amount: price)
         if receivedPrinter?.printerStatus == 0 {
@@ -103,7 +103,7 @@ extension DialogReleaseViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelDocumentTableViewCell", for: indexPath) as! LabelDocumentTableViewCell
         cell.fileNameLabel.text = receivedPrintouts[indexPath.row].fileName
-        cell.priceLabel.text = Formater.formatAsUSD(amount: receivedPrintouts[indexPath.row].price)
+        cell.priceLabel.text = Formater.formatAsUSD(amount: receivedPrintouts[indexPath.row].price ?? 0)
         return cell
     }
 }

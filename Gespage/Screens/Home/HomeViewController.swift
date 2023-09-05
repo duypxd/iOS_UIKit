@@ -44,7 +44,6 @@ class HomeViewController: UIViewController {
         for cellIdentifier in cellIdentifiers {
             tableView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
         }
-        setupSSEClient()
     }
 }
 
@@ -56,6 +55,7 @@ extension HomeViewController {
             .compactMap { result -> SSEData? in
                 switch result {
                 case .success(let sseData):
+                    print("Received SSE data: \(sseData)")
                     return sseData
                 case .failure:
                     return nil
@@ -101,6 +101,7 @@ extension HomeViewController {
             switch result {
             case .success(let user):
                 if user != nil {
+                    setupSSEClient()
                     self.userCredential = user
                 }
             case .failure(let error):

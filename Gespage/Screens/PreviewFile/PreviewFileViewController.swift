@@ -58,6 +58,7 @@ extension PreviewFileViewController {
     @IBAction func printButtonAction(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "PrintOptionStoryboard", bundle: nil)
         if let printOptionVC = storyboard.instantiateViewController(withIdentifier: "PrintOptionViewController") as? PrintOptionViewController {
+            printOptionVC.receivedPaths = receivedPaths.map{ $0.path }
             navigationController?.pushViewController(printOptionVC, animated: true)
         }
     }

@@ -24,14 +24,14 @@ class PrintoutTableViewCell: UITableViewCell {
     
     func bind(_ printoutModel: PrintoutModelResponse, _ selectedIDs: [Int]) {
         printoutName.text = printoutModel.fileName
-        printoutColor.text = String(printoutModel.colorPages)
-        printoutBlackWhite.text = String(printoutModel.bwPages)
-        prinoutPrice.text = Formater.formatAsUSD(amount: printoutModel.price)
+        printoutColor.text = String(printoutModel.colorPages ?? 1)
+        printoutBlackWhite.text = String(printoutModel.bwPages ?? 0)
+        prinoutPrice.text = Formater.formatAsUSD(amount: printoutModel.price ?? 0.0)
         printoutDate.text = DateFormat.formatYYYYMMDD(printoutModel.date,outputFormat: "yyyy/MM/dd HH:mm")
         printoutStatus.text = printoutModel.status
         descriptionLabel.text = "printoutModel.description"
         
-        printoutStatus(printoutModel.status)
+        printoutStatus(printoutModel.status ?? "pending")
         
         if selectedIDs.contains(printoutModel.printoutId) {
             printoutImage.image = UIImage(named: "printoutActive")

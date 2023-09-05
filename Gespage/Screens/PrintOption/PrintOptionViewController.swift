@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class PrintOptionViewController: UIViewController {
 
@@ -16,20 +18,22 @@ class PrintOptionViewController: UIViewController {
     var isDialogSuccess = false
     var dataPaperSize: [String] = []
     var printoutModelRequest: PrintoutModelRequest?
+    var receivedPaths: [String] = []
+    
+    let disposed = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // init data
         dataPaperSize = ["A1", "A2", "A3", "A4", "A5", "A6"]
         printoutModelRequest = PrintoutModelRequest(
-            copies: "",
-            color: "Color",
+            copies: 1,
+            color: true,
             format: dataPaperSize.first ?? "",
-            duplex: "Yes",
-            files: [],
+            duplex: true,
+            files: receivedPaths,
             selectedPages: nil,
-            landscape: "Portrait"
+            landscape: true
         )
         // setup UI
         buttonPrint.layer.cornerRadius = 12
@@ -68,6 +72,52 @@ extension PrintOptionViewController {
     }
     
     @IBAction func buttonPrintAction(_ sender: Any) {
+        ManagerAlert.showLoading(in: self)
+        
+        let formData = MultipartFormData()
+        formData.append(String(printoutModelRequest?.copies ?? 1), withName: "copies")
+        formData.append(String(printoutModelRequest?.color ?? true), withName: "color")
+        formData.append(printoutModelRequest?.format ?? "", withName: "format")
+        formData.append(String(printoutModelRequest?.duplex ?? true), withName: "duplex")
+        formData.append(String(printoutModelRequest?.landscape ?? true), withName: "landscape")
+
+        for filePath in (printoutModelRequest?.files ?? []) {
+            if let fileData = try? Data(contentsOf: URL(fileURLWithPath: filePath)) {
+                let fileName = URL(fileURLWithPath: filePath).lastPathComponent
+                let mimeType = "application/octet-stream"
+                formData.append(fileData, withName: "files[]", fileName: fileName, mimeType: mimeType)
+            }
+        }
+
+        if let selectedPages = printoutModelRequest?.selectedPages {
+            formData.append(selectedPages, withName: "selectedPages")
+        }
+
+        formData.append("\(String(describing: printoutModelRequest?.landscape))", withName: "landscape")
+        
+        APIManager.shared.performRequest(
+            for: "/mobileprint/printouts",
+            method: .POST,
+            formData: formData,
+            responseType: [PrintoutModelResponse].self
+        ).subscribe { [self] result in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                ManagerAlert.dismissLoading(in: self)
+            }
+            switch result {
+            case .success(let printouts):
+                PrintoutState.shared.updatePrintoutModelResponse(printouts)
+                showAlertSuccess()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    self.showAlertSuccess()
+                }
+            case .failure(let error):
+                APIManager.shared.logError(error: error)
+            }
+        }.disposed(by: disposed)
+    }
+    
+    private func showAlertSuccess() {
         isDialogSuccess = true
         let indexPath = IndexPath(row: 0, section: 0)
         if let cell = tableView.cellForRow(at: indexPath) as? SelectorAndInputTableViewCell {
@@ -123,7 +173,11 @@ extension PrintOptionViewController: UITableViewDelegate, UITableViewDataSource 
                 }
             }
             cell.onChangedNumberOfCopies = {[self] value in
-                printoutModelRequest?.copies = value
+                if let newValue = Int(value) {
+                    printoutModelRequest?.copies = newValue
+                } else {
+                    printoutModelRequest?.copies = 0
+                }
                 if isValidNumberOfCopies(cell) {}
             }
             cell.paperSizeLabel.text = printoutModelRequest?.format ?? ""
@@ -170,42 +224,42 @@ extension PrintOptionViewController: UIViewControllerTransitioningDelegate {
     }
     
     private func onChangedOrientation() {
-        let dataLandscape = ["Portrait", "Landscape"]
+        let data = MockDataPrintout.dataLandscape
         AppBottomSheetManager.presentBottomSheet(
             from: self,
-            receivedData: dataLandscape,
+            receivedData: data,
             title: "Select orientation",
-            selectedItem: printoutModelRequest?.landscape,
+            selectedItem: printoutModelRequest?.landscape == true ? data.last : data.first,
             didSelectRow: { [self] selectedIndex in
-                printoutModelRequest?.landscape = dataLandscape[selectedIndex]
+                printoutModelRequest?.landscape = data[selectedIndex] == data.last
                 tableView.reloadData()
             }
         )
     }
     
     private func onChangedColor() {
-        let dataColors = ["Color", "Black and white"]
+        let data = MockDataPrintout.dataColors
         AppBottomSheetManager.presentBottomSheet(
             from: self,
-            receivedData: dataColors,
+            receivedData: data,
             title: "Select color",
-            selectedItem: printoutModelRequest?.color,
+            selectedItem: printoutModelRequest?.color == true ? data.first : data.last,
             didSelectRow: { [self] selectedIndex in
-                printoutModelRequest?.color = dataColors[selectedIndex]
+                printoutModelRequest?.color = data[selectedIndex] == data.first
                 tableView.reloadData()
             }
         )
     }
     
     private func onChangedTwoSide() {
-        let dataTwoSide = ["Yes", "No"]
+        let data = MockDataPrintout.dataTwoSide
         AppBottomSheetManager.presentBottomSheet(
             from: self,
-            receivedData: dataTwoSide,
+            receivedData: data,
             title: "Select Two-side",
-            selectedItem: printoutModelRequest?.duplex,
+            selectedItem: printoutModelRequest?.duplex == true ? data.first : data.last,
             didSelectRow: { [self] selectedIndex in
-                printoutModelRequest?.duplex = dataTwoSide[selectedIndex]
+                printoutModelRequest?.duplex = data[selectedIndex] == data.first
                 tableView.reloadData()
             }
         )

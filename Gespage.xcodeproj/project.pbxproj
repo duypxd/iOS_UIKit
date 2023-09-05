@@ -92,6 +92,8 @@
 		EEAE2B642332190353B4A010 /* Pods_Gespage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACC6F010CFE5408A23C9DFE3 /* Pods_Gespage.framework */; };
 		F00E56462A946D940068859A /* LabelDocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E56442A946D940068859A /* LabelDocumentTableViewCell.swift */; };
 		F00E56472A946D940068859A /* LabelDocumentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F00E56452A946D940068859A /* LabelDocumentTableViewCell.xib */; };
+		F03EB5BF2AA715B700816CC1 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03EB5BE2AA715B700816CC1 /* MultipartFormData.swift */; };
+		F03EB5C12AA7195F00816CC1 /* PrintoutsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03EB5C02AA7195F00816CC1 /* PrintoutsState.swift */; };
 		F06540C52A93496400550326 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540C42A93496400550326 /* LoginManager.swift */; };
 		F06540CA2A9349B500550326 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06540C92A9349B500550326 /* ProfileViewController.swift */; };
 		F06540CC2A9349C000550326 /* ProfileStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */; };
@@ -197,6 +199,8 @@
 		ACC6F010CFE5408A23C9DFE3 /* Pods_Gespage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gespage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00E56442A946D940068859A /* LabelDocumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDocumentTableViewCell.swift; sourceTree = "<group>"; };
 		F00E56452A946D940068859A /* LabelDocumentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelDocumentTableViewCell.xib; sourceTree = "<group>"; };
+		F03EB5BE2AA715B700816CC1 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
+		F03EB5C02AA7195F00816CC1 /* PrintoutsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrintoutsState.swift; sourceTree = "<group>"; };
 		F06540C42A93496400550326 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		F06540C92A9349B500550326 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F06540CB2A9349C000550326 /* ProfileStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileStoryboard.storyboard; sourceTree = "<group>"; };
@@ -621,6 +625,8 @@
 				F0BA25012A9608B800198935 /* APIManager.swift */,
 				F0EC39432A9B46E900F83C5D /* StatsState.swift */,
 				F071D16C2A9F4C2000D30DB7 /* SSEClient.swift */,
+				F03EB5BE2AA715B700816CC1 /* MultipartFormData.swift */,
+				F03EB5C02AA7195F00816CC1 /* PrintoutsState.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 				159947882A762B3C00A2D012 /* PrintViewController.swift in Sources */,
 				15DDB4322A7A134200499812 /* HomePrinterFavoritesTableViewCell.swift in Sources */,
 				159947772A74F94700A2D012 /* ImageHelper.swift in Sources */,
+				F03EB5C12AA7195F00816CC1 /* PrintoutsState.swift in Sources */,
 				F0EC39422A9B439D00F83C5D /* StatsModelResponse.swift in Sources */,
 				156E8E2B2A89CF630046C95B /* UserModel.swift in Sources */,
 				F06540CE2A9363E300550326 /* DialogReleaseViewController.swift in Sources */,
@@ -827,6 +834,7 @@
 				159947962A7656C300A2D012 /* MainTabBarViewController.swift in Sources */,
 				159947842A76286800A2D012 /* Constants.swift in Sources */,
 				1560AF562A84D1020027C023 /* ImageTableViewCell.swift in Sources */,
+				F03EB5BF2AA715B700816CC1 /* MultipartFormData.swift in Sources */,
 				F06540CA2A9349B500550326 /* ProfileViewController.swift in Sources */,
 				1514FB622A80CA7A0059BEB9 /* DateFormat.swift in Sources */,
 				15DDB43A2A7A1DD000499812 /* PrinterTableViewCell.swift in Sources */,

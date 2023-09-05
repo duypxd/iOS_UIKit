@@ -140,9 +140,11 @@ extension PrintersViewController {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-                ManagerAlert.dismissLoading(in: self)
             case .failure(let error):
                 APIManager.shared.logError(error: error)
+            }
+            DispatchQueue.main.async {
+                ManagerAlert.dismissLoading(in: self)
             }
         }).disposed(by: disposed)
     }
@@ -156,7 +158,9 @@ extension PrintersViewController {
             requestModel: PrintoutIdsModel(printouts: printoutIds),
             responseType: String.self
         ).subscribe(onNext: { [self] result in
-            ManagerAlert.dismissLoading(in: self)
+            DispatchQueue.main.async {
+                ManagerAlert.dismissLoading(in: self)
+            }
             switch result {
             case .success(_):
                 self.showDialog(

@@ -15,6 +15,8 @@ enum SSEError: Error {
 }
 
 class SSEClient {
+    static let shared = SSEClient()
+    
     let disposed = DisposeBag()
     private let session: URLSession
     private let sessionDelegate = SessionDelegate()
@@ -31,6 +33,8 @@ class SSEClient {
     
     init() {
         let sessionConfiguration = URLSessionConfiguration.default
+        sessionConfiguration.requestCachePolicy = .useProtocolCachePolicy
+        
         self.session = URLSession(configuration: sessionConfiguration, delegate: self.sessionDelegate, delegateQueue: nil)
     }
 

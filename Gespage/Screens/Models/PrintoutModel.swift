@@ -7,26 +7,32 @@
 
 import Foundation
 
-struct PrintoutModelResponse: Decodable {
+struct PrintoutModelResponse: Codable {
     var printoutId: Int
     var fileName: String
-    var bwPages: Int
-    var colorPages: Int
-    var price: Double
+    var bwPages: Int?
+    var colorPages: Int?
+    var price: Double?
     var date: String
-    var status: String
+    var status: String?
 }
 
-struct PrintoutModelRequest: Decodable {
-    var copies: String
-    var color: String
+struct PrintoutModelRequest: Codable {
+    var copies: Int = 0
+    var color: Bool = true
     var format: String
-    var duplex: String
+    var duplex: Bool  = true
     var files: [String]
     var selectedPages: String?
-    var landscape: String
+    var landscape: Bool  = true
 }
 
 struct PrintoutIdsModel: Encodable {
     var printouts: [Int]
+}
+
+class MockDataPrintout {
+    static var dataLandscape = ["Portrait", "Landscape"]
+    static var dataColors = ["Color", "Black and white"]
+    static var dataTwoSide = ["Yes", "No"]
 }

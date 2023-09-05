@@ -33,6 +33,7 @@ class PrintViewController: UIViewController, PrintersViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkPermissionSignIn()
+        checkPrintoutResponse()
         
         pickerImageHelper = PickerImageHelper(viewController: self)
         fileSystemHelper = FileSystemHelper(viewController: self)
@@ -99,7 +100,9 @@ extension PrintViewController {
             case .failure(let error):
                 APIManager.shared.logError(error: error)
             }
-            ManagerAlert.dismissLoading(in: self)
+            DispatchQueue.main.async {
+                ManagerAlert.dismissLoading(in: self)
+            }
         }).disposed(by: disposed)
     }
     
@@ -121,7 +124,9 @@ extension PrintViewController {
             requestModel: PrintoutIdsModel(printouts: printoutIds),
             responseType: String.self
         ).subscribe(onNext: { [self] result in
-            ManagerAlert.dismissLoading(in: self)
+            DispatchQueue.main.async {
+                ManagerAlert.dismissLoading(in: self)
+            }
             switch result {
             case .success(_):
                 break
@@ -130,6 +135,17 @@ extension PrintViewController {
             }
 
         }
+        ).disposed(by: disposed)
+    }
+    
+    private func checkPrintoutResponse() {
+        PrintoutState.shared.printoutModelResponse.subscribe(
+            onNext: { [weak self] printouts in
+                print("printouts-------> \(printouts)")
+                if printouts?.count ?? 0 > 0 {
+                    self?.onGetPrintous(isFetching: false)
+                }
+            }
         ).disposed(by: disposed)
     }
     
@@ -284,7 +300,7 @@ extension PrintViewController {
     }
     
     private func sumTotalPrintout() {
-        let amount = selectedPrintouts.map { $0.price }.reduce(0, +)
+        let amount = selectedPrintouts.map { $0.price ?? 0 }.reduce(0, +)
         let formatPrice = Formater.formatAsUSD(amount: amount)
         totalPriceLabel.text = "Total: \(formatPrice ?? "0")"
         selectedDocsLabel.text = "Selected Document (\(selectedPrintouts.count))"

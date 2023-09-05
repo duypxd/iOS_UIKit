@@ -18,13 +18,13 @@ class SelectorTableViewCell: UITableViewCell {
         switch indexPath.row {
         case 1:
             titleLabel?.text = "Orientation"
-            selectorLabel.text = printoutModelRequest?.landscape
+            selectorLabel.text = printoutModelRequest?.landscape == true ? MockDataPrintout.dataLandscape.last : MockDataPrintout.dataLandscape.first
         case 2:
             titleLabel?.text = "Color"
-            selectorLabel.text = printoutModelRequest?.color
+            selectorLabel.text = printoutModelRequest?.color == true ? MockDataPrintout.dataColors.first : MockDataPrintout.dataColors.last
         case 3:
             titleLabel?.text = "Two-side"
-            selectorLabel.text = printoutModelRequest?.duplex
+            selectorLabel.text = printoutModelRequest?.duplex == true ? MockDataPrintout.dataTwoSide.first : MockDataPrintout.dataTwoSide.last
         default:
             break
         }

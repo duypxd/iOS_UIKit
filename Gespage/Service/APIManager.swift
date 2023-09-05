@@ -64,6 +64,7 @@ class APIManager {
         for path: String,
         method: HTTPMethod,
         requestModel: Encodable? = nil,
+        formData: MultipartFormData? = nil,
         responseType: T.Type
     ) -> Observable<Result<T, APIError>> {
         guard let url = URL(string: path, relativeTo: baseURL) else {
@@ -77,8 +78,11 @@ class APIManager {
             request.setValue(accessToken, forHTTPHeaderField: "cookie")
         }
         
-        if let requestModel = requestModel {
-            // Sử dụng JSONEncoder để mã hóa requestModel thành JSON data
+        if let formData = formData {
+            let boundary = formData.boundary
+            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            request.httpBody = formData.httpBody()
+        } else if let requestModel = requestModel {
             let encoder = JSONEncoder()
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpBody = try? encoder.encode(requestModel)
