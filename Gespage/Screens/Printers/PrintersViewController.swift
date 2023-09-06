@@ -124,7 +124,7 @@ extension PrintersViewController {
     
     private func onGetPrinters(isFetching: Bool = true) {
         if isFetching {
-            ManagerAlert.showLoading(in: self)
+            ManagerAlert.shared.showLoading(in: self)
         }
         APIManager.shared.performRequest(
             for: "/mobileprint/printers",
@@ -143,31 +143,35 @@ extension PrintersViewController {
             case .failure(let error):
                 APIManager.shared.logError(error: error)
             }
-            DispatchQueue.main.async {
-                ManagerAlert.dismissLoading(in: self)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                ManagerAlert.shared.dismissLoading()
             }
         }).disposed(by: disposed)
     }
     
     private func onReleaseDocs() {
         let printoutIds = receivedPrintouts.map { $0.printoutId }
-        ManagerAlert.showLoading(in: self, message: "Release Documents...")
+        ManagerAlert.shared.showLoading(in: self, message: "Release Documents...")
         APIManager.shared.performRequest(
             for: "/mobileprint/release/\(printerId!)",
             method: .POST,
             requestModel: PrintoutIdsModel(printouts: printoutIds),
             responseType: String.self
         ).subscribe(onNext: { [self] result in
-            DispatchQueue.main.async {
-                ManagerAlert.dismissLoading(in: self)
-            }
             switch result {
             case .success(_):
-                self.showDialog(
-                    title: "Releasing document(s)",
-                    message: "Your documents have been released successfully.",
-                    status: "success"
-                )
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    ManagerAlert.shared.dismissLoading()
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.showDialog(
+                        title: "Releasing document(s)",
+                        message: "Your documents have been released successfully.",
+                        status: "success"
+                    )
+                }
+                
+                break
             case .failure(let error):
                 self.showDialog(
                     title: "Document release error",
@@ -195,8 +199,10 @@ extension PrintersViewController {
                 dismiss(animated: true, completion: nil)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     if status == "success" {
+                        let printoutIds = self.receivedPrintouts.map { $0.printoutId }
                         self.delegate?.onRequestReset()
                         self.navigationController?.popToRootViewController(animated: true)
+                        PrintoutState.shared.removePrintoutModelResponse(printoutIds)
                     } else {
                         self.navigationController?.popViewController(animated: true)
                     }

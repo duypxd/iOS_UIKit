@@ -84,7 +84,7 @@ extension PrintViewController {
     
     private func onGetPrintous(isFetching: Bool = true) {
         if isFetching {
-            ManagerAlert.showLoading(in: self)
+            ManagerAlert.shared.showLoading(in: self)
         }
         APIManager.shared.performRequest(
             for: "/mobileprint/printouts",
@@ -101,14 +101,14 @@ extension PrintViewController {
                 APIManager.shared.logError(error: error)
             }
             DispatchQueue.main.async {
-                ManagerAlert.dismissLoading(in: self)
+                ManagerAlert.shared.dismissLoading()
             }
         }).disposed(by: disposed)
     }
     
     private func onDeleteDocument() {
         let printoutIds = selectedPrintouts.map { $0.printoutId }
-        ManagerAlert.showLoading(in: self, message: "Delete Document(s)...")
+        ManagerAlert.shared.showLoading(in: self, message: "Delete Document(s)...")
         // Delete Printout From Local
         dataPrintouts = dataPrintouts.filter { item in
             !printoutIds.contains { printoutId in
@@ -125,7 +125,7 @@ extension PrintViewController {
             responseType: String.self
         ).subscribe(onNext: { [self] result in
             DispatchQueue.main.async {
-                ManagerAlert.dismissLoading(in: self)
+                ManagerAlert.shared.dismissLoading()
             }
             switch result {
             case .success(_):
@@ -139,12 +139,18 @@ extension PrintViewController {
     }
     
     private func checkPrintoutResponse() {
-        PrintoutState.shared.printoutModelResponse.subscribe(
+        PrintoutState.shared.printoutModelResponsePOST.subscribe(
             onNext: { [weak self] printouts in
-                print("printouts-------> \(printouts)")
                 if printouts?.count ?? 0 > 0 {
                     self?.onGetPrintous(isFetching: false)
                 }
+            }
+        ).disposed(by: disposed)
+        
+        PrintoutState.shared.printoutModelResponseDELETE.subscribe(
+            onNext: { [weak self] ids in
+                self?.dataPrintouts.removeAll{ ids.contains($0.printoutId)}
+                self?.tableView.reloadData()
             }
         ).disposed(by: disposed)
     }

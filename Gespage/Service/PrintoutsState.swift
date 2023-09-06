@@ -13,13 +13,21 @@ class PrintoutState {
     static let shared = PrintoutState()
     
     private let printoutSubject = PublishRelay<[PrintoutModelResponse]?>()
+    private let printoutIdsSubject = PublishRelay<[Int]>()
     
-    var printoutModelResponse: Observable<[PrintoutModelResponse]?> {
+    var printoutModelResponsePOST: Observable<[PrintoutModelResponse]?> {
         return printoutSubject.asObservable()
     }
     
-    // Function to update the value
-    func updatePrintoutModelResponse(_ newValue: [PrintoutModelResponse]?) {
+    var printoutModelResponseDELETE: Observable<[Int]> {
+        return printoutIdsSubject.asObservable()
+    }
+    
+    func addPrintoutModelResponse(_ newValue: [PrintoutModelResponse]?) {
         printoutSubject.accept(newValue)
+    }
+    
+    func removePrintoutModelResponse(_ newValue: [Int]) {
+        printoutIdsSubject.accept(newValue)
     }
 }

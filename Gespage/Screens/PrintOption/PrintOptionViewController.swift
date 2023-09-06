@@ -27,7 +27,7 @@ class PrintOptionViewController: UIViewController {
         // init data
         dataPaperSize = ["A1", "A2", "A3", "A4", "A5", "A6"]
         printoutModelRequest = PrintoutModelRequest(
-            copies: 1,
+            copies: 0,
             color: true,
             format: dataPaperSize.first ?? "",
             duplex: true,
@@ -72,71 +72,71 @@ extension PrintOptionViewController {
     }
     
     @IBAction func buttonPrintAction(_ sender: Any) {
-        ManagerAlert.showLoading(in: self)
-        
-        let formData = MultipartFormData()
-        formData.append(String(printoutModelRequest?.copies ?? 1), withName: "copies")
-        formData.append(String(printoutModelRequest?.color ?? true), withName: "color")
-        formData.append(printoutModelRequest?.format ?? "", withName: "format")
-        formData.append(String(printoutModelRequest?.duplex ?? true), withName: "duplex")
-        formData.append(String(printoutModelRequest?.landscape ?? true), withName: "landscape")
+        let indexPath = IndexPath(row: 0, section: 0)
+        if let cell = tableView.cellForRow(at: indexPath) as? SelectorAndInputTableViewCell {
+            if isValidNumberOfCopies(cell) {
+                ManagerAlert.shared.showLoading(in: self)
+                
+                let formData = MultipartFormData()
+                formData.append(String(printoutModelRequest?.copies ?? 1), withName: "copies")
+                formData.append(String(printoutModelRequest?.color ?? true), withName: "color")
+                formData.append(printoutModelRequest?.format ?? "", withName: "format")
+                formData.append(String(printoutModelRequest?.duplex ?? true), withName: "duplex")
+                formData.append(String(printoutModelRequest?.landscape ?? true), withName: "landscape")
 
-        for filePath in (printoutModelRequest?.files ?? []) {
-            if let fileData = try? Data(contentsOf: URL(fileURLWithPath: filePath)) {
-                let fileName = URL(fileURLWithPath: filePath).lastPathComponent
-                let mimeType = "application/octet-stream"
-                formData.append(fileData, withName: "files[]", fileName: fileName, mimeType: mimeType)
-            }
-        }
-
-        if let selectedPages = printoutModelRequest?.selectedPages {
-            formData.append(selectedPages, withName: "selectedPages")
-        }
-
-        formData.append("\(String(describing: printoutModelRequest?.landscape))", withName: "landscape")
-        
-        APIManager.shared.performRequest(
-            for: "/mobileprint/printouts",
-            method: .POST,
-            formData: formData,
-            responseType: [PrintoutModelResponse].self
-        ).subscribe { [self] result in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                ManagerAlert.dismissLoading(in: self)
-            }
-            switch result {
-            case .success(let printouts):
-                PrintoutState.shared.updatePrintoutModelResponse(printouts)
-                showAlertSuccess()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                    self.showAlertSuccess()
+                for filePath in (printoutModelRequest?.files ?? []) {
+                    if let fileData = try? Data(contentsOf: URL(fileURLWithPath: filePath)) {
+                        let fileName = URL(fileURLWithPath: filePath).lastPathComponent
+                        let mimeType = "application/octet-stream"
+                        formData.append(fileData, withName: "files[]", fileName: fileName, mimeType: mimeType)
+                    }
                 }
-            case .failure(let error):
-                APIManager.shared.logError(error: error)
+
+                if let selectedPages = printoutModelRequest?.selectedPages {
+                    formData.append(selectedPages, withName: "selectedPages")
+                }
+
+                formData.append("\(String(describing: printoutModelRequest?.landscape))", withName: "landscape")
+                
+                APIManager.shared.performRequest(
+                    for: "/mobileprint/printouts",
+                    method: .POST,
+                    formData: formData,
+                    responseType: [PrintoutModelResponse].self
+                ).subscribe { [self] result in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        ManagerAlert.shared.dismissLoading()
+                    }
+                    switch result {
+                    case .success(let printouts):
+                        PrintoutState.shared.addPrintoutModelResponse(printouts)
+                        showAlertSuccess()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                            self.showAlertSuccess()
+                        }
+                    case .failure(let error):
+                        APIManager.shared.logError(error: error)
+                    }
+                }.disposed(by: disposed)
             }
-        }.disposed(by: disposed)
+        }
     }
     
     private func showAlertSuccess() {
         isDialogSuccess = true
-        let indexPath = IndexPath(row: 0, section: 0)
-        if let cell = tableView.cellForRow(at: indexPath) as? SelectorAndInputTableViewCell {
-            if isValidNumberOfCopies(cell) {
-                DialogManager.shared.showCommonDialog(
-                    from: self,
-                    title: "Added successfully!",
-                    message: "Successfully added to Ready to Release list. Go there to release your document(s)",
-                    labelButton: "Go To Release List", statusImage: UIImage(named: "success")!,
-                    onConfirm: { [self] in
-                        isDialogSuccess = false
-                        dismiss(animated: true, completion: nil)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            self.navigationController?.popToRootViewController(animated: true)
-                        }
-                    }
-                )
+        DialogManager.shared.showCommonDialog(
+            from: self,
+            title: "Added successfully!",
+            message: "Successfully added to Ready to Release list. Go there to release your document(s)",
+            labelButton: "Go To Release List", statusImage: UIImage(named: "success")!,
+            onConfirm: { [self] in
+                isDialogSuccess = false
+                dismiss(animated: true, completion: nil)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
             }
-        }
+        )
     }
 }
 
